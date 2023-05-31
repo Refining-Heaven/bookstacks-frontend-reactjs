@@ -1,0 +1,13 @@
+@import '../../../styles/variables.scss';
+
+.sub-header {
+  width           : 100%;
+  height          : $sub-header-height;
+  padding         : 0 10px;
+  background-color: #fff;
+  position        : fixed;
+  top             : $header-heigth;
+  left            : $sidebar-width;
+  box-shadow      : 0px 0 5px rgba(0, 0, 0, 0.2);
+  z-index         : 200;
+}

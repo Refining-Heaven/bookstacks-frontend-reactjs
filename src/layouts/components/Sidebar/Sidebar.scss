@@ -1,0 +1,16 @@
+@import '../../../styles/variables.scss';
+
+.sidebar-container {
+  width           : $sidebar-width;
+  height          : 100vh;
+  background-color: #fff;
+  box-shadow      : 1px 0 20px rgba(0, 0, 0, 0.08);
+  z-index         : 500;
+  position        : fixed;
+  left            : 0;
+
+  .sidebar-content {
+    height          : 600px;
+    margin          : 10px 0 10px 10px;
+  }
+}

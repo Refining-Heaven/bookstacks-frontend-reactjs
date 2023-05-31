@@ -1,0 +1,68 @@
+.book {
+  max-width: 540px;
+  display  : flex;
+  flex-wrap: wrap;
+
+  .book-cover {
+    width          : 40%;
+    height         : 295px;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    border         : 1px solid green;
+
+    .book-cover-image {
+      width        : 170px;
+      height       : 272px;
+      border       : 1px solid red;
+      border-radius: 5px;
+    }
+  }
+
+  .book-info {
+    width   : 60%;
+    padding : 10px;
+    border  : 1px solid blue;
+    overflow: hidden;
+
+    .book-info-content {
+      overflow          : hidden;
+      text-overflow     : ellipsis;
+      white-space       : normal;
+      display           : -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+
+      &.long {
+        -webkit-line-clamp: 2;
+      }
+
+      .title {
+        font-size  : 18px;
+        font-weight: 600;
+      }
+
+      .content {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .book-intro {
+    width  : 100%;
+    padding: 10px;
+    border : 1px solid purple;
+
+    .book-intro-content {
+
+      .title {
+        font-size  : 18px;
+        font-weight: 600;
+      }
+
+      .content {
+        font-size: 18px;
+      }
+    }
+  }
+}

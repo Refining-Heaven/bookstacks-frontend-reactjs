@@ -1,0 +1,84 @@
+{
+	"header": {
+
+	},
+	"sidebar": {
+
+	},
+	"option-menu-item": {
+		"language": "Language",
+		"theme": "Theme",
+		"log-out": "Log out",
+    "sub-menu-item": {
+      "language": {
+        "english": "English",
+        "vietnamese": "Vietnamese"
+      },
+      "theme": {
+        "light": "Light",
+        "dark": "Dark"
+      }
+    }
+	},
+	"form": {
+		"email": "Email",
+    "username": "Username",
+		"password": "Password",
+		"forgot-password": "Forgot password",
+    "title": {
+      "login": "Login",
+      "sign-up": "Sign up"
+    },
+    "placeholder": {
+      "enter-email": "Enter your email",
+      "enter-password": "Enter your password",
+      "enter-username": "Enter your username"
+    },
+    "text": {
+      "or": "Or",
+      "login": "login",
+      "sign-up": "sign up",
+      "here": "here"
+    }
+	},
+  "book": {
+    "status": {
+      "new": "New books",
+      "accomplished": "Accompished books"
+    },
+    "genre": {
+      "action": "Action"
+    },
+    "kind": {
+      "allegory": "Allegory",
+      "novel": "Novel",
+      "short-story": "Short story"
+    }
+  },
+  "manage-book": {
+    "options": "Options",
+    "modal": {
+      "book-name": "Book name",
+      "another-name": "Another name",
+      "author": "Author",
+      "status": "Status",
+      "kind": "Kind",
+      "version": "Version",
+      "language": "Language",
+      "intro": "Intro",
+      "genre": "Genre",
+      "cover-image": "Cover image"
+    }
+  },
+  "title": {
+		"home": "Home",
+		"manage-book": "Manage book"
+  },
+  "button": {
+		"login": "Login",
+    "sign-up": "Sign up",
+    "upload-image": "Upload image",
+    "add": "Add",
+    "save": "Save"
+  }
+}

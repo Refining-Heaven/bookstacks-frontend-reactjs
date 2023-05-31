@@ -1,0 +1,71 @@
+@import '../../../styles/variables.scss';
+
+.header-container {
+  width           : 100vw;
+  height          : $header-heigth;
+  position        : fixed;
+  background-color: #fff;
+  box-shadow      : 5px 0 10px rgba(0, 0, 0, 0.5);
+  z-index         : 1000;
+
+  .header-content {
+    display        : flex;
+    justify-content: space-between;
+    position       : relative;
+    user-select    : none;
+
+    .left-content {
+      width: $logo-width;
+
+      .logo {
+        width : $logo-width;
+        height: 70px;
+        border: 1px solid purple;
+      }
+    }
+
+    .center-content {
+      width : 700px;
+      border: 1px solid blue;
+
+    }
+
+    .right-content {
+      width          : 300px;
+      padding        : 0 20px;
+      display        : flex;
+      align-items    : center;
+      justify-content: flex-end;
+      border         : 1px solid red;
+
+      .more-option {
+        width          : 40px;
+        height         : 40px;
+        margin-left    : 20px;
+        border-radius  : 50%;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        font-size      : 21px;
+
+        &:hover {
+          cursor: pointer;
+
+          .more-option-icon {
+            opacity: 0.8;
+          }
+        }
+      }
+
+      .btn-login {
+        padding    : 7px 12px;
+        font-size  : 14;
+        font-weight: 600;
+
+        .login-icon {
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+}

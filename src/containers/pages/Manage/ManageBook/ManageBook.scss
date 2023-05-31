@@ -1,0 +1,265 @@
+@import '../../../../styles/variables.scss';
+
+.manage-book-container {
+  height         : 590px;
+  padding        : 20px;
+  display        : flex;
+  justify-content: space-between;
+  gap            : 30px;
+
+  .content-left {
+    width  : 47%;
+    padding: 10px;
+    border : 1px solid red;
+  }
+
+  .content-right {
+    width         : 50%;
+    display       : flex;
+    flex-direction: column;
+
+    .add-book {
+      display        : flex;
+      justify-content: flex-end;
+      align-items    : center;
+
+      .input-book-name {
+        margin-right: 30px;
+
+        label {
+          padding-right : 5px;
+          font-size     : 18px;
+          vertical-align: top;
+        }
+
+        input[type=text] {
+          width        : 170px;
+          padding-top  : 6px;
+          border-bottom: 1px solid #ddd;
+          font-size    : 15px;
+
+          &:focus {
+            border-bottom: 1px solid $main-color;
+          }
+        }
+      }
+
+      .btn-add-book {
+        width : 100px;
+        height: 30px;
+      }
+    }
+  }
+}
+
+// manage book modal
+.manage-book-modal {
+  width: 700px;
+
+  .modal-header {
+    // padding: 5px 10px;
+    display         : flex;
+    justify-content : space-between;
+    border-bottom   : 1px solid #ddd;
+    color           : #fff;
+    background-color: $main-color;
+
+    .modal-title {
+      padding  : 5px 10px;
+      font-size: 20px;
+    }
+
+    .close-modal-icon {
+      padding         : 6px 12px;
+      color           : #fff;
+      background-color: transparent;
+      font-size       : 20px;
+
+      &:hover {
+        opacity: 0.8;
+        cursor : pointer;
+      }
+    }
+  }
+
+  .modal-content {
+    padding: 10px;
+
+    .manage-book-form {
+      padding      : 10px 20px 5px;
+      display      : flex;
+      flex-wrap    : wrap;
+      gap          : 15px;
+      border-radius: 5px;
+
+      .input-book-info {
+        margin-bottom: 5px;
+
+        label {
+          padding-right : 5px;
+          font-size     : 18px;
+          vertical-align: top;
+        }
+
+        input[type=text] {
+          width        : 170px;
+          padding-top  : 3px;
+          line-height  : 22px;
+          border-bottom: 1px solid #ddd;
+          font-size    : 15px;
+
+          &:focus {
+            border-bottom: 1px solid $main-color;
+          }
+        }
+
+        textarea {
+          width    : 640px;
+          padding  : 5px;
+          border   : 1px solid #ddd;
+          outline  : none;
+          font-size: 15px;
+        }
+
+        select {
+          width        : 120px;
+          padding-top  : 6px;
+          border       : none;
+          outline      : none;
+          border-bottom: 1px solid #ddd;
+          font-size    : 15px;
+
+          &:focus {
+            border-bottom: 1px solid $main-color;
+          }
+        }
+      }
+
+      .book-genre-image-container {
+        display  : flex;
+        font-size: 18px;
+
+        .book-genre {
+          width: 50%;
+
+          .select-genre-container {
+            display  : flex;
+            flex-wrap: wrap;
+            gap      : 10px;
+
+            .btn-genre {
+              padding         : 3px 5px;
+              border          : 1px solid #ddd;
+              color           : #000;
+              background-color: #fff;
+
+              &.active {
+                color           : #fff;
+                background-color: $main-color;
+              }
+            }
+          }
+        }
+
+        .book-cover-image {
+          display: flex;
+
+          .upload-cover-image {
+            width         : 60%;
+            margin-right  : 40px;
+            display       : flex;
+            flex-direction: column;
+
+            .label-upload {
+              padding         : 5px 20px;
+              border-radius   : 3px;
+              background-color: #ddd;
+              font-size       : 16px;
+              cursor          : pointer;
+
+              &:hover {
+                opacity: 0.9;
+              }
+            }
+          }
+
+          .preview-cover-image {
+            width          : 130px;
+            height         : 160px;
+            margin-top     : 5px;
+            display        : flex;
+            justify-content: center;
+
+            img {
+              max-width    : 100%;
+              border-radius: 3px;
+            }
+          }
+        }
+      }
+
+      .btn-container {
+        margin-top     : 10px;
+        width          : 100%;
+        display        : flex;
+        justify-content: flex-end;
+
+        .btn-save {
+          width : 100px;
+          height: 30px;
+        }
+      }
+    }
+  }
+}
+
+// manage book table
+.manage-book-table {
+  margin: 10px;
+
+  table {
+    width          : 100%;
+    border-collapse: collapse;
+
+    td,
+    th {
+      padding: 5px;
+      border : 1px solid black
+    }
+
+    th {
+      font-size: 18px;
+    }
+
+    .book-name {
+      padding: 0 10px;
+    }
+
+    .options {
+      width     : 30%;
+      text-align: center;
+
+      button {
+        padding         : 2px 6px;
+        margin          : 0 12px;
+        background-color: #fff;
+      }
+
+      .btn-edit {
+
+        .edit-icon {
+          font-size: 15px;
+          color    : orange;
+        }
+      }
+
+      .btn-delete {
+
+        .delete-icon {
+          font-size: 15px;
+          color    : red;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@import '../../../../styles/variables.scss';
+
+.option-menu {
+  width           : 200px;
+  position        : absolute;
+  top             : $header-heigth;
+  right           : 15px;
+  background-color: #fefefe;
+
+  .option-menu-list {
+    padding       : 5px 0;
+    border-radius : 5px;
+    display       : flex;
+    flex-direction: column;
+  }
+}
+
+
+//
+.option-menu-item {
+  padding    : 10px;
+  font-size  : 18px;
+  display    : flex;
+  align-items: center;
+  position   : relative;
+  user-select: none;
+
+  &:hover {
+    cursor          : pointer;
+    background-color: $main-color;
+
+    .item-icon,
+    .item-title {
+      color: #fff;
+    }
+  }
+
+  .item-icon {
+    width          : 25px;
+    height         : 25px;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    margin-right   : 5px;
+  }
+}

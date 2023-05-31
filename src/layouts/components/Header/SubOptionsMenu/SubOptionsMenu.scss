@@ -1,0 +1,48 @@
+@import '../../../../styles/variables.scss';
+
+.sub-option-menu {
+  width           : 200px;
+  position        : absolute;
+  top             : 0;
+  right           : 200px;
+  background-color: #fefefe;
+
+  .sub-option-menu-list {
+    padding       : 5px 0;
+    border-radius : 5px;
+    display       : flex;
+    flex-direction: column;
+  }
+}
+
+
+//
+.sub-option-menu-item {
+  padding    : 10px;
+  display    : flex;
+  align-items: center;
+  font-size  : 18px;
+  user-select: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.active {
+    background-color: $main-color;
+
+    .sub-item-icon,
+    .sub-item-title {
+      color: #fff;
+    }
+  }
+
+  .sub-item-icon {
+    width          : 25px;
+    height         : 25px;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    margin-right   : 5px;
+  }
+}

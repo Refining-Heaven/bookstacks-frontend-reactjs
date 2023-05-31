@@ -1,0 +1,53 @@
+@import 'normalize.css';
+@import '../../styles/variables.scss';
+
+* {
+  margin    : 0;
+  padding   : 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size       : 1.6rem;
+  line-height     : 1.5;
+  text-rendering  : optimizeSpeed;
+  color           : $text-color;
+  background-color: $bg-main-color;
+  overflow-y      : overlay;
+}
+
+button,
+input,
+[tabindex] {
+  border : none;
+  outline: none;
+}
+
+button {
+  border-radius   : 5px;
+  color           : #fff;
+  background-color: $main-color;
+
+  &:hover {
+    opacity: 0.8;
+    cursor : pointer;
+  }
+
+  a {
+    color: #fff;
+  }
+}
+
+a {
+  color          : $text-color;
+  text-decoration: none;
+}
+
+// react modal
+.ReactModal__Overlay {
+  z-index: 400;
+}

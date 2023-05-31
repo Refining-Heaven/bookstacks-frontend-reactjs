@@ -1,0 +1,83 @@
+{
+  "header": {
+  },
+  "sidebar": {
+
+  },
+  "option-menu-item": {
+    "language": "Ngôn ngữ",
+    "theme": "Chủ đề",
+    "log-out": "Đăng xuất",
+    "sub-menu-item": {
+      "language": {
+        "english": "Tiếng Anh",
+        "vietnamese": "Tiếng Việt"
+      },
+      "theme": {
+        "light": "Sáng",
+        "dark": "Tối"
+      }
+    }
+  },
+  "form": {
+		"email": "Email",
+    "username": "Tên người dùng",
+		"password": "Mật khẩu",
+		"forgot-password": "Quên mật khẩu",
+    "title": {
+      "login": "Đăng nhập",
+      "sign-up": "Đăng ký"
+    },
+    "placeholder": {
+      "enter-email": "Nhập email của bạn",
+      "enter-password": "Nhập mật khẩu của bạn",
+      "enter-username": "Nhập tên người dùng của bạn"
+    },
+    "text": {
+      "or": "Hoặc",
+      "login": "đăng nhập",
+      "sign-up": "đăng ký",
+      "here": "tại đây"
+    }
+	},
+  "book": {
+    "status": {
+      "new": "Sách mới",
+      "accomplished": "Sách đã hoàn thành"
+    },
+    "genre": {
+      "action": "Hành động"
+    },
+    "kind": {
+      "allegory": "Truyện ngụ ngôn",
+      "novel": "Tiểu thuyết",
+      "short-story": "Truyện ngắn"
+    }
+  },
+  "manage-book": {
+    "options": "Tùy chọn",
+    "modal": {
+      "book-name": "Tên sách",
+      "another-name": "Tên khác",
+      "author": "Tác giả",
+      "status": "Trạng thái",
+      "kind": "Loại",
+      "version": "Bản",
+      "language": "Ngôn ngữ",
+      "intro": "Giới thiệu",
+      "genre": "Thể loại",
+      "cover-image": "Ảnh bìa"
+    }
+  },
+  "title": {
+    "home": "Trang chủ",
+    "manage-book": "Quản lý sách"
+  },
+  "button": {
+		"login": "Đăng nhập",
+    "sign-up": "Đăng ký",
+    "upload-image": "Tải ảnh",
+    "add": "Thêm",
+    "save": "Lưu"
+  }
+}
