@@ -1,42 +1,77 @@
 import { Component } from 'react';
+import { Buffer } from 'buffer';
 import './Book.scss';
 
 class Book extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			previewImgURL: '',
+		};
+	}
+
+	componentDidMount() {
+		const { data } = this.props;
+		let imageBase64 = '';
+		if (data.coverImage) {
+			imageBase64 = new Buffer(data.coverImage, 'base64').toString('binary');
+		}
+		this.setState({
+			previewImgURL: imageBase64,
+		});
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (prevProps.data !== this.props.data) {
+			const { data } = this.props;
+			let imageBase64 = '';
+			if (data.coverImage) {
+				imageBase64 = new Buffer(data.coverImage, 'base64').toString('binary');
+			}
+			this.setState({
+				previewImgURL: imageBase64,
+			});
+		}
+	}
+
 	render() {
-		const { isShowIntro } = this.props;
+		const { previewImgURL } = this.state;
+		const { isShowIntro, data } = this.props;
 		return (
 			<div className="book">
 				<div className="book-cover">
-					<div className="book-cover-image"></div>
+					<div className="book-cover-image">
+						<img src={previewImgURL} alt="" />
+					</div>
 				</div>
 				<div className="book-info">
 					<div className="book-info-content long">
-						<span className="title">Name: </span>
-						<span className="content">Grim of the nir withh the spear and the wings underwhere to the stair and the chair</span>
+						<span className="title">Book name: </span>
+						<span className="content">{data.bookName}</span>
 					</div>
 					<div className="book-info-content long">
 						<span className="title">Another name: </span>
-						<span className="content">Grim of the nir withh the spear and the wings</span>
+						<span className="content">{data.anotherName}</span>
 					</div>
 					<div className="book-info-content">
 						<span className="title">Author: </span>
-						<span className="content">Gu Zhen Ren</span>
+						<span className="content">{data.author}</span>
 					</div>
 					<div className="book-info-content">
 						<span className="title">Status: </span>
-						<span className="content">Updating</span>
+						<span className="content">{data.statusData.valueVi}</span>
 					</div>
 					<div className="book-info-content">
 						<span className="title">Kind: </span>
-						<span className="content">Novel</span>
+						<span className="content">{data.kindData.valueVi}</span>
 					</div>
 					<div className="book-info-content">
 						<span className="title">Version: </span>
-						<span className="content">Convert</span>
+						<span className="content">{data.versionData.valueVi}</span>
 					</div>
 					<div className="book-info-content">
 						<span className="title">Language: </span>
-						<span className="content">English</span>
+						<span className="content">{data.languageData.valueVi}</span>
 					</div>
 					<div className="book-info-content">
 						<span className="title">Genre: </span>
@@ -47,9 +82,7 @@ class Book extends Component {
 					<div className="book-intro">
 						<div className="book-intro-content">
 							<span className="title">Intro: </span>
-							<span className="content">
-								sabad adwdee fesfsrs grgthth thyttythty rthrtr ere vxv des ffsefs gesgeg rrrr gsef
-							</span>
+							<span className="content">{data.intro}</span>
 						</div>
 					</div>
 				)}

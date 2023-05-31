@@ -19,6 +19,7 @@ class ManageBook extends Component {
 	}
 
 	componentDidMount() {
+		this.props.clearBookInfo()
 		this.props.fetchAllBook();
 	}
 
@@ -27,6 +28,7 @@ class ManageBook extends Component {
 			this.setState({
 				bookList: this.props.bookList,
 			});
+			this.props.clearBookInfo()
 		}
 	}
 
@@ -52,13 +54,15 @@ class ManageBook extends Component {
 
 	render() {
 		const {bookList, bookName} = this.state
+		const {bookInfo} = this.props
 		return (
 			<>
 				<SubHeader title={TITLE.MANAGE_BOOK} />
 				<div className="content-body">
 					<div className="manage-book-container">
 						<div className="content-left">
-							<Book isShowIntro={true} />
+							{bookInfo !== null && <Book isShowIntro={true} data={bookInfo} />}
+							
 						</div>
 						<div className="content-right">
 							<div className="add-book">
@@ -85,6 +89,7 @@ class ManageBook extends Component {
 const mapStateToProps = (state) => {
 	return {
 		userInfo: state.user.userInfo,
+		bookInfo: state.app.bookInfo,
 		bookList: state.app.bookList,
 	};
 };
@@ -93,6 +98,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		handleAddNewBook: (data) => dispatch(actions.handleAddNewBook(data)),
 		fetchAllBook: () => dispatch(actions.fetchAllBook()),
+		clearBookInfo: () => dispatch(actions.clearBookInfo()),
 	};
 };
 

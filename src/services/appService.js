@@ -1,29 +1,23 @@
 import axios from '../config/axios';
 
 const getAllGenreService = () => {
-  return axios.get('/api/get-all-genre');
-}
+	return axios.get('/api/get-all-genre');
+};
 
 const getAllKindService = () => {
-  return axios.get('/api/get-all-kind');
-}
+	return axios.get('/api/get-all-kind');
+};
 
 const getAllCodeService = (type) => {
-  return axios.get(`/api/get-all-code?type=${type}`);
-}
+	return axios.get(`/api/get-all-code?type=${type}`);
+};
 
 const getAllBookService = () => {
-  return axios.get('/api/get-all-book');
-}
+	return axios.get('/api/get-all-book');
+};
 
-const getAllBookInfoByIdService = (bookId) => {
-  return axios.get(`/api/get-all-book-info-by-id?id=${bookId}`);
-}
+const getBookInfoByIdService = (bookId) => {
+	return axios.get(`/api/get-book-info-by-id?id=${bookId}`);
+};
 
-export {
-  getAllGenreService,
-  getAllKindService,
-  getAllCodeService,
-  getAllBookService,
-  getAllBookInfoByIdService
-}
+export { getAllGenreService, getAllKindService, getAllCodeService, getAllBookService, getBookInfoByIdService };

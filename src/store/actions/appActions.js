@@ -3,7 +3,7 @@ import {
 	getAllKindService,
 	getAllCodeService,
 	getAllBookService,
-	getAllBookInfoByIdService,
+	getBookInfoByIdService,
 } from '../../services/appService';
 import actionTypes from './actionTypes';
 
@@ -122,30 +122,35 @@ const fetchAllBookFailed = () => ({
 });
 
 // Fetch all book info
-const fetchAllBookInfoById = (bookId) => {
+const fetchBookInfoById = (bookId) => {
 	return async (dispatch, getState) => {
 		try {
-			const response = await getAllBookInfoByIdService(bookId);
+			const response = await getBookInfoByIdService(bookId);
 			if (response && response.data.errCode === 0) {
-				dispatch(fetchAllBookInfoByIdSucceed(response.data.data));
+				dispatch(fetchBookInfoByIdSucceed(response.data.data));
 			} else {
-				dispatch(fetchAllBookInfoByIdFailed());
+				dispatch(fetchBookInfoByIdFailed());
 			}
 		} catch (e) {
-			dispatch(fetchAllBookInfoByIdFailed());
+			dispatch(fetchBookInfoByIdFailed());
 			console.log(e);
 		}
 	};
 };
 
-const fetchAllBookInfoByIdSucceed = (data) => ({
-	type: actionTypes.FETCH_ALL_BOOK_INFO_BY_ID_SUCCEED,
+const fetchBookInfoByIdSucceed = (data) => ({
+	type: actionTypes.FETCH_BOOK_INFO_BY_ID_SUCCEED,
 	bookInfo: data,
 });
 
-const fetchAllBookInfoByIdFailed = () => ({
-	type: actionTypes.FETCH_ALL_BOOK_INFO_BY_ID_FAILED,
+const fetchBookInfoByIdFailed = () => ({
+	type: actionTypes.FETCH_BOOK_INFO_BY_ID_FAILED,
 });
+
+//
+const clearBookInfo = () => ({
+	type: actionTypes.CLEAR_BOOK_INFO
+})
 
 export {
 	handleChangeLanguage,
@@ -158,5 +163,6 @@ export {
 	handleCloseSubOptionsMenu,
 	fetchRequiredBookData,
 	fetchAllBook,
-	fetchAllBookInfoById,
+	fetchBookInfoById,
+	clearBookInfo
 };

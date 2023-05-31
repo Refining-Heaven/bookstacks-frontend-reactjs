@@ -9,12 +9,11 @@
   }
 
   .section-body {
-    height: 350px;
     margin: 20px 30px 50px;
-    border: 1px solid red;
+    padding: 10px 0;
 
     .section-customize {
-      padding-left: 10px;
+      padding-left: 19px;
     }
   }
 
@@ -24,8 +23,8 @@
     background-color: transparent !important;
     border          : 2px solid #d7d7d7 !important;
     border-radius   : 50px;
-    top             : 44% !important;
-    left            : -16px !important;
+    top             : 50% !important;
+    left            : -30px !important;
     z-index         : 100 !important;
 
     &::before {
@@ -51,8 +50,8 @@
     background-color: transparent !important;
     border          : 2px solid #d7d7d7 !important;
     border-radius   : 50px;
-    top             : 44% !important;
-    right           : -16px !important;
+    top             : 50% !important;
+    right           : -30px !important;
     z-index         : 100 !important;
 
     &::before {

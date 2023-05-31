@@ -9,19 +9,22 @@ import './ManageBook.scss';
 class ManageBookTable extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-		};
+		this.state = {};
 	}
+
+	handleViewBookInfo = (bookId) => {
+		this.props.fetchBookInfoById(bookId);
+	};
 
 	handleOpenModal = async (bookId) => {
-		await this.props.fetchAllBookInfoById(bookId)
-		this.props.handleOpenManageBookModal()
-	}
+		await this.props.fetchBookInfoById(bookId);
+		this.props.handleOpenManageBookModal();
+	};
 
 	handleDeleteBook = async (bookId) => {
-		await this.props.handleDeleteBook(bookId)
-		this.props.fetchAllBook()
-	}
+		await this.props.handleDeleteBook(bookId);
+		this.props.fetchAllBook();
+	};
 
 	render() {
 		const { bookList } = this.props;
@@ -33,7 +36,7 @@ class ManageBookTable extends Component {
 							<th>
 								<FormattedMessage id="manage-book.modal.book-name" />
 							</th>
-							<th>
+							<th className="options">
 								<FormattedMessage id="manage-book.options" />
 							</th>
 						</tr>
@@ -43,7 +46,7 @@ class ManageBookTable extends Component {
 							bookList.length > 0 &&
 							bookList.map((item, index) => {
 								return (
-									<tr key={index}>
+									<tr key={index} onClick={() => this.handleViewBookInfo(item.id)}>
 										<td className="book-name">{item.bookName}</td>
 										<td className="options">
 											<button className="btn-edit" onClick={() => this.handleOpenModal(item.id)}>
@@ -64,8 +67,7 @@ class ManageBookTable extends Component {
 }
 
 const mapStateToProps = (state) => {
-	return {
-	};
+	return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -73,7 +75,7 @@ const mapDispatchToProps = (dispatch) => {
 		handleOpenManageBookModal: () => dispatch(actions.handleOpenManageBookModal()),
 		handleDeleteBook: (bookId) => dispatch(actions.handleDeleteBook(bookId)),
 		fetchAllBook: () => dispatch(actions.fetchAllBook()),
-		fetchAllBookInfoById: (bookId) => dispatch(actions.fetchAllBookInfoById(bookId))
+		fetchBookInfoById: (bookId) => dispatch(actions.fetchBookInfoById(bookId)),
 	};
 };
 

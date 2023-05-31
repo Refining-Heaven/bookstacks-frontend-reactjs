@@ -1,7 +1,7 @@
 @import '../../../../styles/variables.scss';
 
 .manage-book-container {
-  height         : 590px;
+  height         : $manage-book-container-height;
   padding        : 20px;
   display        : flex;
   justify-content: space-between;

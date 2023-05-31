@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faCloudArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
+import { Buffer } from 'buffer';
 import { FormattedMessage } from 'react-intl';
 import Modal from 'react-modal';
 import { LANGUAGES, CommonUtils } from '../../../../utils';
@@ -47,32 +48,31 @@ class ManageBookModal extends Component {
 		}
 		if (prevProps.bookInfo !== this.props.bookInfo) {
 			const { bookInfo } = this.props;
-			// decode base64
-			let imageBase64 = '';
-			// if (bookInfo.coverImage) {
-			// 	imageBase64 = new Buffer(bookInfo.coverImage, 'base64').toString('binary');
-			// }
-			this.setState({
-				bookName: bookInfo.bookName,
-				anotherName: bookInfo.anotherName,
-				author: bookInfo.author,
-				status: bookInfo.status,
-				kind: bookInfo.kind,
-				version: bookInfo.version,
-				language: bookInfo.language,
-				intro: bookInfo.intro,
-				coverImage: bookInfo.coverImage,
-				previewImgURL: imageBase64,
-			});
+			if (bookInfo !== null) {
+				// decode base64
+				let imageBase64 = '';
+				if (bookInfo.coverImage) {
+					imageBase64 = new Buffer(bookInfo.coverImage, 'base64').toString('binary');
+				}
+				this.setState({
+					bookName: bookInfo.bookName,
+					anotherName: bookInfo.anotherName,
+					author: bookInfo.author,
+					status: bookInfo.status,
+					kind: bookInfo.kind,
+					version: bookInfo.version,
+					language: bookInfo.language,
+					intro: bookInfo.intro,
+					coverImage: bookInfo.coverImage,
+					previewImgURL: imageBase64,
+				});
+			}
 		}
 	}
 
 	handleCloseManageBookModal = () => {
-		this.props.handleCloseManageBookModal()
-		// this.setState({
-		// 	previewImgURL: ""
-		// })
-	}
+		this.props.handleCloseManageBookModal();
+	};
 
 	handleSelectGenre = (genre) => {
 		const { genreData } = this.state;
@@ -111,8 +111,8 @@ class ManageBookModal extends Component {
 		}
 	};
 
-	handleSaveBookInfo = () => {
-		this.props.handleUpdateBookInfo({
+	handleSaveBookInfo = async () => {
+		await this.props.handleUpdateBookInfo({
 			uploaderId: this.props.userInfo.id,
 			id: this.props.bookInfo.id,
 			bookName: this.state.bookName,
@@ -124,8 +124,8 @@ class ManageBookModal extends Component {
 			language: this.state.language,
 			intro: this.state.intro,
 			coverImage: this.state.coverImage,
-		})
-		console.log(this.state.coverImage);
+		});
+		this.handleCloseManageBookModal();
 	};
 
 	render() {
@@ -317,9 +317,7 @@ class ManageBookModal extends Component {
 										</label>
 									</div>
 									<div className="preview-cover-image">
-										{previewImgURL === "" ? "" :
-											<img src={previewImgURL} alt="" />
-										}
+										{previewImgURL === '' ? '' : <img src={previewImgURL} alt="" />}
 									</div>
 								</div>
 							</div>

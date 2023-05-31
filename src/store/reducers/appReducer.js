@@ -9,7 +9,7 @@ const initialState = {
 	subOptionsMenuIsOpen: false,
 	allRequiredBookData: [],
 	bookList: [],
-	bookInfo: [],
+	bookInfo: null,
 };
 
 const appReducer = (state = initialState, action) => {
@@ -79,13 +79,18 @@ const appReducer = (state = initialState, action) => {
 			return {
 				...state,
 			};
-		case actionTypes.FETCH_ALL_BOOK_INFO_BY_ID_SUCCEED:
+		case actionTypes.FETCH_BOOK_INFO_BY_ID_SUCCEED:
 			state.bookInfo = action.bookInfo;
 			return {
 				...state,
 			};
-		case actionTypes.FETCH_ALL_BOOK_INFO_BY_ID_FAILED:
+		case actionTypes.FETCH_BOOK_INFO_BY_ID_FAILED:
 			state.bookInfo = [];
+			return {
+				...state,
+			};
+		case actionTypes.CLEAR_BOOK_INFO:
+			state.bookInfo = null;
 			return {
 				...state,
 			};
