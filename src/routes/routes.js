@@ -8,7 +8,7 @@ import DefaultLayout from "../layouts/DefaultLayout";
 import Login from '../containers/Auth/Login';
 import SignUp from "../containers/Auth/SignUp/SignUp";
 import Home from '../containers/pages/Home'
-import ManageBook from "../containers/pages/Manage/ManageBook/ManageBook";
+import ManageBook from "../containers/pages/ManageBook/ManageBook";
 
 // Public routes
 const publicRoutes = [

@@ -1,8 +1,6 @@
 import actionTypes from '../actions/actionTypes';
 
 const initialState = {
-	isLoadingGender: false,
-	genders: [],
 };
 
 const adminReducer = (state = initialState, action) => {

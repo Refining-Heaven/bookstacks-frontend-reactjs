@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import { Buffer } from 'buffer';
 import { FormattedMessage } from 'react-intl';
 import Modal from 'react-modal';
-import { LANGUAGES, CommonUtils } from '../../../../utils';
-import { customStyles } from '../../../../config/reactModal';
-import * as actions from '../../../../store/actions';
+import { LANGUAGES, CommonUtils } from '../../../utils';
+import { customStyles } from '../../../config/reactModal';
+import * as actions from '../../../store/actions';
 import './ManageBook.scss';
 
 class ManageBookModal extends Component {
@@ -48,7 +48,28 @@ class ManageBookModal extends Component {
 		}
 		if (prevProps.bookInfo !== this.props.bookInfo) {
 			const { bookInfo } = this.props;
+			const { genreData } = this.state;
 			if (bookInfo !== null) {
+				if (bookInfo && bookInfo.genreData && bookInfo.genreData.length > 0) {
+					const arrGenreId = [];
+					bookInfo.genreData.map((item) => {
+						arrGenreId.push(item.genreId);
+					});
+					genreData.map((item) => {
+						for (let i = 0; i < arrGenreId.length; i++) {
+							if (item.id === arrGenreId[i]) {
+								item.isSelected = true;
+								return item;
+							} else {
+								item.isSelected = false;
+							}
+						}
+					});
+				} else {
+					genreData.map((item) => {
+						return (item.isSelected = false);
+					});
+				}
 				// decode base64
 				let imageBase64 = '';
 				if (bookInfo.coverImage) {
@@ -63,7 +84,6 @@ class ManageBookModal extends Component {
 					version: bookInfo.version,
 					language: bookInfo.language,
 					intro: bookInfo.intro,
-					coverImage: bookInfo.coverImage,
 					previewImgURL: imageBase64,
 				});
 			}
@@ -84,7 +104,7 @@ class ManageBookModal extends Component {
 				return item;
 			});
 			this.setState({
-				rangeTime: genreData,
+				genreData: genreData,
 			});
 		}
 	};
@@ -112,6 +132,21 @@ class ManageBookModal extends Component {
 	};
 
 	handleSaveBookInfo = async () => {
+		const { genreData } = this.state;
+		let bookGenre = [];
+		if (genreData && genreData.length > 0) {
+			const selectedGenre = genreData.filter((item) => item.isSelected === true);
+			if (selectedGenre && selectedGenre.length > 0) {
+				selectedGenre.map((genre) => {
+					const object = {};
+					object.bookId = this.props.bookInfo.id;
+					object.genreId = genre.id;
+					bookGenre.push(object);
+				});
+			} else {
+				bookGenre = [];
+			}
+		}
 		await this.props.handleUpdateBookInfo({
 			uploaderId: this.props.userInfo.id,
 			id: this.props.bookInfo.id,
@@ -123,6 +158,7 @@ class ManageBookModal extends Component {
 			version: this.state.version,
 			language: this.state.language,
 			intro: this.state.intro,
+			arrGenre: bookGenre,
 			coverImage: this.state.coverImage,
 		});
 		this.handleCloseManageBookModal();

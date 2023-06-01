@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FormattedMessage } from 'react-intl';
-import * as actions from '../../../../store/actions';
+import * as actions from '../../../store/actions';
 import './ManageBook.scss';
 
 class ManageBookTable extends Component {

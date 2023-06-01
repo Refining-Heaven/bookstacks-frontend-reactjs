@@ -73,10 +73,6 @@ class Book extends Component {
 						<span className="title">Language: </span>
 						<span className="content">{data.languageData.valueVi}</span>
 					</div>
-					<div className="book-info-content">
-						<span className="title">Genre: </span>
-						<span className="content">Action, Adventure, Fantasy, Drama, Sci-fi</span>
-					</div>
 				</div>
 				{isShowIntro === true && (
 					<div className="book-intro">
