@@ -55,6 +55,17 @@
       "short-story": "Short story"
     }
   },
+  "book-info": {
+    "book-name": "Book name",
+      "another-name": "Another name",
+      "author": "Author",
+      "status": "Status",
+      "kind": "Kind",
+      "version": "Version",
+      "language": "Language",
+      "intro": "Intro",
+      "genre": "Genre"
+  },
   "manage-book": {
     "options": "Options",
     "modal": {

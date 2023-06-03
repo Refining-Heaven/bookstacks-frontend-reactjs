@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Slider from 'react-slick';
+import { connect } from "react-redux";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -30,4 +31,14 @@ class BookSlider extends Component {
 	}
 }
 
-export default BookSlider;
+const mapStateToProps = (state) => {
+	return {
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookSlider);

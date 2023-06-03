@@ -54,6 +54,17 @@
       "short-story": "Truyện ngắn"
     }
   },
+  "book-info": {
+    "book-name": "Tên sách",
+      "another-name": "Tên khác",
+      "author": "Tác giả",
+      "status": "Trạng thái",
+      "kind": "Loại",
+      "version": "Bản",
+      "language": "Ngôn ngữ",
+      "intro": "Giới thiệu",
+      "genre": "Thể loại"
+  },
   "manage-book": {
     "options": "Tùy chọn",
     "modal": {

@@ -9,6 +9,7 @@ import Login from '../containers/Auth/Login';
 import SignUp from "../containers/Auth/SignUp/SignUp";
 import Home from '../containers/pages/Home'
 import ManageBook from "../containers/pages/ManageBook/ManageBook";
+import BookDetail from "../containers/pages/BookDetail/BookDetail";
 
 // Public routes
 const publicRoutes = [
@@ -18,6 +19,7 @@ const publicRoutes = [
 
 	{ path: PATH.MANAGE_BOOK, page: ManageBook, layout: DefaultLayout },
 
+	{ path: PATH.BOOK_DETAIL, page: BookDetail, layout: DefaultLayout },
 	// { path: config.routes.upload, page: Upload, layout: HeaderOnly },
 ];
 

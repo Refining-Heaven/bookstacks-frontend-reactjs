@@ -161,6 +161,7 @@ class ManageBookModal extends Component {
 			arrGenre: bookGenre,
 			coverImage: this.state.coverImage,
 		});
+		await this.props.fetchAllBook()
 		this.handleCloseManageBookModal();
 	};
 
@@ -383,6 +384,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		handleCloseManageBookModal: () => dispatch(actions.handleCloseManageBookModal()),
+		fetchAllBook: () => dispatch(actions.fetchAllBook()),
 		fetchRequiredBookData: () => dispatch(actions.fetchRequiredBookData()),
 		handleUpdateBookInfo: (data) => dispatch(actions.handleUpdateBookInfo(data)),
 	};

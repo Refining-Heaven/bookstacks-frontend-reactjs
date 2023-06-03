@@ -6,6 +6,7 @@ export const PATH = {
 	SIGN_UP: '/sign-up',
 	MANAGE: '/manage',
 	MANAGE_BOOK: '/manage/book',
+	BOOK_DETAIL: '/book-detail/:id'
 };
 
 export const TITLE = {

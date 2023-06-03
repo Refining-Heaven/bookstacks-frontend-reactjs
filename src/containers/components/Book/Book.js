@@ -1,5 +1,10 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
 import { Buffer } from 'buffer';
+import { FormattedMessage } from "react-intl";
+import images from "../../../assets/images";
+import * as actions from '../../../store/actions'
+import { withRouter, LANGUAGES } from "../../../utils";
 import './Book.scss';
 
 class Book extends Component {
@@ -34,50 +39,57 @@ class Book extends Component {
 		}
 	}
 
+	handleViewBookDetail = async (bookId) => {
+		await this.props.fetchBookInfoById(bookId)
+		this.props.navigate(`/book-detail/${bookId}`)
+	}
+
 	render() {
 		const { previewImgURL } = this.state;
-		const { isShowIntro, data } = this.props;
+		const { language, isShowIntro, data } = this.props;
 		return (
-			<div className="book">
+			<div className="book" onClick={() => this.handleViewBookDetail(data.id)}>
 				<div className="book-cover">
 					<div className="book-cover-image">
-						<img src={previewImgURL} alt="" />
+						<img src={previewImgURL === '' ? images.noCoverImage : previewImgURL} alt="" />
 					</div>
 				</div>
 				<div className="book-info">
 					<div className="book-info-content long">
-						<span className="title">Book name: </span>
+						<span className="title">
+							<FormattedMessage id="book-info.book-name" />
+							: </span>
 						<span className="content">{data.bookName}</span>
 					</div>
 					<div className="book-info-content long">
-						<span className="title">Another name: </span>
+						<span className="title"><FormattedMessage id="book-info.another-name" />: </span>
 						<span className="content">{data.anotherName}</span>
 					</div>
 					<div className="book-info-content">
-						<span className="title">Author: </span>
+						<span className="title"><FormattedMessage id="book-info.author" />: </span>
 						<span className="content">{data.author}</span>
 					</div>
 					<div className="book-info-content">
-						<span className="title">Status: </span>
-						<span className="content">{data.statusData.valueVi}</span>
+						<span className="title"><FormattedMessage id="book-info.status" />: </span>
+						<span className="content">{language === LANGUAGES.VI ? data.statusData.valueVi : data.statusData.valueEn}</span>
 					</div>
 					<div className="book-info-content">
-						<span className="title">Kind: </span>
-						<span className="content">{data.kindData.valueVi}</span>
+						<span className="title"><FormattedMessage id="book-info.kind" />: </span>
+						<span className="content">{language === LANGUAGES.VI ? data.kindData.valueVi : data.kindData.valueEn}</span>
 					</div>
 					<div className="book-info-content">
-						<span className="title">Version: </span>
-						<span className="content">{data.versionData.valueVi}</span>
+						<span className="title"><FormattedMessage id="book-info.version" />: </span>
+						<span className="content">{language === LANGUAGES.VI ? data.versionData.valueVi : data.versionData.valueEn}</span>
 					</div>
 					<div className="book-info-content">
-						<span className="title">Language: </span>
-						<span className="content">{data.languageData.valueVi}</span>
+						<span className="title"><FormattedMessage id="book-info.language" />: </span>
+						<span className="content">{language === LANGUAGES.VI ? data.languageData.valueVi : data.languageData.valueEn}</span>
 					</div>
 				</div>
 				{isShowIntro === true && (
 					<div className="book-intro">
 						<div className="book-intro-content">
-							<span className="title">Intro: </span>
+							<span className="title"><FormattedMessage id="book-info.intro" />: </span>
 							<span className="content">{data.intro}</span>
 						</div>
 					</div>
@@ -87,4 +99,17 @@ class Book extends Component {
 	}
 }
 
-export default Book;
+const mapStateToProps = (state) => {
+	return {
+		language: state.app.language,
+		bookInfo: state.app.bookInfo,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		fetchBookInfoById: (bookId) => dispatch(actions.fetchBookInfoById(bookId)),
+	};
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Book));
