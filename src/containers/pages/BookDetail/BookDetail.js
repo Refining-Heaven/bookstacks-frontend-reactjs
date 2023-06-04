@@ -2,11 +2,11 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Buffer } from 'buffer';
 import SubHeader from '../../../layouts/components/SubHeader/SubHeader';
+import { FormattedMessage } from "react-intl";
 import images from "../../../assets/images";
 import * as actions from '../../../store/actions';
 import { withRouter, LANGUAGES } from '../../../utils';
 import './BookDetail.scss';
-import { FormattedMessage } from "react-intl";
 
 class BookDetail extends Component {
 	constructor(props) {
@@ -17,10 +17,10 @@ class BookDetail extends Component {
 		};
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
 		if (this.props && this.props.params && this.props.params.id) {
 			const bookId = this.props.params.id;
-			this.props.fetchBookInfoById(bookId);
+			await this.props.fetchBookInfoById(bookId);
 			this.setState({
 				currentBookId: bookId,
 			});
@@ -40,8 +40,13 @@ class BookDetail extends Component {
 		}
 	}
 
+  handleToGenrePage = async (genreId) => {
+    await this.props.fetchAllBookByGenre(genreId)
+		this.props.navigate(`/books-found/genre-id/${genreId}`)
+  }
+
 	render() {
-		const { language,bookInfo } = this.props;
+		const { language, bookInfo } = this.props;
 		const { previewImgURL } = this.state;
 		return (
 			<>
@@ -72,27 +77,45 @@ class BookDetail extends Component {
                       <span>{bookInfo.author}</span>
                     </div>
                     <div className="info">
-                      <span className="title"><FormattedMessage id="book-info.author" />: </span>
-                      <span>{bookInfo.author}</span>
+                      <span className="title"><FormattedMessage id="book-info.uploader" />: </span>
+                      <span>{bookInfo.uploader.username}</span>
                     </div>
                   </div>
                   <div className="book-info">
                     <div className="info">
-                      <span className="title"><FormattedMessage id="book-info.status" />: </span>
+                      <span className="title"><FormattedMessage id="book-info.status" /></span>
                       <span>{language === LANGUAGES.VI ? bookInfo.statusData.valueVi : bookInfo.statusData.valueEn}</span>
                     </div>
                     <div className="info">
-                      <span className="title"><FormattedMessage id="book-info.kind" />: </span>
+                      <span className="title"><FormattedMessage id="book-info.kind" /></span>
                       <span>{language === LANGUAGES.VI ? bookInfo.kindData.valueVi : bookInfo.kindData.valueEn}</span>
                     </div>
                     <div className="info">
-                      <span className="title"><FormattedMessage id="book-info.version" />: </span>
+                      <span className="title"><FormattedMessage id="book-info.version" /></span>
                       <span>{language === LANGUAGES.VI ? bookInfo.versionData.valueVi : bookInfo.versionData.valueEn}</span>
                     </div>
                     <div className="info">
-                      <span className="title"><FormattedMessage id="book-info.language" />: </span>
+                      <span className="title"><FormattedMessage id="book-info.language" /></span>
                       <span>{language === LANGUAGES.VI ? bookInfo.languageData.valueVi : bookInfo.languageData.valueEn}</span>
                     </div>
+                  </div>
+                  <div className="book-genre">
+                    <div className="title"><FormattedMessage id="book-info.genre" /></div>
+                    <div className="content">
+                      {bookInfo.genreData && bookInfo.genreData.length > 0 &&
+                        bookInfo.genreData.map((item, index) => {
+                          return(
+                            <div className="genre" key={index}
+                              onClick={() => this.handleToGenrePage(item.genreId)}
+                            >{language === LANGUAGES.VI ? item.genreData.valueVi : item.genreData.valueEn}</div>
+                          )
+                        })
+                      }
+                    </div>
+                  </div>
+                  <div className="book-intro">
+                    <div className="title"><FormattedMessage id="book-info.intro" /></div>
+                    <div className="content">{bookInfo.intro}</div>
                   </div>
 								</div>
 							);
@@ -113,6 +136,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
+		fetchAllBookByGenre: (genreId) => dispatch(actions.fetchAllBookByGenre(genreId)),
 		fetchBookInfoById: (bookId) => dispatch(actions.fetchBookInfoById(bookId)),
 	};
 };

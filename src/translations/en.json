@@ -59,6 +59,7 @@
     "book-name": "Book name",
       "another-name": "Another name",
       "author": "Author",
+      "uploader": "Uploader",
       "status": "Status",
       "kind": "Kind",
       "version": "Version",

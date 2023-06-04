@@ -1,26 +1,25 @@
 import { Component } from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import { settings } from "../../../config/reactSlider";
-import { TITLE, STATUS_TITLE, KIND_TITLE } from '../../../utils'
-import * as actions from '../../../store/actions'
+import { settings } from '../../../config/reactSlider';
+import { TITLE, STATUS_TITLE, KIND_TITLE } from '../../../utils';
+import * as actions from '../../../store/actions';
 import BookSlider from '../../components/BookSlider/BookSlider';
 import SubHeader from '../../../layouts/components/SubHeader/SubHeader';
 import './Home.scss';
 
 class Home extends Component {
 	componentDidMount() {
-		this.props.fetchAllBook()
+		this.props.fetchAllNewBook();
 	}
 
 	render() {
-		const { bookList } = this.props
-		console.log("hi");
+		const { newBooks } = this.props;
 		return (
 			<>
 				<SubHeader title={TITLE.HOME} />
 				<div className="content-body">
-					<BookSlider settings={settings} name={STATUS_TITLE.NEW} data={bookList} />
+					<BookSlider settings={settings} name={STATUS_TITLE.NEW} data={newBooks} />
 					{/* <BookSlider settings={settings} name={STATUS_TITLE.ACCOMPLISHED} />
 					<BookSlider settings={settings} name={KIND_TITLE.ALLEGORY} />
 					<BookSlider settings={settings} name={KIND_TITLE.NOVEL} />
@@ -34,14 +33,14 @@ class Home extends Component {
 const mapStateToProps = (state) => {
 	return {
 		userInfo: state.user.userInfo,
-		bookList: state.app.bookList,
+		newBooks: state.app.newBooks,
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		handleAddNewBook: (data) => dispatch(actions.handleAddNewBook(data)),
-		fetchAllBook: () => dispatch(actions.fetchAllBook()),
+		fetchAllNewBook: () => dispatch(actions.fetchAllNewBook()),
 	};
 };
 

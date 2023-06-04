@@ -10,6 +10,7 @@ import SignUp from "../containers/Auth/SignUp/SignUp";
 import Home from '../containers/pages/Home'
 import ManageBook from "../containers/pages/ManageBook/ManageBook";
 import BookDetail from "../containers/pages/BookDetail/BookDetail";
+import BooksFound from "../containers/pages/BooksFound/BooksFound";
 
 // Public routes
 const publicRoutes = [
@@ -17,9 +18,10 @@ const publicRoutes = [
 	{ path: PATH.SIGN_UP, page: SignUp, layout: null },
 	{ path: PATH.HOME, page: Home, layout: DefaultLayout },
 
-	{ path: PATH.MANAGE_BOOK, page: ManageBook, layout: DefaultLayout },
-
 	{ path: PATH.BOOK_DETAIL, page: BookDetail, layout: DefaultLayout },
+	{ path: PATH.BOOK_FOUND, page: BooksFound, layout: DefaultLayout },
+	
+	{ path: PATH.MANAGE_BOOK, page: ManageBook, layout: DefaultLayout },
 	// { path: config.routes.upload, page: Upload, layout: HeaderOnly },
 ];
 

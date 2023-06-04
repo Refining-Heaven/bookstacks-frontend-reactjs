@@ -3,15 +3,17 @@ import {
 	getAllKindService,
 	getAllCodeService,
 	getAllBookService,
+	getAllNewBookService,
+	getAllBookByGenreService,
 	getBookInfoByIdService,
 } from '../../services/appService';
 import actionTypes from './actionTypes';
 
+// Change language
 const handleChangeLanguage = (language) => ({
 	type: actionTypes.CHANGE_LANGUAGE,
 	language: language,
 });
-
 const handleChangeTheme = (theme) => ({
 	type: actionTypes.CHANGE_THEME,
 	theme: theme,
@@ -21,7 +23,6 @@ const handleChangeTheme = (theme) => ({
 const handleOpenManageBookModal = () => ({
 	type: actionTypes.OPEN_MANAGE_BOOK_MODAL,
 });
-
 const handleCloseManageBookModal = () => ({
 	type: actionTypes.CLOSE_MANAGE_BOOK_MODAL,
 });
@@ -30,7 +31,6 @@ const handleCloseManageBookModal = () => ({
 const handleOpenCloseOptionsMenu = () => ({
 	type: actionTypes.OPEN_CLOSE_OPTION_MENU,
 });
-
 const handleCloseOptionsMenu = () => ({
 	type: actionTypes.CLOSE_OPTION_MENU,
 });
@@ -39,7 +39,6 @@ const handleCloseOptionsMenu = () => ({
 const handleOpenSubOptionsMenu = () => ({
 	type: actionTypes.OPEN_SUB_OPTION_MENU,
 });
-
 const handleCloseSubOptionsMenu = () => ({
 	type: actionTypes.CLOSE_SUB_OPTION_MENU,
 });
@@ -85,12 +84,10 @@ const fetchRequiredBookData = () => {
 		}
 	};
 };
-
 const fetchRequiredBookDataSucceed = (data) => ({
 	type: actionTypes.FETCH_REQUIRED_BOOK_DATA_SUCCEED,
 	allRequiredBookData: data,
 });
-
 const fetchRequiredBookDataFailed = () => ({
 	type: actionTypes.FETCH_REQUIRED_BOOK_DATA_FAILED,
 });
@@ -111,14 +108,60 @@ const fetchAllBook = () => {
 		}
 	};
 };
-
 const fetchAllBookSucceed = (data) => ({
 	type: actionTypes.FETCH_ALL_BOOK_SUCCEED,
-	bookList: data,
+	allBooks: data,
 });
-
 const fetchAllBookFailed = () => ({
 	type: actionTypes.FETCH_ALL_BOOK_FAILED,
+});
+
+// Fetch all new book
+const fetchAllNewBook = () => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await getAllNewBookService();
+			if (response && response.data.errCode === 0) {
+				dispatch(fetchAllNewBookSucceed(response.data.data));
+			} else {
+				dispatch(fetchAllNewBookFailed());
+			}
+		} catch (e) {
+			dispatch(fetchAllNewBookFailed());
+			console.log(e);
+		}
+	};
+};
+const fetchAllNewBookSucceed = (data) => ({
+	type: actionTypes.FETCH_ALL_NEW_BOOK_SUCCEED,
+	newBooks: data,
+});
+const fetchAllNewBookFailed = () => ({
+	type: actionTypes.FETCH_ALL_NEW_BOOK_FAILED,
+});
+
+// Fetch all book by genre
+const fetchAllBookByGenre = (genreId) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await getAllBookByGenreService(genreId);
+			if (response && response.data.errCode === 0) {
+				dispatch(fetchAllBookByGenreSucceed(response.data.data));
+			} else {
+				dispatch(fetchAllBookByGenreFailed());
+			}
+		} catch (e) {
+			dispatch(fetchAllBookByGenreFailed());
+			console.log(e);
+		}
+	};
+};
+const fetchAllBookByGenreSucceed = (data) => ({
+	type: actionTypes.FETCH_ALL_BOOK_BY_GENRE_SUCCEED,
+	booksFound: data,
+});
+const fetchAllBookByGenreFailed = () => ({
+	type: actionTypes.FETCH_ALL_BOOK_BY_GENRE_FAILED,
 });
 
 // Fetch all book info
@@ -137,20 +180,18 @@ const fetchBookInfoById = (bookId) => {
 		}
 	};
 };
-
 const fetchBookInfoByIdSucceed = (data) => ({
 	type: actionTypes.FETCH_BOOK_INFO_BY_ID_SUCCEED,
 	bookInfo: data,
 });
-
 const fetchBookInfoByIdFailed = () => ({
 	type: actionTypes.FETCH_BOOK_INFO_BY_ID_FAILED,
 });
 
 //
 const clearBookInfo = () => ({
-	type: actionTypes.CLEAR_BOOK_INFO
-})
+	type: actionTypes.CLEAR_BOOK_INFO,
+});
 
 export {
 	handleChangeLanguage,
@@ -163,6 +204,8 @@ export {
 	handleCloseSubOptionsMenu,
 	fetchRequiredBookData,
 	fetchAllBook,
+	fetchAllNewBook,
+	fetchAllBookByGenre,
 	fetchBookInfoById,
-	clearBookInfo
+	clearBookInfo,
 };

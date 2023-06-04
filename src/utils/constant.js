@@ -6,7 +6,8 @@ export const PATH = {
 	SIGN_UP: '/sign-up',
 	MANAGE: '/manage',
 	MANAGE_BOOK: '/manage/book',
-	BOOK_DETAIL: '/book-detail/:id'
+	BOOK_DETAIL: '/book-detail/:id',
+	BOOK_FOUND: '/books-found/genre-id/:id',
 };
 
 export const TITLE = {

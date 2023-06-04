@@ -8,7 +8,9 @@ const initialState = {
 	optionMenuIsOpen: false,
 	subOptionsMenuIsOpen: false,
 	allRequiredBookData: [],
-	bookList: [],
+	allBooks: [],
+	newBooks: [],
+	booksFound: null,
 	bookInfo: null,
 };
 
@@ -70,12 +72,32 @@ const appReducer = (state = initialState, action) => {
 				...state,
 			};
 		case actionTypes.FETCH_ALL_BOOK_SUCCEED:
-			state.bookList = action.bookList;
+			state.allBooks = action.allBooks;
 			return {
 				...state,
 			};
 		case actionTypes.FETCH_ALL_BOOK_FAILED:
-			state.bookList = [];
+			state.allBooks = [];
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ALL_NEW_BOOK_SUCCEED:
+			state.newBooks = action.newBooks;
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ALL_NEW_BOOK_FAILED:
+			state.newBooks = [];
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ALL_BOOK_BY_GENRE_SUCCEED:
+			state.booksFound = action.booksFound;
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ALL_BOOK_BY_GENRE_FAILED:
+			state.booksFound = [];
 			return {
 				...state,
 			};

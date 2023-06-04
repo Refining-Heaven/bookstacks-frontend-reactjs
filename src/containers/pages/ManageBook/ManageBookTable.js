@@ -27,7 +27,7 @@ class ManageBookTable extends Component {
 	};
 
 	render() {
-		const { bookList } = this.props;
+		const { allBooks } = this.props;
 		return (
 			<div className="manage-book-table">
 				<table>
@@ -42,9 +42,9 @@ class ManageBookTable extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						{bookList &&
-							bookList.length > 0 &&
-							bookList.map((item, index) => {
+						{allBooks &&
+							allBooks.length > 0 &&
+							allBooks.map((item, index) => {
 								return (
 									<tr key={index} onClick={() => this.handleViewBookInfo(item.id)}>
 										<td className="book-name">{item.bookName}</td>
@@ -67,7 +67,9 @@ class ManageBookTable extends Component {
 }
 
 const mapStateToProps = (state) => {
-	return {};
+	return {
+		allBooks: state.app.allBooks,
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {

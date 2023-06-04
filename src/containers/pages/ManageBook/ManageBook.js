@@ -13,7 +13,7 @@ class ManageBook extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			bookList: [],
+			allBooks: [],
 			bookName: '',
 		};
 	}
@@ -24,9 +24,9 @@ class ManageBook extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
-		if (prevProps.bookList !== this.props.bookList) {
+		if (prevProps.allBooks !== this.props.allBooks) {
 			this.setState({
-				bookList: this.props.bookList,
+				allBooks: this.props.allBooks,
 			});
 			this.props.clearBookInfo();
 		}
@@ -53,7 +53,7 @@ class ManageBook extends Component {
 	};
 
 	render() {
-		const { bookList, bookName } = this.state;
+		const { allBooks, bookName } = this.state;
 		const { bookInfo } = this.props;
 		return (
 			<>
@@ -75,7 +75,7 @@ class ManageBook extends Component {
 							</div>
 							<ManageBookModal />
 							<div className="book-list">
-								<ManageBookTable bookList={bookList} />
+								<ManageBookTable allBooks={allBooks} />
 							</div>
 						</div>
 					</div>
@@ -89,7 +89,7 @@ const mapStateToProps = (state) => {
 	return {
 		userInfo: state.user.userInfo,
 		bookInfo: state.app.bookInfo,
-		bookList: state.app.bookList,
+		allBooks: state.app.allBooks,
 	};
 };
 
