@@ -1,13 +1,14 @@
-@import '../../../../styles/variables.scss';
+@import '../../../../../styles/variables.scss';
 
-.option-menu {
+.sub-option-menu {
   width           : 200px;
   position        : absolute;
-  top             : $header-heigth;
-  right           : 15px;
+  top             : 0;
+  right           : 200px;
   background-color: #fefefe;
+  box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
 
-  .option-menu-list {
+  .sub-option-menu-list {
     padding       : 5px 0;
     border-radius : 5px;
     display       : flex;
@@ -17,25 +18,28 @@
 
 
 //
-.option-menu-item {
+.sub-option-menu-item {
   padding    : 10px;
-  font-size  : 18px;
   display    : flex;
   align-items: center;
-  position   : relative;
+  font-size  : 18px;
   user-select: none;
 
   &:hover {
-    cursor          : pointer;
+    background: rgba(22, 24, 35, 0.03);
+    cursor: pointer;
+  }
+
+  &.active {
     background-color: $main-color;
 
-    .item-icon,
-    .item-title {
+    .sub-item-icon,
+    .sub-item-title {
       color: #fff;
     }
   }
 
-  .item-icon {
+  .sub-item-icon {
     width          : 25px;
     height         : 25px;
     display        : flex;

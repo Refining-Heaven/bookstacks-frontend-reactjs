@@ -1,0 +1,121 @@
+.search {
+  position        : relative;
+  width           : 500px;
+  height          : 46px;
+  padding-left    : 16px;
+  display         : flex;
+  align-items     : center;
+  background-color: rgba(22, 24, 35, 0.06);
+  border-radius   : 92px;
+  border          : 1.5px solid transparent;
+
+  input {
+    flex            : 1;
+    line-height     : 40px;
+    padding-right   : 40px;
+    font-size       : 1.6rem;
+    background-color: transparent;
+  }
+
+  input:not(:placeholder-shown)~.search-btn {
+    color: rgba(22, 24, 35, 0.75);
+  }
+
+  &:focus-within {
+    border-color: rgba(22, 24, 35, 0.2);
+  }
+
+  .clear-icon,
+  .loading-icon {
+    position : absolute;
+    right    : calc(80px + 16px);
+    top      : 50%;
+    transform: translateY(-50%);
+    color    : rgba(22, 24, 35, 0.34);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .loading-icon {
+    animation: spinner 0.8s linear infinite;
+
+    @keyframes spinner {
+      from {
+        transform: translateY(-50%) rotate(0);
+      }
+
+      to {
+        transform: translateY(-50%) rotate(360deg);
+      }
+    }
+  }
+
+  .search-btn {
+    width           : 80px;
+    height          : 100%;
+    border-radius   : 0 92px 92px 0;
+    font-size       : 1.8rem;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    color           : rgba(22, 24, 35, 0.34);
+    background-color: rgba(22, 24, 35, 0.06);
+
+    &:hover {
+      cursor          : pointer;
+      background-color: rgba(22, 24, 35, 0.03);
+    }
+
+    &:active {
+      background-color: rgba(22, 24, 35, 0.06);
+    }
+  }
+}
+
+.search-result {
+  display       : flex;
+  flex-direction: column;
+  width         : 500px;
+  min-height    : 100px;
+  max-height    : calc(92px * 5 + 8px * 2);
+  padding       : 8px 0;
+  border-radius : 5px;
+  position      : absolute;
+  top           : 100%;
+  background    : rgb(255, 255, 255);
+  box-shadow    : rgb(0 0 0 / 12%) 0px 2px 12px;
+
+  .item-found {
+    padding    : 5px 10px;
+    display    : flex;
+    align-items: center;
+    gap        : 10px;
+
+    &:hover {
+      background: rgba(22, 24, 35, 0.03);
+      cursor    : pointer;
+    }
+
+    .book-cover-image {
+      width      : 60px;
+      display    : flex;
+      align-items: center;
+
+      img {
+        width        : 100%;
+        height       : 82px;
+        border-radius: 5px;
+      }
+    }
+
+    .book-info {
+      height         : 82px;
+      line-height    : 1.4;
+      display        : flex;
+      flex-direction : column;
+      justify-content: space-between;
+    }
+  }
+}

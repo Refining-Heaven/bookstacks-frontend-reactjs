@@ -27,7 +27,9 @@
     .center-content {
       width : 700px;
       border: 1px solid blue;
-
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .right-content {

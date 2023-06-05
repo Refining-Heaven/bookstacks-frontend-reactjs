@@ -20,6 +20,10 @@ const getAllNewBookService = () => {
 	return axios.get('/api/get-all-new-book');
 };
 
+const getAllBookByNameService = (name) => {
+	return axios.get(`/api/get-all-book-by-name?name=${name}`);
+};
+
 const getAllBookByGenreService = (genreId) => {
 	return axios.get(`/api/get-all-book-by-genre?genreId=${genreId}`);
 };
@@ -34,6 +38,7 @@ export {
 	getAllCodeService,
 	getAllBookService,
 	getAllNewBookService,
+	getAllBookByNameService,
 	getAllBookByGenreService,
 	getBookInfoByIdService,
 };

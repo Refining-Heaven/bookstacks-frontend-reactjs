@@ -1,0 +1,32 @@
+@import '../../../../styles/variables.scss';
+
+.more-option {
+  width          : 40px;
+  height         : 40px;
+  margin-left    : 20px;
+  border-radius  : 50%;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  font-size      : 25px;
+
+  &:hover {
+    cursor: pointer;
+
+    .more-option-icon {
+      opacity: 0.8;
+    }
+  }
+
+  .more-option-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;  
+    }
+  }
+}

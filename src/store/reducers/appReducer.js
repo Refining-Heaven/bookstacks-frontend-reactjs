@@ -12,6 +12,7 @@ const initialState = {
 	newBooks: [],
 	booksFound: null,
 	bookInfo: null,
+	clearSearchValue: true
 };
 
 const appReducer = (state = initialState, action) => {
@@ -91,6 +92,17 @@ const appReducer = (state = initialState, action) => {
 			return {
 				...state,
 			};
+		case actionTypes.FETCH_ALL_BOOK_BY_NAME_SUCCEED:
+			state.booksFound = action.booksFound;
+			state.clearSearchValue = false
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ALL_BOOK_BY_NAME_FAILED:
+			state.booksFound = [];
+			return {
+				...state,
+			};
 		case actionTypes.FETCH_ALL_BOOK_BY_GENRE_SUCCEED:
 			state.booksFound = action.booksFound;
 			return {
@@ -108,6 +120,12 @@ const appReducer = (state = initialState, action) => {
 			};
 		case actionTypes.FETCH_BOOK_INFO_BY_ID_FAILED:
 			state.bookInfo = [];
+			return {
+				...state,
+			};
+		case actionTypes.CLEAR_BOOKS_FOUND:
+			state.booksFound = null;
+			state.clearSearchValue = true
 			return {
 				...state,
 			};

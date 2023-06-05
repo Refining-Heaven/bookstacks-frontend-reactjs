@@ -4,6 +4,7 @@ import {
 	getAllCodeService,
 	getAllBookService,
 	getAllNewBookService,
+	getAllBookByNameService,
 	getAllBookByGenreService,
 	getBookInfoByIdService,
 } from '../../services/appService';
@@ -140,6 +141,30 @@ const fetchAllNewBookFailed = () => ({
 	type: actionTypes.FETCH_ALL_NEW_BOOK_FAILED,
 });
 
+// Fetch all book by name
+const fetchAllBookByName = (name) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await getAllBookByNameService(name);
+			if (response && response.data.errCode === 0) {
+				dispatch(fetchAllBookByNameSucceed(response.data.data));
+			} else {
+				dispatch(fetchAllBookByNameFailed());
+			}
+		} catch (e) {
+			dispatch(fetchAllBookByNameFailed());
+			console.log(e);
+		}
+	};
+};
+const fetchAllBookByNameSucceed = (data) => ({
+	type: actionTypes.FETCH_ALL_BOOK_BY_NAME_SUCCEED,
+	booksFound: data,
+});
+const fetchAllBookByNameFailed = () => ({
+	type: actionTypes.FETCH_ALL_BOOK_BY_NAME_FAILED,
+});
+
 // Fetch all book by genre
 const fetchAllBookByGenre = (genreId) => {
 	return async (dispatch, getState) => {
@@ -189,6 +214,9 @@ const fetchBookInfoByIdFailed = () => ({
 });
 
 //
+const clearBooksFound = () => ({
+	type: actionTypes.CLEAR_BOOKS_FOUND,
+});
 const clearBookInfo = () => ({
 	type: actionTypes.CLEAR_BOOK_INFO,
 });
@@ -205,7 +233,9 @@ export {
 	fetchRequiredBookData,
 	fetchAllBook,
 	fetchAllNewBook,
+	fetchAllBookByName,
 	fetchAllBookByGenre,
 	fetchBookInfoById,
+	clearBooksFound,
 	clearBookInfo,
 };

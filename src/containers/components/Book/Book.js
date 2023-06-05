@@ -90,7 +90,7 @@ class Book extends Component {
 					<div className="book-intro">
 						<div className="book-intro-content">
 							<span className="title"><FormattedMessage id="book-info.intro" />: </span>
-							<span className="content">{data.intro}</span>
+							<div className="content">{data.intro}</div>
 						</div>
 					</div>
 				)}

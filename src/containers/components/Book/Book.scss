@@ -70,10 +70,32 @@
       .title {
         font-size  : 16px;
         font-weight: 600;
+        margin-bottom: 5px;
       }
 
       .content {
-        font-size: 16px;
+        font-size    : 16px;
+        max-height   : 205px;
+        padding      : 10px;
+        white-space  : pre-wrap;
+        border       : 2px solid #ddd;
+        border-radius: 5px;
+        overflow-y   : scroll;
+
+        &::-webkit-scrollbar {
+          border-radius: 0;
+          width        : 8px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          border-radius   : 4px;
+          background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        &::-webkit-scrollbar-track {
+          border-radius   : 0;
+          background-color: rgba(0, 0, 0, 0);
+        }
       }
     }
   }

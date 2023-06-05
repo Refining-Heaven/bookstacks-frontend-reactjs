@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../../../store/actions';
+import * as actions from '../../../../../store/actions';
 import './SubOptionsMenu.scss';
 
 class SubOptionsMenuItem extends Component {
