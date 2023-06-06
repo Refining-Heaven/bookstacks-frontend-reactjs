@@ -12,9 +12,9 @@ class DefaultLayout extends Component {
 		return (
 			<div className="wrapper">
 				<Header />
-				<div className="body-container">
+				<div className="body-container" onClick={() => this.props.handleCloseOptionsMenu()}>
 					<Sidebar />
-					<div className="content-container" onClick={() => this.props.handleCloseOptionsMenu()}>
+					<div className="content-container">
 						{children}
 					</div>
 				</div>

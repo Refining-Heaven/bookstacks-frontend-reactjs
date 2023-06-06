@@ -84,7 +84,9 @@
   },
   "title": {
 		"home": "Home",
-		"manage-book": "Manage book"
+		"manage-book": "Manage book",
+    "manage-chapter": "Manage chapter",
+    "manage-user": "Manage user"
   },
   "button": {
 		"login": "Login",

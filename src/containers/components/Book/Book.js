@@ -48,7 +48,7 @@ class Book extends Component {
 		const { previewImgURL } = this.state;
 		const { language, isShowIntro, data } = this.props;
 		return (
-			<div className="book" onClick={() => this.handleViewBookDetail(data.id)}>
+			<div className="book" onDoubleClick={() => this.handleViewBookDetail(data.id)}>
 				<div className="book-cover">
 					<div className="book-cover-image">
 						<img src={previewImgURL === '' ? images.noCoverImage : previewImgURL} alt="" />

@@ -1,11 +1,14 @@
 import { FormattedMessage } from 'react-intl';
 
 export const PATH = {
+	UNDEFINED: '*',
 	HOME: '/',
 	LOGIN: '/login',
 	SIGN_UP: '/sign-up',
 	MANAGE: '/manage',
 	MANAGE_BOOK: '/manage/book',
+	MANAGE_CHAPTER: '/manage/chapter',
+	MANAGE_USER: '/manage/user',
 	BOOK_DETAIL: '/book-detail/:id',
 	BOOK_FOUND: '/books-found/genre-id/:id',
 };
@@ -16,6 +19,8 @@ export const TITLE = {
 	SIGN_UP: 'Sign up',
 	MANAGE: 'Manage',
 	MANAGE_BOOK: <FormattedMessage id="title.manage-book" />,
+	MANAGE_CHAPTER: <FormattedMessage id="title.manage-chapter" />,
+	MANAGE_USER: <FormattedMessage id="title.manage-user" />,
 };
 
 export const STATUS_TITLE = {
@@ -42,3 +47,8 @@ export const THEMES = {
 	LIGHT: 'light',
 	DARK: 'dark',
 };
+
+export const ROLE = {
+	ADMIN: 'A',
+	USER: 'U'
+}

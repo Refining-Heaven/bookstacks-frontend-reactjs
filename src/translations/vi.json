@@ -83,7 +83,9 @@
   },
   "title": {
     "home": "Trang chủ",
-    "manage-book": "Quản lý sách"
+    "manage-book": "Quản lý sách",
+    "manage-chapter": "Quản lý chương",
+    "manage-user": "Quản lý người dùng"
   },
   "button": {
 		"login": "Đăng nhập",

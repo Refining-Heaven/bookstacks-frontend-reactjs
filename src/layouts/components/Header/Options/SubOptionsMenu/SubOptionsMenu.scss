@@ -5,8 +5,9 @@
   position        : absolute;
   top             : 0;
   right           : 200px;
+  border-radius   : 5px;
   background-color: #fefefe;
-  box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
+  box-shadow      : rgb(0 0 0 / 12%) 0px 2px 12px;
 
   .sub-option-menu-list {
     padding       : 5px 0;
@@ -27,7 +28,7 @@
 
   &:hover {
     background: rgba(22, 24, 35, 0.03);
-    cursor: pointer;
+    cursor    : pointer;
   }
 
   &.active {

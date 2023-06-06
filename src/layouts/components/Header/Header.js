@@ -1,8 +1,10 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import './Header.scss';
+import { withRouter, PATH } from '../../../utils'
+import * as actions from '../../../store/actions'
 import Options from "./Options/Options";
 import SearchBar from "./SearchBar/SearchBar";
+import './Header.scss';
 
 class Header extends Component {
 	constructor(props) {
@@ -11,14 +13,20 @@ class Header extends Component {
 		};
 	}
 
+	handleToHomePage = () => {
+		this.props.navigate(PATH.HOME)
+	}
+
 	render() {
 		return (
 			<div className="header-container">
 				<div className="header-content">
-					<div className="left-content">
-						<div className="logo"></div>
+					<div className="left-content"  onClick={() => this.props.handleCloseOptionsMenu()}>
+						<div className="logo" onClick={() => this.handleToHomePage()}>
+
+						</div>
 					</div>
-					<div className="center-content">
+					<div className="center-content"  onClick={() => this.props.handleCloseOptionsMenu()}>
 						<div className="search-bar">
 							<SearchBar />
 						</div>
@@ -39,7 +47,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
+		handleCloseOptionsMenu: () => dispatch(actions.handleCloseOptionsMenu()),
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

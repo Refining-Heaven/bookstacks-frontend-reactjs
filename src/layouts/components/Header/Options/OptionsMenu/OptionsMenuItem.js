@@ -24,9 +24,10 @@ class OptionsMenuItem extends Component {
 		});
 	};
 
-	handleUserLogout = () => {
-		this.props.handleUserLogout()
+	handleUserLogout = async () => {
+		await this.props.handleUserLogout()
 		this.props.handleCloseOptionsMenu()
+		window.location.replace('/')
 	}
 
 	render() {

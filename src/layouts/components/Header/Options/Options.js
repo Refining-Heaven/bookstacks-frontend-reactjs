@@ -33,9 +33,11 @@ class Options extends Component {
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		if (prevProps.isLoggedIn !== this.props.isLoggedIn) {
-			this.setState({
-				currentOptionMenu: OPTIONS_MENU,
-			});
+			if (this.props.isLoggedIn === false) {
+				this.setState({
+					currentOptionMenu: OPTIONS_MENU,
+				});
+			}
 		}
 	}
 

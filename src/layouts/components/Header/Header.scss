@@ -15,30 +15,38 @@
     user-select    : none;
 
     .left-content {
-      width: $logo-width;
+      width: $sidebar-width;
+      height: $header-heigth;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid purple;
 
       .logo {
         width : $logo-width;
-        height: 60px;
-        border: 1px solid purple;
+        height: 50px;
+        border: 1px solid blue;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
 
     .center-content {
-      width : 700px;
-      border: 1px solid blue;
+      width : 1070px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     .right-content {
-      width          : 240px;
+      width          : 220px;
       padding        : 0 20px;
       display        : flex;
       align-items    : center;
       justify-content: flex-end;
-      border         : 1px solid red;
+
 
       .more-option {
         width          : 40px;
