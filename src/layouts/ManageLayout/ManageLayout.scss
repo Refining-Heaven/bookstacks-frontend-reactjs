@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+
+.wrapper {
+  background-color: $bg-main-color;
+
+  .body-container {
+    padding-top: $header-heigth;
+
+
+    .sidebar {
+      position: fixed;
+      top     : $header-heigth;
+      left    : 0;
+    }
+
+    .content-container {
+      margin-top : $header-heigth;
+      margin-left: $sidebar-width;
+    }
+  }
+}

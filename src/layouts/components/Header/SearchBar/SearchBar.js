@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faXmarkCircle } from '@fortawesome/free-regular-svg-icons';
@@ -17,12 +18,12 @@ class SearchBar extends Component {
 		};
 	}
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+	componentDidUpdate(prevProps, prevState, snapshot) {
 		if (prevProps.clearSearchValue !== this.props.clearSearchValue) {
-      if (this.props.clearSearchValue === true)
-			this.setState({
-        searchValue: ''
-      })
+			if (this.props.clearSearchValue === true)
+				this.setState({
+					searchValue: '',
+				});
 		}
 	}
 
@@ -41,11 +42,11 @@ class SearchBar extends Component {
 		if (searchValue !== '') {
 			clearTimeout(this.state.timer);
 			const newTimer = setTimeout(async () => {
-        await this.props.fetchAllBookByName(this.state.searchValue);
+				await this.props.fetchAllBookByName(this.state.searchValue);
 				this.setState({
 					isLoading: false,
 				});
-      }, 500);
+			}, 500);
 			this.setState({
 				timer: newTimer,
 			});
@@ -65,7 +66,11 @@ class SearchBar extends Component {
 		return (
 			<>
 				<div className="search">
-					<input placeholder="Search for book" value={searchValue} onChange={(e) => this.handleOnChangeInput(e)} />
+					<FormattedMessage id="placeholder.search">
+						{(placeholder) => (
+							<input placeholder={placeholder} value={searchValue} onChange={(e) => this.handleOnChangeInput(e)} />
+						)}
+					</FormattedMessage>
 					{(() => {
 						if (!!searchValue && isLoading === false) {
 							return (
@@ -99,7 +104,7 @@ class SearchBar extends Component {
 const mapStateToProps = (state) => {
 	return {
 		booksFound: state.app.booksFound,
-    clearSearchValue: state.app.clearSearchValue
+		clearSearchValue: state.app.clearSearchValue,
 	};
 };
 

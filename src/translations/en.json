@@ -29,11 +29,6 @@
       "login": "Login",
       "sign-up": "Sign up"
     },
-    "placeholder": {
-      "enter-email": "Enter your email",
-      "enter-password": "Enter your password",
-      "enter-username": "Enter your username"
-    },
     "text": {
       "or": "Or",
       "login": "login",
@@ -41,6 +36,12 @@
       "here": "here"
     }
 	},
+  "placeholder": {
+    "enter-email": "Enter your email",
+    "enter-password": "Enter your password",
+    "enter-username": "Enter your username",
+    "search": "Search for books"
+  },
   "book": {
     "status": {
       "new": "New books",

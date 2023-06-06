@@ -57,7 +57,7 @@ class Login extends Component {
 							<label>
 								<FormattedMessage id="form.email" />:
 							</label>
-							<FormattedMessage id="form.placeholder.enter-email">
+							<FormattedMessage id="placeholder.enter-email">
 								{(placeholder) => <input type="email" placeholder={placeholder}
 								value={email}
 								onChange={(e) => this.handleOnChangeInput(e, 'email')}
@@ -70,7 +70,7 @@ class Login extends Component {
 								<FormattedMessage id="form.password" />:
 							</label>
 							<div className="input-password">
-								<FormattedMessage id="form.placeholder.enter-password">
+								<FormattedMessage id="placeholder.enter-password">
 									{(placeholder) => (
 										<input
 											type={showPassword ? "text" : "password"}

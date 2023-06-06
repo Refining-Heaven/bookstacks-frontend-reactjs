@@ -25,9 +25,11 @@ class OptionsMenuItem extends Component {
 	};
 
 	handleUserLogout = async () => {
-		await this.props.handleUserLogout()
-		this.props.handleCloseOptionsMenu()
-		window.location.replace('/')
+		await Promise.all([
+			await this.props.handleUserLogout(),
+			await this.props.handleCloseOptionsMenu(),
+			window.location.replace('/')
+		])
 	}
 
 	render() {

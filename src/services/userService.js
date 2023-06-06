@@ -1,6 +1,6 @@
 import axios from '../config/axios';
 
-const createUserService = (data) => {
+const userSignUpService = (data) => {
   return axios.post('/api/sign-up', data);
 }
 
@@ -9,6 +9,6 @@ const userLoginService = (data) => {
 }
 
 export {
-  createUserService,
+  userSignUpService,
   userLoginService
 }

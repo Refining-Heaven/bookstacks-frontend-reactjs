@@ -28,11 +28,6 @@
       "login": "Đăng nhập",
       "sign-up": "Đăng ký"
     },
-    "placeholder": {
-      "enter-email": "Nhập email của bạn",
-      "enter-password": "Nhập mật khẩu của bạn",
-      "enter-username": "Nhập tên người dùng của bạn"
-    },
     "text": {
       "or": "Hoặc",
       "login": "đăng nhập",
@@ -40,6 +35,12 @@
       "here": "tại đây"
     }
 	},
+  "placeholder": {
+    "enter-email": "Nhập email của bạn",
+    "enter-password": "Nhập mật khẩu của bạn",
+    "enter-username": "Nhập tên người dùng của bạn",
+    "search": "Tìm kiếm sách"
+  },
   "book": {
     "status": {
       "new": "Sách mới",

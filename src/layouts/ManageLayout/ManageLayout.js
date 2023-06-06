@@ -1,7 +1,10 @@
 import { Component } from "react";
+import { connect } from 'react-redux';
+
+import * as actions from '../../store/actions';
 import Header from "../components/Header/Header";
 import Sidebar from "../components/Sidebar/Sidebar";
-
+import './ManageLayout.scss'
 
 class ManageLayout extends Component {
   render() {
@@ -9,7 +12,7 @@ class ManageLayout extends Component {
 		return (
 			<div className="wrapper">
 				<Header />
-				<div className="body-container">
+				<div className="body-container"  onClick={() => this.props.handleCloseOptionsMenu()}>
 					<Sidebar />
 					<div className="content-container">	
 						{children}
@@ -20,4 +23,14 @@ class ManageLayout extends Component {
   }
 }
 
-export default ManageLayout
+const mapStateToProps = (state) => {
+	return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		handleCloseOptionsMenu: () => dispatch(actions.handleCloseOptionsMenu()),
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageLayout)

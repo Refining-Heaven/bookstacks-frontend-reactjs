@@ -34,12 +34,12 @@ class SignUp extends Component {
 
 	handleKeyDown = (e) => {
 		if (e.key === 'Enter' || e.keyCode === 13) {
-			this.handleCreateUser();
+			this.handleUserSignUp();
 		}
 	};
 
-	handleCreateUser = () => {
-			this.props.handleCreateUser({
+	handleUserSignUp = () => {
+			this.props.handleUserSignUp({
 				email: this.state.email,
 				username: this.state.username,
 				password: this.state.password,
@@ -60,7 +60,7 @@ class SignUp extends Component {
 							<label>
 								<FormattedMessage id="form.email" />:
 							</label>
-							<FormattedMessage id="form.placeholder.enter-email">
+							<FormattedMessage id="placeholder.enter-email">
 								{(placeholder) => (
 									<input
 										type="email"
@@ -76,7 +76,7 @@ class SignUp extends Component {
 							<label>
 								<FormattedMessage id="form.username" />:
 							</label>
-							<FormattedMessage id="form.placeholder.enter-username">
+							<FormattedMessage id="placeholder.enter-username">
 								{(placeholder) => (
 									<input
 										type="text"
@@ -93,7 +93,7 @@ class SignUp extends Component {
 								<FormattedMessage id="form.password" />:
 							</label>
 							<div className="input-password">
-								<FormattedMessage id="form.placeholder.enter-password">
+								<FormattedMessage id="placeholder.enter-password">
 									{(placeholder) => (
 										<input
 											type={showPassword ? "text" : "password"}
@@ -114,7 +114,7 @@ class SignUp extends Component {
 							</div>
 						</div>
 						<div className="sign-up-btn">
-							<button onClick={() => this.handleCreateUser()}>
+							<button onClick={() => this.handleUserSignUp()}>
 								<FormattedMessage id="button.sign-up" />
 							</button>
 						</div>
@@ -144,7 +144,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		handleCreateUser: (data) => dispatch(actions.handleCreateUser(data)),
+		handleUserSignUp: (data) => dispatch(actions.handleUserSignUp(data)),
 	};
 };
 
