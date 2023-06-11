@@ -1,61 +1,60 @@
-import {
-	getAllGenreService,
-	getAllKindService,
-	getAllCodeService,
-	getAllBookService,
-	getAllNewBookService,
-	getAllBookByNameService,
-	getAllBookByGenreService,
-	getBookInfoByIdService,
-} from '../../services/appService';
+import * as services from '../../services/appService';
 import actionTypes from './actionTypes';
 
 // Change language
-const handleChangeLanguage = (language) => ({
+export const handleChangeLanguage = (language) => ({
 	type: actionTypes.CHANGE_LANGUAGE,
 	language: language,
 });
-const handleChangeTheme = (theme) => ({
+export const handleChangeTheme = (theme) => ({
 	type: actionTypes.CHANGE_THEME,
 	theme: theme,
 });
 
-// Modal
-const handleOpenManageBookModal = () => ({
+// Modal book
+export const handleOpenManageBookModal = () => ({
 	type: actionTypes.OPEN_MANAGE_BOOK_MODAL,
 });
-const handleCloseManageBookModal = () => ({
+export const handleCloseManageBookModal = () => ({
 	type: actionTypes.CLOSE_MANAGE_BOOK_MODAL,
 });
 
+// Modal chapter
+export const handleOpenManageChapterModal = () => ({
+	type: actionTypes.OPEN_MANAGE_CHAPTER_MODAL,
+});
+export const handleCloseManageChapterModal = () => ({
+	type: actionTypes.CLOSE_MANAGE_CHAPTER_MODAL,
+});
+
 // Option menu
-const handleOpenCloseOptionsMenu = () => ({
+export const handleOpenCloseOptionsMenu = () => ({
 	type: actionTypes.OPEN_CLOSE_OPTION_MENU,
 });
-const handleCloseOptionsMenu = () => ({
+export const handleCloseOptionsMenu = () => ({
 	type: actionTypes.CLOSE_OPTION_MENU,
 });
 
 // Sub option menu
-const handleOpenSubOptionsMenu = () => ({
+export const handleOpenSubOptionsMenu = () => ({
 	type: actionTypes.OPEN_SUB_OPTION_MENU,
 });
-const handleCloseSubOptionsMenu = () => ({
+export const handleCloseSubOptionsMenu = () => ({
 	type: actionTypes.CLOSE_SUB_OPTION_MENU,
 });
 
 // Fetch required book data
-const fetchRequiredBookData = () => {
+export const fetchRequiredBookData = () => {
 	return async (dispatch, getState) => {
 		try {
 			dispatch({
 				type: actionTypes.FETCH_REQUIRED_BOOK_DATA_START,
 			});
-			const resGenre = await getAllGenreService();
-			const resKind = await getAllKindService();
-			const resStatus = await getAllCodeService('STATUS');
-			const resVersion = await getAllCodeService('VERSION');
-			const resLanguage = await getAllCodeService('LANGUAGE');
+			const resGenre = await services.getAllGenreService();
+			const resKind = await services.getAllKindService();
+			const resStatus = await services.getAllCodeService('STATUS');
+			const resVersion = await services.getAllCodeService('VERSION');
+			const resLanguage = await services.getAllCodeService('LANGUAGE');
 			if (
 				resGenre &&
 				resGenre.data.errCode === 0 &&
@@ -94,10 +93,10 @@ const fetchRequiredBookDataFailed = () => ({
 });
 
 // Fetch all book
-const fetchAllBook = () => {
+export const fetchAllBook = () => {
 	return async (dispatch, getState) => {
 		try {
-			const response = await getAllBookService();
+			const response = await services.getAllBookService();
 			if (response && response.data.errCode === 0) {
 				dispatch(fetchAllBookSucceed(response.data.data));
 			} else {
@@ -118,10 +117,10 @@ const fetchAllBookFailed = () => ({
 });
 
 // Fetch all new book
-const fetchAllNewBook = () => {
+export const fetchAllNewBook = () => {
 	return async (dispatch, getState) => {
 		try {
-			const response = await getAllNewBookService();
+			const response = await services.getAllNewBookService();
 			if (response && response.data.errCode === 0) {
 				dispatch(fetchAllNewBookSucceed(response.data.data));
 			} else {
@@ -142,10 +141,10 @@ const fetchAllNewBookFailed = () => ({
 });
 
 // Fetch all book by name
-const fetchAllBookByName = (name) => {
+export const fetchAllBookByName = (name) => {
 	return async (dispatch, getState) => {
 		try {
-			const response = await getAllBookByNameService(name);
+			const response = await services.getAllBookByNameService(name);
 			if (response && response.data.errCode === 0) {
 				dispatch(fetchAllBookByNameSucceed(response.data.data));
 			} else {
@@ -166,10 +165,10 @@ const fetchAllBookByNameFailed = () => ({
 });
 
 // Fetch all book by genre
-const fetchAllBookByGenre = (genreId) => {
+export const fetchAllBookByGenre = (genreId) => {
 	return async (dispatch, getState) => {
 		try {
-			const response = await getAllBookByGenreService(genreId);
+			const response = await services.getAllBookByGenreService(genreId);
 			if (response && response.data.errCode === 0) {
 				dispatch(fetchAllBookByGenreSucceed(response.data.data));
 			} else {
@@ -189,53 +188,91 @@ const fetchAllBookByGenreFailed = () => ({
 	type: actionTypes.FETCH_ALL_BOOK_BY_GENRE_FAILED,
 });
 
-// Fetch all book info
-const fetchBookInfoById = (bookId) => {
+// Fetch book info
+export const fetchBookInfo = (bookId) => {
 	return async (dispatch, getState) => {
 		try {
-			const response = await getBookInfoByIdService(bookId);
+			const response = await services.getBookInfoService(bookId);
 			if (response && response.data.errCode === 0) {
-				dispatch(fetchBookInfoByIdSucceed(response.data.data));
+				dispatch(fetchBookInfoSucceed(response.data.data));
 			} else {
-				dispatch(fetchBookInfoByIdFailed());
+				dispatch(fetchBookInfoFailed());
 			}
 		} catch (e) {
-			dispatch(fetchBookInfoByIdFailed());
+			dispatch(fetchBookInfoFailed());
 			console.log(e);
 		}
 	};
 };
-const fetchBookInfoByIdSucceed = (data) => ({
-	type: actionTypes.FETCH_BOOK_INFO_BY_ID_SUCCEED,
+const fetchBookInfoSucceed = (data) => ({
+	type: actionTypes.FETCH_BOOK_INFO_SUCCEED,
 	bookInfo: data,
 });
-const fetchBookInfoByIdFailed = () => ({
-	type: actionTypes.FETCH_BOOK_INFO_BY_ID_FAILED,
+const fetchBookInfoFailed = () => ({
+	type: actionTypes.FETCH_BOOK_INFO_FAILED,
+});
+
+// Fetch all chapter
+export const fetchAllChapter = (bookId) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.getAllChapterService(bookId);
+			if (response && response.data.errCode === 0) {
+				dispatch(fetchAllChapterSucceed(response.data.data));
+			} else {
+				dispatch(fetchAllChapterFailed());
+			}
+		} catch (e) {
+			dispatch(fetchAllChapterFailed());
+			console.log(e);
+		}
+	};
+};
+const fetchAllChapterSucceed = (data) => ({
+	type: actionTypes.FETCH_ALL_CHAPTER_SUCCEED,
+	allChapters: data,
+});
+const fetchAllChapterFailed = () => ({
+	type: actionTypes.FETCH_ALL_CHAPTER_FAILED,
+});
+
+// Fetch chapter info
+export const fetchChapterInfo = (bookId) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.getChapterInfoService(bookId);
+			if (response && response.data.errCode === 0) {
+				dispatch(fetchChapterInfoSucceed(response.data.data));
+			} else {
+				dispatch(fetchChapterInfoFailed());
+			}
+		} catch (e) {
+			dispatch(fetchChapterInfoFailed());
+			console.log(e);
+		}
+	};
+};
+const fetchChapterInfoSucceed = (data) => ({
+	type: actionTypes.FETCH_CHAPTER_INFO_SUCCEED,
+	chapterInfo: data,
+});
+const fetchChapterInfoFailed = () => ({
+	type: actionTypes.FETCH_CHAPTER_INFO_FAILED,
 });
 
 //
-const clearBooksFound = () => ({
+export const clearBooksFound = () => ({
 	type: actionTypes.CLEAR_BOOKS_FOUND,
 });
-const clearBookInfo = () => ({
+export const clearBookInfo = () => ({
 	type: actionTypes.CLEAR_BOOK_INFO,
 });
-
-export {
-	handleChangeLanguage,
-	handleChangeTheme,
-	handleOpenManageBookModal,
-	handleCloseManageBookModal,
-	handleOpenCloseOptionsMenu,
-	handleCloseOptionsMenu,
-	handleOpenSubOptionsMenu,
-	handleCloseSubOptionsMenu,
-	fetchRequiredBookData,
-	fetchAllBook,
-	fetchAllNewBook,
-	fetchAllBookByName,
-	fetchAllBookByGenre,
-	fetchBookInfoById,
-	clearBooksFound,
-	clearBookInfo,
-};
+export const clearAllBook = () => ({
+	type: actionTypes.CLEAR_ALL_BOOK,
+});
+export const clearAllChapter = () => ({
+	type: actionTypes.CLEAR_ALL_CHAPTER,
+});
+export const clearChapterInfo = () => ({
+	type: actionTypes.CLEAR_CHAPTER_INFO,
+});

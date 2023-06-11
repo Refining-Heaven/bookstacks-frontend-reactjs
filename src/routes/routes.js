@@ -14,6 +14,7 @@ import ManageChapter from "../containers/pages/ManageChapter";
 import ManageUser from "../containers/pages/ManageUser";
 import BookDetail from "../containers/pages/BookDetail";
 import BooksFound from "../containers/pages/BooksFound";
+import ChapterContent from "../containers/pages/ChapterContent";
 
 const guestRoutes = [
 	{ path: PATH.UNDEFINED, page: NotFound, layout: null },
@@ -22,6 +23,7 @@ const guestRoutes = [
 	{ path: PATH.HOME, page: Home, layout: DefaultLayout },
 	{ path: PATH.BOOK_DETAIL, page: BookDetail, layout: DefaultLayout },
 	{ path: PATH.BOOK_FOUND, page: BooksFound, layout: DefaultLayout },
+	{ path: PATH.CHAPTER_CONTENT, page: ChapterContent, layout: DefaultLayout },
 ];
 
 const userRoutes = [

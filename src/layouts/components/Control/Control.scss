@@ -1,0 +1,29 @@
+@import '../../../styles/variables';
+
+// Page control
+.page-control {
+  position      : fixed;
+  bottom        : 20px;
+  right         : 50px;
+  display       : flex;
+  flex-direction: column;
+  z-index       : 200;
+
+  .control-btn {
+    width           : 40px;
+    height          : 40px;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    background-color: transparent;
+    border          : 1px solid $main-color;
+    border-radius   : 5px;
+
+    &:hover {
+      background: rgba(22, 24, 35, 0.03);
+      cursor    : pointer;
+    }
+  }
+}
+
+// Chapter control

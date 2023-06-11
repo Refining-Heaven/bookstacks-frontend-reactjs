@@ -5,7 +5,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ROLE } from "./utils";
 import { guestRoutes, userRoutes, adminRoutes } from './routes';
-import CustomScrollbars from './custom/CustomScrollbars';
 
 class App extends Component {
 	constructor(props) {
@@ -60,7 +59,6 @@ class App extends Component {
 		return (
 			<Router basename="">
 				<div className="App">
-					<CustomScrollbars style={{ height: '100vh', width: '100%' }}>
 						<Routes>
 							{currentRoutes && currentRoutes.length > 0 &&
 							currentRoutes.map((route, index) => {
@@ -82,7 +80,6 @@ class App extends Component {
 								);
 							})}
 						</Routes>
-					</CustomScrollbars>
 					<ToastContainer
 						position="bottom-right"
 						autoClose={5000}

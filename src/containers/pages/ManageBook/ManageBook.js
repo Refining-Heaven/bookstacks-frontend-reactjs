@@ -65,7 +65,7 @@ class ManageBook extends Component {
 							<div className="add-book">
 								<div className="input-book-name">
 									<label>
-										<FormattedMessage id="manage-book.modal.book-name" />:
+										<FormattedMessage id="label.book-name" />:
 									</label>
 									<input type="text" value={bookName} onChange={(e) => this.handleOnChangeInput(e, 'bookName')} />
 								</div>
@@ -73,10 +73,10 @@ class ManageBook extends Component {
 									<FormattedMessage id="button.add" />
 								</button>
 							</div>
-							<ManageBookModal />
 							<div className="book-list">
 								<ManageBookTable allBooks={allBooks} />
 							</div>
+							<ManageBookModal />
 						</div>
 					</div>
 				</div>

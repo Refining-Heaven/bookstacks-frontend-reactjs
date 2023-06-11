@@ -5,14 +5,17 @@ const initialState = {
 	language: 'vi',
 	theme: 'light',
 	manageBookModalIsOpen: false,
+	manageChapterModalIsOpen: false,
 	optionMenuIsOpen: false,
 	subOptionsMenuIsOpen: false,
 	allRequiredBookData: [],
 	allBooks: [],
+	allChapters: [],
 	newBooks: [],
 	booksFound: null,
 	bookInfo: null,
-	clearSearchValue: true
+	chapterInfo: null,
+	clearSearchValue: true,
 };
 
 const appReducer = (state = initialState, action) => {
@@ -41,6 +44,16 @@ const appReducer = (state = initialState, action) => {
 			return {
 				...state,
 				manageBookModalIsOpen: false,
+			};
+		case actionTypes.OPEN_MANAGE_CHAPTER_MODAL:
+			return {
+				...state,
+				manageChapterModalIsOpen: true,
+			};
+		case actionTypes.CLOSE_MANAGE_CHAPTER_MODAL:
+			return {
+				...state,
+				manageChapterModalIsOpen: false,
 			};
 		case actionTypes.OPEN_CLOSE_OPTION_MENU:
 			return {
@@ -94,7 +107,7 @@ const appReducer = (state = initialState, action) => {
 			};
 		case actionTypes.FETCH_ALL_BOOK_BY_NAME_SUCCEED:
 			state.booksFound = action.booksFound;
-			state.clearSearchValue = false
+			state.clearSearchValue = false;
 			return {
 				...state,
 			};
@@ -113,24 +126,59 @@ const appReducer = (state = initialState, action) => {
 			return {
 				...state,
 			};
-		case actionTypes.FETCH_BOOK_INFO_BY_ID_SUCCEED:
+		case actionTypes.FETCH_BOOK_INFO_SUCCEED:
 			state.bookInfo = action.bookInfo;
 			return {
 				...state,
 			};
-		case actionTypes.FETCH_BOOK_INFO_BY_ID_FAILED:
+		case actionTypes.FETCH_BOOK_INFO_FAILED:
 			state.bookInfo = [];
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ALL_CHAPTER_SUCCEED:
+			state.allChapters = action.allChapters;
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ALL_CHAPTER_FAILED:
+			state.allChapters = [];
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_CHAPTER_INFO_SUCCEED:
+			state.chapterInfo = action.chapterInfo;
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_CHAPTER_INFO_FAILED:
+			state.chapterInfo = [];
 			return {
 				...state,
 			};
 		case actionTypes.CLEAR_BOOKS_FOUND:
 			state.booksFound = null;
-			state.clearSearchValue = true
+			state.clearSearchValue = true;
 			return {
 				...state,
 			};
 		case actionTypes.CLEAR_BOOK_INFO:
 			state.bookInfo = null;
+			return {
+				...state,
+			};
+		case actionTypes.CLEAR_ALL_BOOK:
+			state.allBooks = [];
+			return {
+				...state,
+			};
+		case actionTypes.CLEAR_ALL_CHAPTER:
+			state.allChapters = [];
+			return {
+				...state,
+			};
+		case actionTypes.CLEAR_CHAPTER_INFO:
+			state.chapterInfo = null;
 			return {
 				...state,
 			};

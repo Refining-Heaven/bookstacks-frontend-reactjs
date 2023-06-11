@@ -9,8 +9,9 @@ export const PATH = {
 	MANAGE_BOOK: '/manage/book',
 	MANAGE_CHAPTER: '/manage/chapter',
 	MANAGE_USER: '/manage/user',
-	BOOK_DETAIL: '/book-detail/:id',
+	BOOK_DETAIL: '/book-detail/:name/id/:id',
 	BOOK_FOUND: '/books-found/genre-id/:id',
+	CHAPTER_CONTENT: '/book/:name/chapter/:number/id/:id',
 };
 
 export const TITLE = {
@@ -51,4 +52,9 @@ export const THEMES = {
 export const ROLE = {
 	ADMIN: 'A',
 	USER: 'U'
+}
+
+export const ACTION = {
+	CREATE: 'CREATE',
+	UPDATE: 'UPDATE'
 }

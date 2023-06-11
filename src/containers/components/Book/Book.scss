@@ -1,7 +1,7 @@
 @import '../../../styles/variables.scss';
 
 .book {
-  max-width    : 540px;
+  width    : 540px;
   display      : flex;
   flex-wrap    : wrap;
   border-radius: 5px;
@@ -61,7 +61,7 @@
 
   .book-intro {
     width     : 100%;
-    height    : 250px;
+    height    : 285px;
     padding   : 10px;
     border-top: 1px solid #ddd;
 
@@ -75,7 +75,7 @@
 
       .content {
         font-size    : 16px;
-        max-height   : 205px;
+        max-height   : 230px;
         padding      : 10px;
         white-space  : pre-wrap;
         border       : 2px solid #ddd;

@@ -12,8 +12,18 @@ const deleteBookService = (bookId) => {
   return axios.delete('/api/delete-book', {data: {id: bookId}});
 }
 
+const addNewChapterService = (data) => {
+  return axios.post('/api/add-new-chapter', data);
+}
+
+const updateChapterInfoService = (data) => {
+  return axios.put('/api/update-chapter-info', data);
+}
+
 export {
   addNewBookService,
   updateBookInfoService,
-  deleteBookService
+  deleteBookService,
+  addNewChapterService,
+  updateChapterInfoService
 }

@@ -68,20 +68,20 @@
       "intro": "Intro",
       "genre": "Genre"
   },
-  "manage-book": {
+  "label": {
+    "book-name": "Book name",
+    "another-name": "Another name",
+    "author": "Author",
+    "status": "Status",
+    "kind": "Kind",
+    "version": "Version",
+    "language": "Language",
+    "intro": "Intro",
+    "genre": "Genre",
+    "cover-image": "Cover image",
     "options": "Options",
-    "modal": {
-      "book-name": "Book name",
-      "another-name": "Another name",
-      "author": "Author",
-      "status": "Status",
-      "kind": "Kind",
-      "version": "Version",
-      "language": "Language",
-      "intro": "Intro",
-      "genre": "Genre",
-      "cover-image": "Cover image"
-    }
+    "chapter": "Chapter",
+    "title": "Title"
   },
   "title": {
 		"home": "Home",
@@ -94,6 +94,8 @@
     "sign-up": "Sign up",
     "upload-image": "Upload image",
     "add": "Add",
-    "save": "Save"
+    "save": "Save",
+    "save-change": "Save change",
+    "get": "Get"
   }
 }

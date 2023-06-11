@@ -52,9 +52,11 @@ class ManageBookModal extends Component {
 			if (bookInfo !== null) {
 				if (bookInfo && bookInfo.genreData && bookInfo.genreData.length > 0) {
 					const arrGenreId = [];
+					// eslint-disable-next-line array-callback-return
 					bookInfo.genreData.map((item) => {
 						arrGenreId.push(item.genreId);
 					});
+					// eslint-disable-next-line array-callback-return
 					genreData.map((item) => {
 						for (let i = 0; i < arrGenreId.length; i++) {
 							if (item.id === arrGenreId[i]) {
@@ -137,6 +139,7 @@ class ManageBookModal extends Component {
 		if (genreData && genreData.length > 0) {
 			const selectedGenre = genreData.filter((item) => item.isSelected === true);
 			if (selectedGenre && selectedGenre.length > 0) {
+				// eslint-disable-next-line array-callback-return
 				selectedGenre.map((genre) => {
 					const object = {};
 					object.bookId = this.props.bookInfo.id;
@@ -149,7 +152,7 @@ class ManageBookModal extends Component {
 		}
 		await this.props.handleUpdateBookInfo({
 			uploaderId: this.props.userInfo.id,
-			id: this.props.bookInfo.id,
+			bookId: this.props.bookInfo.id,
 			bookName: this.state.bookName,
 			anotherName: this.state.anotherName,
 			author: this.state.author,
@@ -161,7 +164,7 @@ class ManageBookModal extends Component {
 			arrGenre: bookGenre,
 			coverImage: this.state.coverImage,
 		});
-		await this.props.fetchAllBook()
+		await this.props.fetchAllBook();
 		this.handleCloseManageBookModal();
 	};
 
@@ -181,11 +184,11 @@ class ManageBookModal extends Component {
 			intro,
 			previewImgURL,
 		} = this.state;
-		const { language } = this.props;
+		const { language, manageBookModalIsOpen } = this.props;
 		Modal.setAppElement(document.getElementById('root'));
 		return (
 			<Modal
-				isOpen={this.props.manageBookModalIsOpen}
+				isOpen={manageBookModalIsOpen}
 				// onAfterOpen={afterOpenModal}
 				// onRequestClose={closeModal}
 				style={customStyles}
@@ -204,13 +207,13 @@ class ManageBookModal extends Component {
 						<div className="manage-book-form">
 							<div className="input-book-info">
 								<label>
-									<FormattedMessage id="manage-book.modal.book-name" />:
+									<FormattedMessage id="label.book-name" />:
 								</label>
 								<input type="text" value={bookName} onChange={(e) => this.handleOnChangeInput(e, 'bookName')} />
 							</div>
 							<div className="input-book-info">
 								<label>
-									<FormattedMessage id="manage-book.modal.another-name" />:
+									<FormattedMessage id="label.another-name" />:
 								</label>
 								<input
 									type="text"
@@ -220,7 +223,7 @@ class ManageBookModal extends Component {
 							</div>
 							<div className="input-book-info">
 								<label>
-									<FormattedMessage id="manage-book.modal.author" />:
+									<FormattedMessage id="label.author" />:
 								</label>
 								<input
 									type="text"
@@ -230,7 +233,7 @@ class ManageBookModal extends Component {
 							</div>
 							<div className="input-book-info">
 								<label>
-									<FormattedMessage id="manage-book.modal.status" />:
+									<FormattedMessage id="label.status" />:
 								</label>
 								<select value={status === null ? '' : status} onChange={(e) => this.handleOnChangeInput(e, 'status')}>
 									<option value={null}></option>
@@ -247,7 +250,7 @@ class ManageBookModal extends Component {
 							</div>
 							<div className="input-book-info">
 								<label>
-									<FormattedMessage id="manage-book.modal.kind" />:
+									<FormattedMessage id="label.kind" />:
 								</label>
 								<select value={kind === null ? '' : kind} onChange={(e) => this.handleOnChangeInput(e, 'kind')}>
 									<option value={null}></option>
@@ -264,7 +267,7 @@ class ManageBookModal extends Component {
 							</div>
 							<div className="input-book-info">
 								<label>
-									<FormattedMessage id="manage-book.modal.version" />:
+									<FormattedMessage id="label.version" />:
 								</label>
 								<select
 									value={version === null ? '' : version}
@@ -284,7 +287,7 @@ class ManageBookModal extends Component {
 							</div>
 							<div className="input-book-info">
 								<label>
-									<FormattedMessage id="manage-book.modal.language" />:
+									<FormattedMessage id="label.language" />:
 								</label>
 								<select
 									value={this.state.language === null ? '' : this.state.language}
@@ -304,7 +307,7 @@ class ManageBookModal extends Component {
 							</div>
 							<div className="input-book-info">
 								<label>
-									<FormattedMessage id="manage-book.modal.intro" />:
+									<FormattedMessage id="label.intro" />:
 								</label>
 								<textarea
 									rows="6"
@@ -315,7 +318,7 @@ class ManageBookModal extends Component {
 							<div className="book-genre-image-container">
 								<div className="book-genre">
 									<label>
-										<FormattedMessage id="manage-book.modal.genre" />:
+										<FormattedMessage id="label.genre" />:
 									</label>
 									<div className="select-genre-container">
 										{genreData &&
@@ -336,7 +339,7 @@ class ManageBookModal extends Component {
 								<div className="book-cover-image">
 									<div className="upload-cover-image">
 										<label>
-											<FormattedMessage id="manage-book.modal.cover-image" />:
+											<FormattedMessage id="label.cover-image" />:
 										</label>
 										<input
 											type="file"

@@ -25,11 +25,19 @@ const getAllBookByNameService = (name) => {
 };
 
 const getAllBookByGenreService = (genreId) => {
-	return axios.get(`/api/get-all-book-by-genre?genreId=${genreId}`);
+	return axios.get(`/api/get-all-book-by-genre?id=${genreId}`);
 };
 
-const getBookInfoByIdService = (bookId) => {
-	return axios.get(`/api/get-book-info-by-id?id=${bookId}`);
+const getBookInfoService = (bookId) => {
+	return axios.get(`/api/get-book-info?id=${bookId}`);
+};
+
+const getAllChapterService = (bookId) => {
+	return axios.get(`/api/get-all-chapter?id=${bookId}`);
+};
+
+const getChapterInfoService = (chapterId) => {
+	return axios.get(`/api/get-chapter-info?id=${chapterId}`);
 };
 
 export {
@@ -40,5 +48,7 @@ export {
 	getAllNewBookService,
 	getAllBookByNameService,
 	getAllBookByGenreService,
-	getBookInfoByIdService,
+	getBookInfoService,
+	getAllChapterService,
+	getChapterInfoService
 };

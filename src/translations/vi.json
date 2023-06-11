@@ -67,20 +67,20 @@
       "intro": "Giới thiệu",
       "genre": "Thể loại"
   },
-  "manage-book": {
+  "label": {
+    "book-name": "Tên sách",
+    "another-name": "Tên khác",
+    "author": "Tác giả",
+    "status": "Trạng thái",
+    "kind": "Loại",
+    "version": "Bản",
+    "language": "Ngôn ngữ",
+    "intro": "Giới thiệu",
+    "genre": "Thể loại",
+    "cover-image": "Ảnh bìa",
     "options": "Tùy chọn",
-    "modal": {
-      "book-name": "Tên sách",
-      "another-name": "Tên khác",
-      "author": "Tác giả",
-      "status": "Trạng thái",
-      "kind": "Loại",
-      "version": "Bản",
-      "language": "Ngôn ngữ",
-      "intro": "Giới thiệu",
-      "genre": "Thể loại",
-      "cover-image": "Ảnh bìa"
-    }
+    "chapter": "Chương",
+    "title": "Tiêu đề"
   },
   "title": {
     "home": "Trang chủ",
@@ -93,6 +93,8 @@
     "sign-up": "Đăng ký",
     "upload-image": "Tải ảnh",
     "add": "Thêm",
-    "save": "Lưu"
+    "save": "Lưu",
+    "save-change": "Lưu thay đổi",
+    "get": "Lấy"
   }
 }

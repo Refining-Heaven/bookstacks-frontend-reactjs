@@ -5,6 +5,7 @@ import * as actions from '../../store/actions';
 import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
 import './DefaultLayout.scss';
+import { PageControl } from '../components/Control';
 
 class DefaultLayout extends Component {
 	render() {
@@ -16,6 +17,7 @@ class DefaultLayout extends Component {
 					<Sidebar />
 					<div className="content-container">
 						{children}
+						<PageControl />
 					</div>
 				</div>
 			</div>

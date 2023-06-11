@@ -13,11 +13,11 @@ class ManageBookTable extends Component {
 	}
 
 	handleViewBookInfo = (bookId) => {
-		this.props.fetchBookInfoById(bookId);
+		this.props.fetchBookInfo(bookId);
 	};
 
-	handleOpenModal = async (bookId) => {
-		await this.props.fetchBookInfoById(bookId);
+	handleOpenManageBookModal = async (bookId) => {
+		await this.props.fetchBookInfo(bookId);
 		this.props.handleOpenManageBookModal();
 	};
 
@@ -34,10 +34,10 @@ class ManageBookTable extends Component {
 					<thead>
 						<tr>
 							<th>
-								<FormattedMessage id="manage-book.modal.book-name" />
+								<FormattedMessage id="label.book-name" />
 							</th>
 							<th className="options">
-								<FormattedMessage id="manage-book.options" />
+								<FormattedMessage id="label.options" />
 							</th>
 						</tr>
 					</thead>
@@ -49,7 +49,7 @@ class ManageBookTable extends Component {
 									<tr key={index} onClick={() => this.handleViewBookInfo(item.id)}>
 										<td className="book-name">{item.bookName}</td>
 										<td className="options">
-											<button className="btn-edit" onClick={() => this.handleOpenModal(item.id)}>
+											<button className="btn-edit" onClick={() => this.handleOpenManageBookModal(item.id)}>
 												<FontAwesomeIcon icon={faPencilAlt} className="edit-icon" />
 											</button>
 											<button className="btn-delete" onClick={() => this.handleDeleteBook(item.id)}>
@@ -77,7 +77,7 @@ const mapDispatchToProps = (dispatch) => {
 		handleOpenManageBookModal: () => dispatch(actions.handleOpenManageBookModal()),
 		handleDeleteBook: (bookId) => dispatch(actions.handleDeleteBook(bookId)),
 		fetchAllBook: () => dispatch(actions.fetchAllBook()),
-		fetchBookInfoById: (bookId) => dispatch(actions.fetchBookInfoById(bookId)),
+		fetchBookInfo: (bookId) => dispatch(actions.fetchBookInfo(bookId)),
 	};
 };
 

@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Buffer } from 'buffer';
-import { withRouter } from '../../../../utils';
+import { convertStringToAddressBar, withRouter } from '../../../../utils';
 import * as actions from '../../../../store/actions';
 import images from '../../../../assets/images';
 import './SearchBar.scss';
@@ -38,17 +38,18 @@ class SearchItem extends Component {
 		}
 	}
 
-	handleViewBookDetail = async (bookId) => {
-		await this.props.fetchBookInfoById(bookId);
+	handleViewBookDetail = async (bookId, bookName) => {
+		await this.props.fetchBookInfo(bookId);
 		await this.props.clearBooksFound();
-		this.props.navigate(`/book-detail/${bookId}`);
+		const convertedBookName = convertStringToAddressBar(bookName)
+		this.props.navigate(`/book-detail/${convertedBookName}/id/${bookId}`);
 	};
 
 	render() {
 		const { previewImgURL } = this.state;
 		const { data } = this.props;
 		return (
-			<div className="item-found" onClick={() => this.handleViewBookDetail(data.id)}>
+			<div className="item-found" onClick={() => this.handleViewBookDetail(data.id, data.bookName)}>
 				<div className="book-cover-image">
 					<img src={previewImgURL === '' ? images.noCoverImage : previewImgURL} alt="" />
 				</div>
@@ -67,7 +68,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		fetchBookInfoById: (bookId) => dispatch(actions.fetchBookInfoById(bookId)),
+		fetchBookInfo: (bookId) => dispatch(actions.fetchBookInfo(bookId)),
 		clearBooksFound: () => dispatch(actions.clearBooksFound()),
 	};
 };
