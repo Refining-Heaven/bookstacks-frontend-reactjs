@@ -23,7 +23,6 @@ class ChapterList extends Component {
 
 	handleReadChapter = async (chapterId, chapterNumber) => {
 		const { bookInfo } = this.props;
-		await this.props.fetchChapterInfo(chapterId);
 		const convertedBookName = convertStringToAddressBar(bookInfo.bookName);
 		this.props.navigate(`/book/${convertedBookName}/chapter/${chapterNumber}/id/${chapterId}`);
 	};

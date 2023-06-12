@@ -94,6 +94,9 @@ class ManageBookModal extends Component {
 
 	handleCloseManageBookModal = () => {
 		this.props.handleCloseManageBookModal();
+		if (this.props.bookInfo !== null) {
+			this.props.clearBookInfo();
+		}
 	};
 
 	handleSelectGenre = (genre) => {
@@ -390,6 +393,7 @@ const mapDispatchToProps = (dispatch) => {
 		fetchAllBook: () => dispatch(actions.fetchAllBook()),
 		fetchRequiredBookData: () => dispatch(actions.fetchRequiredBookData()),
 		handleUpdateBookInfo: (data) => dispatch(actions.handleUpdateBookInfo(data)),
+		clearBookInfo: () => dispatch(actions.clearBookInfo())		
 	};
 };
 

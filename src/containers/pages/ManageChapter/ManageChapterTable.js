@@ -32,10 +32,10 @@ class ManageChapterTable extends Component {
 				<table>
 					<thead>
 						<tr>
-							<th className="chapter">
+							<th className="chapter-number">
 								<FormattedMessage id="label.chapter" />
 							</th>
-							<th className="title">
+							<th className="chapter-title">
 								<FormattedMessage id="label.title" />
 							</th>
 							<th className="options">
@@ -43,7 +43,7 @@ class ManageChapterTable extends Component {
 							</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody className="chapter-list">
 						{allChapters && allChapters.length === 0 &&
 							<tr>
 								<td colSpan='3' className="no-chapter">
@@ -56,8 +56,8 @@ class ManageChapterTable extends Component {
 							allChapters.map((item, index) => {
 								return (
 									<tr key={index} onClick={() => this.handleViewChapterInfo(item.id)}>
-										<td className="chapter-info">{item.chapterNumber}</td>
-										<td className="chapter-info">{item.chapterTitle}</td>
+										<td className="chapter-number">{item.chapterNumber}</td>
+										<td className="chapter-title">{item.chapterTitle}</td>
 										<td className="options">
 											<button className="btn-edit" onClick={() => this.handleOpenManageChapterModal(item.id)}>
 												<FontAwesomeIcon icon={faPencilAlt} className="edit-icon" />

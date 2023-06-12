@@ -1,14 +1,15 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
+import { toast } from 'react-toastify';
 import Select from 'react-select';
 import { TITLE } from '../../../utils';
 import * as actions from '../../../store/actions';
 import SubHeader from '../../../layouts/components/SubHeader/SubHeader';
-import './ManageChapter.scss';
 import ManageChapterModal from './ManageChapterModal';
 import ManageChapterTable from './ManageChapterTable';
-import { toast } from 'react-toastify';
+import ChapterPreview from "./ChapterPreview";
+import './ManageChapter.scss';
 
 class ManageChapter extends Component {
 	constructor(props) {
@@ -24,6 +25,7 @@ class ManageChapter extends Component {
 
 	async componentDidMount() {
 		this.props.clearAllChapter();
+		await this.props.clearChapterInfo()
 		await this.props.fetchAllBook();
 	}
 
@@ -80,13 +82,15 @@ class ManageChapter extends Component {
 
 	render() {
 		const { bookId, bookList, isDisabled, isLoading } = this.state;
-		// console.log(bookList);
+		const { chapterInfo } = this.props
 		return (
 			<>
 				<SubHeader title={TITLE.MANAGE_CHAPTER} />
 				<div className="content-body">
 					<div className="manage-chapter-container">
-						<div className="content-left"></div>
+						<div className="content-left">
+							{chapterInfo !== null && <ChapterPreview />}
+						</div>
 						<div className="content-right">
 							<div className="select-book-container">
 								<div className="select-book">
@@ -122,6 +126,7 @@ class ManageChapter extends Component {
 
 const mapStateToProps = (state) => {
 	return {
+		chapterInfo: state.app.chapterInfo,
 		allBooks: state.app.allBooks,
 		allChapters: state.app.allChapters,
 	};
@@ -133,6 +138,7 @@ const mapDispatchToProps = (dispatch) => {
 		fetchAllChapter: (bookId) => dispatch(actions.fetchAllChapter(bookId)),
 		handleOpenManageChapterModal: () => dispatch(actions.handleOpenManageChapterModal()),
 		clearAllChapter: () => dispatch(actions.clearAllChapter()),
+		clearChapterInfo: () => dispatch(actions.clearChapterInfo()),
 	};
 };
 
