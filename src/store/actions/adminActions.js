@@ -132,10 +132,37 @@ const handleUpdateChapterInfoFailed = () => ({
 	type: actionTypes.UPDATE_CHAPTER_INFO_FAILED,
 });
 
+// Delete chapter
+const handleDeleteChapter = (chapterId) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.deleteChapterService(chapterId);
+			if (response && response.data.errCode === 0) {
+				toast.success(response.data.errMessage);
+				dispatch(handleDeleteChapterSucceed());
+			} else {
+				toast.warning(response.data.errMessage);
+				dispatch(handleDeleteChapterFailed());
+			}
+		} catch (e) {
+			toast.error('Error from server!');
+			dispatch(handleDeleteChapterFailed());
+			console.log(e);
+		}
+	}
+};
+const handleDeleteChapterSucceed = () => ({
+	type: actionTypes.DELETE_CHAPTER_SUCCEED,
+});
+const handleDeleteChapterFailed = () => ({
+	type: actionTypes.DELETE_CHAPTER_FAILED,
+});
+
 export {
 	handleAddNewBook,
 	handleUpdateBookInfo,
 	handleDeleteBook,
 	handleAddNewChapter,
-	handleUpdateChapterInfo
+	handleUpdateChapterInfo,
+	handleDeleteChapter
 };

@@ -4,12 +4,14 @@ import * as actions from '../../../../../store/actions';
 import './SubOptionsMenu.scss';
 
 class SubOptionsMenuItem extends Component {
-	handleChangeSetting = (type, value) => {
+	handleChangeSetting = async (type, value) => {
 		if (type === 'LANGUAGE') {
-			this.props.handleChangeLanguage(value);
+			await this.props.handleChangeLanguage(value);
+			this.props.handleCloseOptionsMenu()
 		}
 		if (type === 'THEME') {
-			this.props.handleChangeTheme(value);
+			await this.props.handleChangeTheme(value);
+			this.props.handleCloseOptionsMenu()
 		}
 	};
 
@@ -38,6 +40,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		handleChangeLanguage: (language) => dispatch(actions.handleChangeLanguage(language)),
 		handleChangeTheme: (theme) => dispatch(actions.handleChangeTheme(theme)),
+		handleCloseOptionsMenu: () => dispatch(actions.handleCloseOptionsMenu()),
 	};
 };
 

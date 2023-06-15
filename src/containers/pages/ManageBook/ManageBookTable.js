@@ -23,6 +23,9 @@ class ManageBookTable extends Component {
 
 	handleDeleteBook = async (bookId) => {
 		await this.props.handleDeleteBook(bookId);
+		if (this.props.bookInfo !== null) {
+			this.props.clearBookInfo();
+		}
 		this.props.fetchAllBook();
 	};
 
@@ -69,6 +72,7 @@ class ManageBookTable extends Component {
 const mapStateToProps = (state) => {
 	return {
 		allBooks: state.app.allBooks,
+		bookInfo: state.app.bookInfo,
 	};
 };
 
@@ -78,6 +82,7 @@ const mapDispatchToProps = (dispatch) => {
 		handleDeleteBook: (bookId) => dispatch(actions.handleDeleteBook(bookId)),
 		fetchAllBook: () => dispatch(actions.fetchAllBook()),
 		fetchBookInfo: (bookId) => dispatch(actions.fetchBookInfo(bookId)),
+		clearBookInfo: () => dispatch(actions.clearBookInfo()),
 	};
 };
 

@@ -50,5 +50,5 @@ export {
 	getAllBookByGenreService,
 	getBookInfoService,
 	getAllChapterService,
-	getChapterInfoService
+	getChapterInfoService,
 };

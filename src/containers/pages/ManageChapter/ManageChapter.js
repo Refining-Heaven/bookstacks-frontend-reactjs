@@ -113,7 +113,7 @@ class ManageChapter extends Component {
 								</button>
 							</div>
 							<div className="chapter-list">
-								<ManageChapterTable />
+								<ManageChapterTable bookId={bookId} />
 							</div>
 							<ManageChapterModal bookId={bookId} />
 						</div>

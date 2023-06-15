@@ -15,6 +15,7 @@ import ManageUser from "../containers/pages/ManageUser";
 import BookDetail from "../containers/pages/BookDetail";
 import BooksFound from "../containers/pages/BooksFound";
 import ChapterContent from "../containers/pages/ChapterContent";
+import AccountInfo from "../containers/pages/AccountInfo/AccountInfo";
 
 const guestRoutes = [
 	{ path: PATH.UNDEFINED, page: NotFound, layout: null },
@@ -28,6 +29,7 @@ const guestRoutes = [
 
 const userRoutes = [
 	...guestRoutes,
+	{ path: PATH.ACCOUNT_INFO, page: AccountInfo, layout: DefaultLayout },
 ];
 
 const adminRoutes = [

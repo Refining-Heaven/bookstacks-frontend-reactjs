@@ -8,6 +8,7 @@ const initialState = {
 	manageChapterModalIsOpen: false,
 	optionMenuIsOpen: false,
 	subOptionsMenuIsOpen: false,
+	updateAccountInfoModalIsOpen: false,
 	allRequiredBookData: [],
 	allBooks: [],
 	allChapters: [],
@@ -55,25 +56,35 @@ const appReducer = (state = initialState, action) => {
 				...state,
 				manageChapterModalIsOpen: false,
 			};
-		case actionTypes.OPEN_CLOSE_OPTION_MENU:
+		case actionTypes.OPEN_CLOSE_OPTIONS_MENU:
 			return {
 				...state,
 				optionMenuIsOpen: !state.optionMenuIsOpen,
 			};
-		case actionTypes.CLOSE_OPTION_MENU:
+		case actionTypes.CLOSE_OPTIONS_MENU:
 			return {
 				...state,
 				optionMenuIsOpen: false,
 			};
-		case actionTypes.OPEN_SUB_OPTION_MENU:
+		case actionTypes.OPEN_SUB_OPTIONS_MENU:
 			return {
 				...state,
 				subOptionsMenuIsOpen: true,
 			};
-		case actionTypes.CLOSE_SUB_OPTION_MENU:
+		case actionTypes.CLOSE_SUB_OPTIONS_MENU:
 			return {
 				...state,
 				subOptionsMenuIsOpen: false,
+			};
+		case actionTypes.OPEN_UPDATE_ACCOUNT_INFO_MODAL:
+			return {
+				...state,
+				updateAccountInfoModalIsOpen: true,
+			};
+		case actionTypes.CLOSE_UPDATE_ACCOUNT_INFO_MODAL:
+			return {
+				...state,
+				updateAccountInfoModalIsOpen: false,
 			};
 		case actionTypes.FETCH_REQUIRED_BOOK_DATA_SUCCEED:
 			state.allRequiredBookData = action.allRequiredBookData;

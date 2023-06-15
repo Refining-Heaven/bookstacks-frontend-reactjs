@@ -44,7 +44,7 @@ class ManageBook extends Component {
 		const { bookName } = this.state;
 		await this.props.handleAddNewBook({
 			bookName: bookName,
-			uploaderId: this.props.userInfo.id,
+			uploaderId: this.props.accountInfo.id,
 		});
 		this.setState({
 			bookName: '',
@@ -87,7 +87,7 @@ class ManageBook extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		userInfo: state.user.userInfo,
+		accountInfo: state.user.accountInfo,
 		bookInfo: state.app.bookInfo,
 		allBooks: state.app.allBooks,
 	};

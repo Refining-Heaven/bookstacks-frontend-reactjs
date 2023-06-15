@@ -154,7 +154,7 @@ class ManageBookModal extends Component {
 			}
 		}
 		await this.props.handleUpdateBookInfo({
-			uploaderId: this.props.userInfo.id,
+			uploaderId: this.props.accountInfo.id,
 			bookId: this.props.bookInfo.id,
 			bookName: this.state.bookName,
 			anotherName: this.state.anotherName,
@@ -380,7 +380,7 @@ class ManageBookModal extends Component {
 const mapStateToProps = (state) => {
 	return {
 		language: state.app.language,
-		userInfo: state.user.userInfo,
+		accountInfo: state.user.accountInfo,
 		bookInfo: state.app.bookInfo,
 		manageBookModalIsOpen: state.app.manageBookModalIsOpen,
 		allRequiredBookData: state.app.allRequiredBookData,
@@ -393,7 +393,7 @@ const mapDispatchToProps = (dispatch) => {
 		fetchAllBook: () => dispatch(actions.fetchAllBook()),
 		fetchRequiredBookData: () => dispatch(actions.fetchRequiredBookData()),
 		handleUpdateBookInfo: (data) => dispatch(actions.handleUpdateBookInfo(data)),
-		clearBookInfo: () => dispatch(actions.clearBookInfo())		
+		clearBookInfo: () => dispatch(actions.clearBookInfo()),
 	};
 };
 

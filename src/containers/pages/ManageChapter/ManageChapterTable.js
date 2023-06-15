@@ -25,6 +25,14 @@ class ManageChapterTable extends Component {
 		this.props.handleOpenManageChapterModal()
 	}
 
+	handleDeleteChapter = async (chapterId) => {
+		await this.props.handleDeleteChapter(chapterId);
+		if (this.props.chapterInfo !== null) {
+			this.props.clearChapterInfo();
+		}
+		this.props.fetchAllChapter(this.props.bookId);
+	};
+
 	render() {
 		const { allChapters } = this.props;
 		return (
@@ -79,14 +87,17 @@ class ManageChapterTable extends Component {
 const mapStateToProps = (state) => {
 	return {
 		allChapters: state.app.allChapters,
-		chapterInfo: state.app.chapterInfo
+		chapterInfo: state.app.chapterInfo,
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		fetchChapterInfo: (chapterId) => dispatch(actions.fetchChapterInfo(chapterId)),
-		handleOpenManageChapterModal: () => dispatch(actions.handleOpenManageChapterModal())
+		fetchAllChapter: (bookId) => dispatch(actions.fetchAllChapter(bookId)),
+		handleOpenManageChapterModal: () => dispatch(actions.handleOpenManageChapterModal()),
+		handleDeleteChapter: (chapterId) => dispatch(actions.handleDeleteChapter(chapterId)),
+		clearChapterInfo: () => dispatch(actions.clearChapterInfo()),
 	};
 };
 

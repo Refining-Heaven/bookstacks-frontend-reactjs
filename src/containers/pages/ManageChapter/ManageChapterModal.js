@@ -97,7 +97,7 @@ class ManageChapterContent extends Component {
 					<div className="modal-content">
 						<div className="manage-chapter-form">
 							<div className="input-chapter-content">
-								<label>Chapter number:</label>
+								<label><FormattedMessage id="label.chapter-number" />:</label>
 								<input
 									type="number"
 									value={chapterNumber === null ? '' : chapterNumber}
@@ -105,7 +105,7 @@ class ManageChapterContent extends Component {
 								/>
 							</div>
 							<div className="input-chapter-content">
-								<label>Chapter title:</label>
+								<label><FormattedMessage id="label.chapter-title" />:</label>
 								<input
 									type="text"
 									value={chapterTitle === null ? '' : chapterTitle}
@@ -113,7 +113,7 @@ class ManageChapterContent extends Component {
 								/>
 							</div>
 							<div className="input-chapter-content">
-								<label>Chapter content:</label>
+								<label><FormattedMessage id="label.chapter-content" />:</label>
 								<textarea
 									rows="20"
 									value={chapterContent === null ? '' : chapterContent}

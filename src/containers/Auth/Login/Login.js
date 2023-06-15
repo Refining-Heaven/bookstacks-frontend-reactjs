@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
-import * as actions from '../../../store/actions/userActions';
+import * as actions from '../../../store/actions';
 import './Login.scss';
 
 class Login extends Component {
@@ -23,7 +23,7 @@ class Login extends Component {
 		this.setState({
 			...copyState,
 		});
-	}
+	};
 
 	handleShowHidePassword = () => {
 		this.setState({
@@ -33,19 +33,19 @@ class Login extends Component {
 
 	handleKeyDown = (e) => {
 		if (e.key === 'Enter' || e.keyCode === 13) {
-			this.handleUserLogin()
+			this.handleUserLogin();
 		}
-	}
+	};
 
 	handleUserLogin = () => {
 		this.props.handleUserLogin({
 			email: this.state.email,
-			password: this.state.password
+			password: this.state.password,
 		});
 	};
 
 	render() {
-		const { email, password, showPassword } = this.state
+		const { email, password, showPassword } = this.state;
 		return (
 			<div className="login-container">
 				<div className="login-form">
@@ -58,11 +58,15 @@ class Login extends Component {
 								<FormattedMessage id="form.email" />:
 							</label>
 							<FormattedMessage id="placeholder.enter-email">
-								{(placeholder) => <input type="email" placeholder={placeholder}
-								value={email}
-								onChange={(e) => this.handleOnChangeInput(e, 'email')}
-								onKeyDown={(e) => this.handleKeyDown(e)}
-								/>}
+								{(placeholder) => (
+									<input
+										type="email"
+										placeholder={placeholder}
+										value={email}
+										onChange={(e) => this.handleOnChangeInput(e, 'email')}
+										onKeyDown={(e) => this.handleKeyDown(e)}
+									/>
+								)}
 							</FormattedMessage>
 						</div>
 						<div className="login-input">
@@ -73,7 +77,7 @@ class Login extends Component {
 								<FormattedMessage id="placeholder.enter-password">
 									{(placeholder) => (
 										<input
-											type={showPassword ? "text" : "password"}
+											type={showPassword ? 'text' : 'password'}
 											placeholder={placeholder}
 											value={password}
 											onChange={(e) => this.handleOnChangeInput(e, 'password')}
@@ -124,13 +128,13 @@ class Login extends Component {
 const mapStateToProps = (state) => {
 	return {
 		isLoggedIn: state.user.isLoggedIn,
-		userInfo: state.user.userInfo
+		accountInfo: state.user.accountInfo,
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		handleUserLogin: (data) => dispatch(actions.handleUserLogin(data))
+		handleUserLogin: (data) => dispatch(actions.handleUserLogin(data)),
 	};
 };
 

@@ -27,20 +27,28 @@ export const handleCloseManageChapterModal = () => ({
 	type: actionTypes.CLOSE_MANAGE_CHAPTER_MODAL,
 });
 
+// Update account info menu
+export const handleOpenUpdateAccountInfoModal = () => ({
+	type: actionTypes.OPEN_UPDATE_ACCOUNT_INFO_MODAL,
+});
+export const handleCloseUpdateAccountInfoModal = () => ({
+	type: actionTypes.CLOSE_UPDATE_ACCOUNT_INFO_MODAL,
+});
+
 // Option menu
 export const handleOpenCloseOptionsMenu = () => ({
-	type: actionTypes.OPEN_CLOSE_OPTION_MENU,
+	type: actionTypes.OPEN_CLOSE_OPTIONS_MENU,
 });
 export const handleCloseOptionsMenu = () => ({
-	type: actionTypes.CLOSE_OPTION_MENU,
+	type: actionTypes.CLOSE_OPTIONS_MENU,
 });
 
 // Sub option menu
 export const handleOpenSubOptionsMenu = () => ({
-	type: actionTypes.OPEN_SUB_OPTION_MENU,
+	type: actionTypes.OPEN_SUB_OPTIONS_MENU,
 });
 export const handleCloseSubOptionsMenu = () => ({
-	type: actionTypes.CLOSE_SUB_OPTION_MENU,
+	type: actionTypes.CLOSE_SUB_OPTIONS_MENU,
 });
 
 // Fetch required book data

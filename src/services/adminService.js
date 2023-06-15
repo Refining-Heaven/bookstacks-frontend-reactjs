@@ -20,10 +20,15 @@ const updateChapterInfoService = (data) => {
   return axios.put('/api/update-chapter-info', data);
 }
 
+const deleteChapterService = (chapterId) => {
+  return axios.delete('/api/delete-chapter', {data: {id: chapterId}});
+}
+
 export {
   addNewBookService,
   updateBookInfoService,
   deleteBookService,
   addNewChapterService,
-  updateChapterInfoService
+  updateChapterInfoService,
+  deleteChapterService
 }

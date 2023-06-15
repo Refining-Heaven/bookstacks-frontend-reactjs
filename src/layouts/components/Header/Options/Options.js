@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Buffer } from "buffer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import { FormattedMessage } from 'react-intl';
 import { PATH, OPTIONS_MENU, USER_OPTIONS_MENU } from '../../../../utils';
-import images from '../../../../assets/images'
+import images from '../../../../assets/images';
 import OptionsMenu from './OptionsMenu/OptionsMenu';
 import * as actions from '../../../../store/actions';
 import './Options.scss';
@@ -15,12 +16,20 @@ class Options extends Component {
 		super(props);
 		this.state = {
 			currentOptionMenu: '',
-			previewImgURL: ''
+			userAvatar: '',
 		};
 	}
 
 	componentDidMount() {
 		if (this.props.isLoggedIn) {
+			const { accountInfo } = this.props;
+			let imageBase64 = '';
+			if (accountInfo.avatar) {
+				imageBase64 = new Buffer(accountInfo.avatar, 'base64').toString('binary');
+			}
+			this.setState({
+				userAvatar: imageBase64,
+			});
 			this.setState({
 				currentOptionMenu: USER_OPTIONS_MENU,
 			});
@@ -39,11 +48,21 @@ class Options extends Component {
 				});
 			}
 		}
+		if (prevProps.accountInfo !== this.props.accountInfo) {
+			const { accountInfo } = this.props;
+			let imageBase64 = '';
+			if (accountInfo.avatar) {
+				imageBase64 = new Buffer(accountInfo.avatar, 'base64').toString('binary');
+			}
+			this.setState({
+				userAvatar: imageBase64,
+			});
+		}
 	}
 
 	render() {
 		const { isLoggedIn, optionMenuIsOpen } = this.props;
-		const { currentOptionMenu, previewImgURL } = this.state;
+		const { currentOptionMenu, userAvatar } = this.state;
 		return (
 			<>
 				{(() => {
@@ -52,12 +71,12 @@ class Options extends Component {
 							<>
 								<div className="more-option" onClick={() => this.props.handleOpenCloseOptionsMenu()}>
 									<div className="more-option-icon">
-										<img src={previewImgURL === '' ? images.noUserAvatar : previewImgURL} alt="" />
+										<img src={userAvatar === '' ? images.noUserAvatar : userAvatar} alt="" />
 									</div>
 								</div>
 								{optionMenuIsOpen === true && <OptionsMenu items={currentOptionMenu} />}
 							</>
-						)
+						);
 					} else {
 						return (
 							<>
@@ -83,7 +102,7 @@ class Options extends Component {
 const mapStateToProps = (state) => {
 	return {
 		isLoggedIn: state.user.isLoggedIn,
-		userInfo: state.user.userInfo,
+		accountInfo: state.user.accountInfo,
 		optionMenuIsOpen: state.app.optionMenuIsOpen,
 	};
 };

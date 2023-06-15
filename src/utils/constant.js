@@ -12,6 +12,7 @@ export const PATH = {
 	BOOK_DETAIL: '/book-detail/:name/id/:id',
 	BOOK_FOUND: '/books-found/genre-id/:id',
 	CHAPTER_CONTENT: '/book/:name/chapter/:number/id/:id',
+	ACCOUNT_INFO: '/account/info'
 };
 
 export const TITLE = {
@@ -22,6 +23,7 @@ export const TITLE = {
 	MANAGE_BOOK: <FormattedMessage id="title.manage-book" />,
 	MANAGE_CHAPTER: <FormattedMessage id="title.manage-chapter" />,
 	MANAGE_USER: <FormattedMessage id="title.manage-user" />,
+	ACCOUNT_INFO: <FormattedMessage id="title.account-info" />
 };
 
 export const STATUS_TITLE = {

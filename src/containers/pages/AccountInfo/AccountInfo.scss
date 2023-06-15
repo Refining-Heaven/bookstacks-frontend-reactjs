@@ -1,0 +1,211 @@
+@import '../../../styles/variables';
+
+.account-info-container {
+  height         : $account-info-container-height;
+  padding        : 20px;
+  display        : flex;
+  justify-content: center;
+
+  .account-info {
+    width           : 750px;
+    height          : 300px;
+    border-radius   : 5px;
+    display         : flex;
+    color: #fff;
+    background: -webkit-linear-gradient(left,#00dbde,#fc00ff);
+
+    .left-content {
+      width          : 40%;
+      height         : 100%;
+      display        : flex;
+      justify-content: center;
+      align-items    : center;
+
+      .preview-avatar {
+        img {
+          width : 250px;
+          height: 250px;
+        }
+      }
+    }
+
+    .right-content {
+      width          : 60%;
+      height         : 100%;
+      padding        : 20px 20px 20px 10px;
+      display        : flex;
+      flex-direction : column;
+      justify-content: space-between;
+
+      .info-wrapper {
+        display       : flex;
+        flex-direction: column;
+        gap           : 10px;
+
+        .info-content {
+          display  : flex;
+          font-size: 20px;
+
+          .title {
+            width        : 40%;
+            padding-right: 5px;
+            font-weight  : 600;
+          }
+        }
+      }
+
+      .options {
+        display        : flex;
+        justify-content: flex-end;
+        gap            : 40px;
+
+        .option-btn {
+          padding         : 5px 10px;
+          border-radius   : 5px;
+          color           : #fff;
+          background-color: $main-color;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Update account info modal
+.update-account-info-modal {
+  width: 800px;
+
+  .modal-header {
+    display         : flex;
+    justify-content : space-between;
+    border-bottom   : 1px solid #ddd;
+    color           : #fff;
+    background-color: $main-color;
+
+    .modal-title {
+      padding  : 5px 10px;
+      font-size: 20px;
+    }
+
+    .close-modal-icon {
+      padding         : 6px 12px;
+      color           : #fff;
+      background-color: transparent;
+      font-size       : 20px;
+
+      &:hover {
+        opacity: 0.8;
+        cursor : pointer;
+      }
+    }
+  }
+
+  .modal-content {
+    padding: 20px;
+
+    .account-info {
+      height          : 300px;
+      display         : flex;
+      border-radius   : 5px;
+      background-color: #f7f7f7;
+
+      .left-content {
+        width  : 40%;
+        height : 100%;
+        padding: 20px 0;
+
+        .upload-avatar {
+          height         : 100%;
+          display        : flex;
+          flex-direction : column;
+          justify-content: space-between;
+          align-items    : center;
+
+          .preview-avatar {
+            img {
+              width : 200px;
+              height: 200px;
+            }
+          }
+
+          .label-upload {
+            padding         : 5px 20px;
+            border-radius   : 3px;
+            background-color: #ddd;
+            font-size       : 16px;
+            cursor          : pointer;
+
+            &:hover {
+              opacity: 0.9;
+            }
+          }
+        }
+      }
+
+      .right-content {
+        width          : 60%;
+        height         : 100%;
+        padding        : 20px 20px 20px 10px;
+        display        : flex;
+        flex-direction : column;
+        justify-content: space-between;
+
+        .info-wrapper {
+          display       : flex;
+          flex-direction: column;
+          gap           : 10px;
+
+          .info-content {
+            display  : flex;
+            font-size: 20px;
+
+            .title {
+              width       : 40%;
+              margin-right: 5px;
+              font-weight : 600;
+            }
+
+            input {
+              width        : 60%;
+              line-height  : 1.5;
+              font-size    : 20px;
+              border-bottom: 1px solid #ddd;
+              background-color: inherit;
+
+              &:focus {
+                border-bottom: 1px solid $main-color;
+              }
+            }
+          }
+        }
+
+        .options {
+          display        : flex;
+          justify-content: flex-end;
+          gap            : 40px;
+
+          .option-btn {
+            padding         : 5px 10px;
+            border-radius   : 5px;
+            color           : #fff;
+            background-color: $main-color;
+
+            &:hover {
+              cursor: pointer;
+              opacity: 0.9;
+            }
+
+            &.cancel {
+              background-color: #ff2626;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Change password modal

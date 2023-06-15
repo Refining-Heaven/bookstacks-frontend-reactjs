@@ -1,101 +1,107 @@
 {
-	"header": {
-
-	},
-	"sidebar": {
-
-	},
+	"header": {},
+	"sidebar": {},
 	"option-menu-item": {
+		"account": "Account",
 		"language": "Language",
 		"theme": "Theme",
 		"log-out": "Log out",
-    "sub-menu-item": {
-      "language": {
-        "english": "English",
-        "vietnamese": "Vietnamese"
-      },
-      "theme": {
-        "light": "Light",
-        "dark": "Dark"
-      }
-    }
+		"sub-menu-item": {
+			"language": {
+				"english": "English",
+				"vietnamese": "Vietnamese"
+			},
+			"theme": {
+				"light": "Light",
+				"dark": "Dark"
+			}
+		}
 	},
 	"form": {
 		"email": "Email",
-    "username": "Username",
+		"username": "Username",
 		"password": "Password",
 		"forgot-password": "Forgot password",
-    "title": {
-      "login": "Login",
-      "sign-up": "Sign up"
-    },
-    "text": {
-      "or": "Or",
-      "login": "login",
-      "sign-up": "sign up",
-      "here": "here"
-    }
+		"title": {
+			"login": "Login",
+			"sign-up": "Sign up"
+		},
+		"text": {
+			"or": "Or",
+			"login": "login",
+			"sign-up": "sign up",
+			"here": "here"
+		}
 	},
-  "placeholder": {
-    "enter-email": "Enter your email",
-    "enter-password": "Enter your password",
-    "enter-username": "Enter your username",
-    "search": "Search for books"
-  },
-  "book": {
-    "status": {
-      "new": "New books",
-      "accomplished": "Accompished books"
-    },
-    "genre": {
-      "action": "Action"
-    },
-    "kind": {
-      "allegory": "Allegory",
-      "novel": "Novel",
-      "short-story": "Short story"
-    }
-  },
-  "book-info": {
-    "book-name": "Book name",
-      "another-name": "Another name",
-      "author": "Author",
-      "uploader": "Uploader",
-      "status": "Status",
-      "kind": "Kind",
-      "version": "Version",
-      "language": "Language",
-      "intro": "Intro",
-      "genre": "Genre"
-  },
-  "label": {
-    "book-name": "Book name",
-    "another-name": "Another name",
-    "author": "Author",
-    "status": "Status",
-    "kind": "Kind",
-    "version": "Version",
-    "language": "Language",
-    "intro": "Intro",
-    "genre": "Genre",
-    "cover-image": "Cover image",
-    "options": "Options",
-    "chapter": "Chapter",
-    "title": "Title"
-  },
-  "title": {
+	"placeholder": {
+		"enter-email": "Enter your email",
+		"enter-password": "Enter your password",
+		"enter-username": "Enter your username",
+		"search": "Search for books"
+	},
+	"book": {
+		"status": {
+			"new": "New books",
+			"accomplished": "Accompished books"
+		},
+		"genre": {
+			"action": "Action"
+		},
+		"kind": {
+			"allegory": "Allegory",
+			"novel": "Novel",
+			"short-story": "Short story"
+		}
+	},
+	"book-info": {
+		"book-name": "Book name",
+		"another-name": "Another name",
+		"author": "Author",
+		"uploader": "Uploader",
+		"status": "Status",
+		"kind": "Kind",
+		"version": "Version",
+		"language": "Language",
+		"intro": "Intro",
+		"genre": "Genre"
+	},
+	"label": {
+		"username": "Username",
+		"email": "Email",
+		"role": "Role",
+		"book-name": "Book name",
+		"another-name": "Another name",
+		"author": "Author",
+		"status": "Status",
+		"kind": "Kind",
+		"version": "Version",
+		"language": "Language",
+		"intro": "Intro",
+		"genre": "Genre",
+		"cover-image": "Cover image",
+		"options": "Options",
+		"chapter": "Chapter",
+		"title": "Title",
+    "chapter-number": "Chapter number",
+    "chapter-title": "Chapter title",
+    "chapter-content": "Chapter content"
+	},
+	"title": {
 		"home": "Home",
 		"manage-book": "Manage book",
-    "manage-chapter": "Manage chapter",
-    "manage-user": "Manage user"
-  },
-  "button": {
+		"manage-chapter": "Manage chapter",
+		"manage-user": "Manage user",
+		"account-info": "Account info",
+		"update-account-info": "Update account info",
+		"change-password": "Change password"
+	},
+	"button": {
 		"login": "Login",
-    "sign-up": "Sign up",
-    "upload-image": "Upload image",
-    "add": "Add",
-    "save": "Save",
-    "save-change": "Save change",
-    "get": "Get"
-  }
+		"sign-up": "Sign up",
+		"upload-image": "Upload image",
+		"add": "Add",
+		"save": "Save",
+		"save-change": "Save change",
+		"get": "Get"
+	}
 }

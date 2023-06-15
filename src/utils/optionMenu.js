@@ -1,5 +1,6 @@
-import { faLanguage, faPalette, faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faLanguage, faPalette, faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 import { FormattedMessage } from "react-intl";
 
 const OPTIONS_MENU = [
@@ -42,6 +43,11 @@ const OPTIONS_MENU = [
 ]
 
 const USER_OPTIONS_MENU = [
+  {
+    type: "ACCOUNT",
+    icon: <FontAwesomeIcon icon={faUser} />,
+    title: <FormattedMessage id="option-menu-item.account" />,
+  },
   ...OPTIONS_MENU,
   {
     type: "LOGOUT",

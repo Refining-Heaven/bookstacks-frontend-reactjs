@@ -32,7 +32,7 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		userInfo: state.user.userInfo,
+		accountInfo: state.user.accountInfo,
 		newBooks: state.app.newBooks,
 	};
 };

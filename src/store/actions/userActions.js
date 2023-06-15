@@ -1,17 +1,17 @@
 import { toast } from 'react-toastify';
 import actionTypes from './actionTypes';
-import { userSignUpService, userLoginService } from '../../services/userService';
+import * as services from '../../services/userService';
 
 const handleUserSignUp = (data) => {
 	return async (dispatch, getState) => {
 		try {
-			const response = await userSignUpService(data);
+			const response = await services.userSignUpService(data);
 			if (response && response.data.errCode === 0) {
 				toast.success(response.data.errMessage);
 				dispatch(handleUserSignUpSucceed());
 				setTimeout(() => {
-					window.location.replace("/login")
-				}, 3000)
+					window.location.replace('/login');
+				}, 3000);
 			} else {
 				toast.warning(response.data.errMessage);
 				dispatch(handleUserSignUpFailed());
@@ -35,10 +35,10 @@ const handleUserSignUpFailed = () => ({
 const handleUserLogin = (data) => {
 	return async (dispatch, getState) => {
 		try {
-			const response = await userLoginService(data);
+			const response = await services.userLoginService(data);
 			if (response && response.data.errCode === 0) {
 				dispatch(handleUserLoginSucceed(response.data.data));
-				window.location.replace("/")
+				window.location.replace('/');
 			} else {
 				toast.warning(response.data.errMessage);
 				dispatch(handleUserLoginFailed());
@@ -51,21 +51,68 @@ const handleUserLogin = (data) => {
 	};
 };
 
-const handleUserLoginSucceed = (userInfo) => ({
+const handleUserLoginSucceed = (accountInfo) => ({
 	type: actionTypes.USER_LOGIN_SUCCEED,
-	userInfo: userInfo
+	accountInfo: accountInfo,
 });
 
 const handleUserLoginFailed = () => ({
 	type: actionTypes.USER_LOGIN_FAILED,
 });
 
+//
 const handleUserLogout = () => ({
 	type: actionTypes.USER_LOGOUT,
 });
 
-export {
-	handleUserSignUp,
-	handleUserLogin,
-	handleUserLogout
+// Fetch account info
+export const fetchAccountInfo = (userId) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.getAccountInfoService(userId);
+			if (response && response.data.errCode === 0) {
+				dispatch(fetchAccountInfoSucceed(response.data.data));
+			} else {
+				dispatch(fetchAccountInfoFailed());
+			}
+		} catch (e) {
+			dispatch(fetchAccountInfoFailed());
+			console.log(e);
+		}
+	};
 };
+const fetchAccountInfoSucceed = (data) => ({
+	type: actionTypes.FETCH_ACCOUNT_INFO_SUCCEED,
+	accountInfo: data,
+});
+const fetchAccountInfoFailed = () => ({
+	type: actionTypes.FETCH_ACCOUNT_INFO_FAILED,
+});
+
+// Update account info
+export const handleUpdateAccountInfo = (data) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.updateAccountInfoService(data);
+			if (response && response.data.errCode === 0) {
+				toast.success(response.data.errMessage);
+				dispatch(handleUpdateAccountInfoSucceed());
+			} else {
+				toast.warning(response.data.errMessage);
+				dispatch(handleUpdateAccountInfoFailed());
+			}
+		} catch (e) {
+			toast.error('Error from server!');
+			dispatch(handleUpdateAccountInfoFailed());
+			console.log(e);
+		}
+	}
+};
+const handleUpdateAccountInfoSucceed = () => ({
+	type: actionTypes.UPDATE_ACCOUNT_INFO_SUCCEED,
+});
+const handleUpdateAccountInfoFailed = () => ({
+	type: actionTypes.UPDATE_ACCOUNT_INFO_FAILED,
+});
+
+export { handleUserSignUp, handleUserLogin, handleUserLogout };

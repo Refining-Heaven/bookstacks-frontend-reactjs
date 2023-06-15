@@ -2,7 +2,7 @@ import actionTypes from '../actions/actionTypes';
 
 const initialState = {
 	isLoggedIn: false,
-	userInfo: null,
+	accountInfo: null,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -19,19 +19,29 @@ const userReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoggedIn: true,
-				userInfo: action.userInfo,
+				accountInfo: action.accountInfo,
 			};
 		case actionTypes.USER_LOGIN_FAILED:
 			return {
 				...state,
 				isLoggedIn: false,
-				userInfo: null,
+				accountInfo: null,
 			};
 		case actionTypes.USER_LOGOUT:
 			return {
 				...state,
 				isLoggedIn: false,
-				userInfo: null,
+				accountInfo: null,
+			};
+		case actionTypes.FETCH_ACCOUNT_INFO_SUCCEED:
+			state.accountInfo = action.accountInfo;
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ACCOUNT_INFO_FAILED:
+			state.accountInfo = [];
+			return {
+				...state,
 			};
 		default:
 			return state;

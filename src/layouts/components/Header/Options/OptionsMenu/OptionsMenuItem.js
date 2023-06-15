@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter, PATH } from '../../../../../utils'
 import * as actions from '../../../../../store/actions';
 import SubOptionsMenu from '../SubOptionsMenu/SubOptionsMenu';
 import './OptionsMenu.scss';
@@ -23,6 +24,11 @@ class OptionsMenuItem extends Component {
 			subOptionsMenuIsOpen: false,
 		});
 	};
+
+	handleViewAccountInfo = () => {
+		this.props.handleCloseOptionsMenu()
+		this.props.navigate(PATH.ACCOUNT_INFO)
+	}
 
 	handleUserLogout = async () => {
 		await Promise.all([
@@ -48,6 +54,14 @@ class OptionsMenuItem extends Component {
 								<div className="item-icon">{data.icon}</div>
 								<div className="item-title">{data.title}</div>
 								{subOptionsMenuIsOpen === true && <SubOptionsMenu items={data.children.data} />}
+							</div>
+						);
+					} else
+					if (data.type === 'ACCOUNT') {
+						return (
+							<div className="option-menu-item" onClick={() => this.handleViewAccountInfo()}>
+								<div className="item-icon">{data.icon}</div>
+								<div className="item-title">{data.title}</div>
 							</div>
 						);
 					} else
@@ -78,4 +92,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OptionsMenuItem);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OptionsMenuItem));

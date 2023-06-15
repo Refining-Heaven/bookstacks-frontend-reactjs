@@ -1,100 +1,107 @@
 {
-  "header": {
-  },
-  "sidebar": {
-
-  },
-  "option-menu-item": {
-    "language": "Ngôn ngữ",
-    "theme": "Chủ đề",
-    "log-out": "Đăng xuất",
-    "sub-menu-item": {
-      "language": {
-        "english": "Tiếng Anh",
-        "vietnamese": "Tiếng Việt"
-      },
-      "theme": {
-        "light": "Sáng",
-        "dark": "Tối"
-      }
-    }
-  },
-  "form": {
+	"header": {},
+	"sidebar": {},
+	"option-menu-item": {
+		"account": "Tài khoản",
+		"language": "Ngôn ngữ",
+		"theme": "Chủ đề",
+		"log-out": "Đăng xuất",
+		"sub-menu-item": {
+			"language": {
+				"english": "Tiếng Anh",
+				"vietnamese": "Tiếng Việt"
+			},
+			"theme": {
+				"light": "Sáng",
+				"dark": "Tối"
+			}
+		}
+	},
+	"form": {
 		"email": "Email",
-    "username": "Tên người dùng",
+		"username": "Tên người dùng",
 		"password": "Mật khẩu",
 		"forgot-password": "Quên mật khẩu",
-    "title": {
-      "login": "Đăng nhập",
-      "sign-up": "Đăng ký"
-    },
-    "text": {
-      "or": "Hoặc",
-      "login": "đăng nhập",
-      "sign-up": "đăng ký",
-      "here": "tại đây"
-    }
+		"title": {
+			"login": "Đăng nhập",
+			"sign-up": "Đăng ký"
+		},
+		"text": {
+			"or": "Hoặc",
+			"login": "đăng nhập",
+			"sign-up": "đăng ký",
+			"here": "tại đây"
+		}
 	},
-  "placeholder": {
-    "enter-email": "Nhập email của bạn",
-    "enter-password": "Nhập mật khẩu của bạn",
-    "enter-username": "Nhập tên người dùng của bạn",
-    "search": "Tìm kiếm sách"
-  },
-  "book": {
-    "status": {
-      "new": "Sách mới",
-      "accomplished": "Sách đã hoàn thành"
-    },
-    "genre": {
-      "action": "Hành động"
-    },
-    "kind": {
-      "allegory": "Truyện ngụ ngôn",
-      "novel": "Tiểu thuyết",
-      "short-story": "Truyện ngắn"
-    }
-  },
-  "book-info": {
-    "book-name": "Tên sách",
-      "another-name": "Tên khác",
-      "author": "Tác giả",
-      "uploader": "Người đăng",
-      "status": "Trạng thái",
-      "kind": "Loại",
-      "version": "Bản",
-      "language": "Ngôn ngữ",
-      "intro": "Giới thiệu",
-      "genre": "Thể loại"
-  },
-  "label": {
-    "book-name": "Tên sách",
-    "another-name": "Tên khác",
-    "author": "Tác giả",
-    "status": "Trạng thái",
-    "kind": "Loại",
-    "version": "Bản",
-    "language": "Ngôn ngữ",
-    "intro": "Giới thiệu",
-    "genre": "Thể loại",
-    "cover-image": "Ảnh bìa",
-    "options": "Tùy chọn",
-    "chapter": "Chương",
-    "title": "Tiêu đề"
-  },
-  "title": {
-    "home": "Trang chủ",
-    "manage-book": "Quản lý sách",
-    "manage-chapter": "Quản lý chương",
-    "manage-user": "Quản lý người dùng"
-  },
-  "button": {
+	"placeholder": {
+		"enter-email": "Nhập email của bạn",
+		"enter-password": "Nhập mật khẩu của bạn",
+		"enter-username": "Nhập tên người dùng của bạn",
+		"search": "Tìm kiếm sách"
+	},
+	"book": {
+		"status": {
+			"new": "Sách mới",
+			"accomplished": "Sách đã hoàn thành"
+		},
+		"genre": {
+			"action": "Hành động"
+		},
+		"kind": {
+			"allegory": "Truyện ngụ ngôn",
+			"novel": "Tiểu thuyết",
+			"short-story": "Truyện ngắn"
+		}
+	},
+	"book-info": {
+		"book-name": "Tên sách",
+		"another-name": "Tên khác",
+		"author": "Tác giả",
+		"uploader": "Người đăng",
+		"status": "Trạng thái",
+		"kind": "Loại",
+		"version": "Bản",
+		"language": "Ngôn ngữ",
+		"intro": "Giới thiệu",
+		"genre": "Thể loại"
+	},
+	"label": {
+		"username": "Tên người dùng",
+		"email": "Email",
+		"role": "Quyền",
+		"book-name": "Tên sách",
+		"another-name": "Tên khác",
+		"author": "Tác giả",
+		"status": "Trạng thái",
+		"kind": "Loại",
+		"version": "Bản",
+		"language": "Ngôn ngữ",
+		"intro": "Giới thiệu",
+		"genre": "Thể loại",
+		"cover-image": "Ảnh bìa",
+		"options": "Tùy chọn",
+		"chapter": "Chương",
+		"title": "Tiêu đề",
+    "chapter-number": "Chương số",
+    "chapter-title": "Tiêu đề chương",
+    "chapter-content": "Nội dung chương"
+	},
+	"title": {
+		"home": "Trang chủ",
+		"manage-book": "Quản lý sách",
+		"manage-chapter": "Quản lý chương",
+		"manage-user": "Quản lý người dùng",
+		"account-info": "Thông tin tài khoản",
+		"update-account-info": "Cập nhật thông tin tài khoản",
+		"change-password": "Đổi mật khẩu"
+	},
+	"button": {
 		"login": "Đăng nhập",
-    "sign-up": "Đăng ký",
-    "upload-image": "Tải ảnh",
-    "add": "Thêm",
-    "save": "Lưu",
-    "save-change": "Lưu thay đổi",
-    "get": "Lấy"
-  }
+		"sign-up": "Đăng ký",
+		"upload-image": "Tải ảnh",
+		"add": "Thêm",
+		"save": "Lưu",
+		"save-change": "Lưu thay đổi",
+		"get": "Lấy"
+	}
 }
