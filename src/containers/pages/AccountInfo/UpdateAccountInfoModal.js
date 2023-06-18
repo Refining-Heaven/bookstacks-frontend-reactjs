@@ -155,13 +155,13 @@ class UpdateAccountInfoModal extends Component {
 							<div className="right-content">
 								<div className="info-wrapper">
 									<div className="info-content">
-										<label className="title">
+										<label>
 											<FormattedMessage id="label.email" />:
 										</label>
 										<input type="email" value={email} onChange={(e) => this.handleOnChangeInput(e, 'email')} />
 									</div>
 									<div className="info-content">
-										<label className="title">
+										<label>
 											<FormattedMessage id="label.username" />:
 										</label>
 										<input type="text" value={username} onChange={(e) => this.handleOnChangeInput(e, 'username')} />

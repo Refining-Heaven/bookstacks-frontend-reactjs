@@ -8,7 +8,7 @@ export const PATH = {
 	MANAGE: '/manage',
 	MANAGE_BOOK: '/manage/book',
 	MANAGE_CHAPTER: '/manage/chapter',
-	MANAGE_USER: '/manage/user',
+	MANAGE_ACCOUNT: '/manage/account',
 	BOOK_DETAIL: '/book-detail/:name/id/:id',
 	BOOK_FOUND: '/books-found/genre-id/:id',
 	CHAPTER_CONTENT: '/book/:name/chapter/:number/id/:id',
@@ -22,7 +22,7 @@ export const TITLE = {
 	MANAGE: 'Manage',
 	MANAGE_BOOK: <FormattedMessage id="title.manage-book" />,
 	MANAGE_CHAPTER: <FormattedMessage id="title.manage-chapter" />,
-	MANAGE_USER: <FormattedMessage id="title.manage-user" />,
+	MANAGE_ACCOUNT: <FormattedMessage id="title.manage-account" />,
 	ACCOUNT_INFO: <FormattedMessage id="title.account-info" />
 };
 

@@ -16,9 +16,14 @@ const updateAccountInfoService = (data) => {
   return axios.put('/api/update-account-info', data);
 }
 
+const changePasswordService = (data) => {
+  return axios.put('/api/change-password', data);
+}
+
 export {
   userSignUpService,
   userLoginService,
   updateAccountInfoService,
-  getAccountInfoService
+  getAccountInfoService,
+  changePasswordService
 }

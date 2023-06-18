@@ -14,7 +14,7 @@ class Header extends Component {
 	}
 
 	handleToHomePage = () => {
-		this.props.navigate(PATH.HOME)
+		window.location.assign(PATH.HOME)
 	}
 
 	render() {

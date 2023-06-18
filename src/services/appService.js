@@ -40,6 +40,10 @@ const getChapterInfoService = (chapterId) => {
 	return axios.get(`/api/get-chapter-info?id=${chapterId}`);
 };
 
+const getAllAccountService = () => {
+	return axios.get('/api/get-all-account');
+};
+
 export {
 	getAllGenreService,
 	getAllKindService,
@@ -51,4 +55,5 @@ export {
 	getBookInfoService,
 	getAllChapterService,
 	getChapterInfoService,
+	getAllAccountService
 };

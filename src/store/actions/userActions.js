@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import actionTypes from './actionTypes';
+import * as actions from '../actions'
 import * as services from '../../services/userService';
 
 const handleUserSignUp = (data) => {
@@ -113,6 +114,33 @@ const handleUpdateAccountInfoSucceed = () => ({
 });
 const handleUpdateAccountInfoFailed = () => ({
 	type: actionTypes.UPDATE_ACCOUNT_INFO_FAILED,
+});
+
+// Change password
+export const handleChangePassword = (data) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.changePasswordService(data);
+			if (response && response.data.errCode === 0) {
+				toast.success(response.data.errMessage);
+				dispatch(handleChangePasswordSucceed());
+				dispatch(actions.handleCloseChangePasswordModal())
+			} else {
+				toast.warning(response.data.errMessage);
+				dispatch(handleChangePasswordFailed());
+			}
+		} catch (e) {
+			toast.error('Error from server!');
+			dispatch(handleChangePasswordFailed());
+			console.log(e);
+		}
+	}
+};
+const handleChangePasswordSucceed = () => ({
+	type: actionTypes.CHANGE_PASSWORD_SUCCEED,
+});
+const handleChangePasswordFailed = () => ({
+	type: actionTypes.CHANGE_PASSWORD_FAILED,
 });
 
 export { handleUserSignUp, handleUserLogin, handleUserLogout };

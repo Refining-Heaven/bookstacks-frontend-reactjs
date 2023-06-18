@@ -69,6 +69,7 @@
 		"username": "Username",
 		"email": "Email",
 		"role": "Role",
+		"banned": "Banned",
 		"book-name": "Book name",
 		"another-name": "Another name",
 		"author": "Author",
@@ -90,7 +91,7 @@
 		"home": "Home",
 		"manage-book": "Manage book",
 		"manage-chapter": "Manage chapter",
-		"manage-user": "Manage user",
+		"manage-account": "Manage account",
 		"account-info": "Account info",
 		"update-account-info": "Update account info",
 		"change-password": "Change password"
@@ -102,6 +103,8 @@
 		"add": "Add",
 		"save": "Save",
 		"save-change": "Save change",
-		"get": "Get"
+		"get": "Get",
+		"yes": "Yes",
+		"no": "No"
 	}
 }

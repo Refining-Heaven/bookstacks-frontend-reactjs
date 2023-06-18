@@ -24,11 +24,26 @@ const deleteChapterService = (chapterId) => {
   return axios.delete('/api/delete-chapter', {data: {id: chapterId}});
 }
 
+const changeAccountInfoService = (data) => {
+  return axios.put('/api/change-account-info', data);
+}
+
+const resetAccountPasswordService = (data) => {
+  return axios.put('/api/reset-account-password', data);
+}
+
+const deleteAccountService = (userId) => {
+  return axios.delete('/api/delete-account', {data: {id: userId}});
+}
+
 export {
   addNewBookService,
   updateBookInfoService,
   deleteBookService,
   addNewChapterService,
   updateChapterInfoService,
-  deleteChapterService
+  deleteChapterService,
+  changeAccountInfoService,
+  resetAccountPasswordService,
+  deleteAccountService
 }

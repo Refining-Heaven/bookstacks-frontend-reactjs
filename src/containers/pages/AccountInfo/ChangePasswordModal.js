@@ -1,47 +1,39 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
-import { Buffer } from 'buffer';
 import { FormattedMessage } from 'react-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloudArrowUp, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import * as actions from '../../../store/actions';
 import { customStyles } from '../../../config/reactModal';
-import images from '../../../assets/images';
-import { CommonUtils } from '../../../utils';
 import './AccountInfo.scss';
 
-class UpdateAccountInfoModal extends Component {
+class changePasswordModal extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			currentPassword: '',
 			newPassword: '',
 			confirmNewPassword: '',
+			showPassword: false,
 		};
 	}
 
 	componentDidMount() {}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
-		if (prevProps.accountInfo !== this.props.accountInfo) {
-			const { accountInfo } = this.props;
-			let imageBase64 = '';
-			if (accountInfo.avatar) {
-				imageBase64 = new Buffer(accountInfo.avatar, 'base64').toString('binary');
-			}
-			if (accountInfo) {
-				this.setState({
-					email: accountInfo.email,
-					username: accountInfo.username,
-					previewImgURL: imageBase64,
-				});
-			}
+		if (prevProps.changePasswordModalIsOpen !== this.props.changePasswordModalIsOpen) {
+			this.setState({
+				currentPassword: '',
+				newPassword: '',
+				confirmNewPassword: '',
+			});
 		}
 	}
 
 	handleCloseChangePasswordModal = () => {
+		this.props.handleCloseChangePasswordModal();
 		this.setState({
 			currentPassword: '',
 			newPassword: '',
@@ -57,33 +49,79 @@ class UpdateAccountInfoModal extends Component {
 		});
 	};
 
-	handleUpdateAccountInfo = async () => {
-		await this.props.handleUpdateAccountInfo({
+	handleShowPassword = (e) => {
+		if (e.target.checked) {
+			this.setState({
+				showPassword: true,
+			});
+		} else {
+			this.setState({
+				showPassword: false,
+			});
+		}
+	};
+
+	handleChangePassword = async () => {
+		await this.props.handleChangePassword({
 			userId: this.props.accountInfo.id,
-			email: this.state.email,
-			username: this.state.username,
-			avatar: this.state.avatar,
+			currentPassword: this.state.currentPassword,
+			newPassword: this.state.newPassword,
+			confirmNewPassword: this.state.confirmNewPassword,
 		});
-		await this.props.fetchAccountInfo(this.props.accountInfo.id);
-		this.props.handleCloseUpdateAccountInfoModal();
 	};
 
 	render() {
-		const { updateAccountInfoModalIsOpen } = this.props;
-		const { email, username, previewImgURL } = this.state;
+		const { changePasswordModalIsOpen } = this.props;
+		const { currentPassword, newPassword, confirmNewPassword, showPassword } = this.state;
 		Modal.setAppElement(document.getElementById('root'));
 		return (
-			<Modal isOpen={updateAccountInfoModalIsOpen} style={customStyles} contentLabel="Manage chapter modal">
-				<div className="update-account-info-modal">
+			<Modal isOpen={changePasswordModalIsOpen} style={customStyles} contentLabel="Manage chapter modal">
+				<div className="change-password-modal">
 					<div className="modal-header">
-						<div className="modal-title">
-							<FormattedMessage id="title.change-password" />
-						</div>
 						<button className="close-modal-icon" onClick={() => this.handleCloseChangePasswordModal()}>
 							<FontAwesomeIcon icon={faXmark} />
 						</button>
 					</div>
-					<div className="modal-content"></div>
+					<div className="modal-title">
+						<FormattedMessage id="title.change-password" />
+					</div>
+					<div className="modal-content">
+						<div className="input-wrapper">
+							<div className="input-data">
+								<label>Current password:</label>
+								<input
+									type={showPassword === false ? 'password' : 'text'}
+									value={currentPassword}
+									onChange={(e) => this.handleOnChangeInput(e, 'currentPassword')}
+								/>
+							</div>
+							<div className="input-data">
+								<label>New password:</label>
+								<input
+									type={showPassword === false ? 'password' : 'text'}
+									value={newPassword}
+									onChange={(e) => this.handleOnChangeInput(e, 'newPassword')}
+								/>
+							</div>
+							<div className="input-data">
+								<label>Confirm new password:</label>
+								<input
+									type={showPassword === false ? 'password' : 'text'}
+									value={confirmNewPassword}
+									onChange={(e) => this.handleOnChangeInput(e, 'confirmNewPassword')}
+								/>
+							</div>
+						</div>
+						<div className="show-password">
+							<input type="checkbox" id="check" onChange={(e) => this.handleShowPassword(e)} />
+							<label htmlFor="check">Show password</label>
+						</div>
+						<div className="btn-wrapper">
+							<div className="change-btn" onClick={() => this.handleChangePassword()}>
+								<span>Change password</span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</Modal>
 		);
@@ -94,16 +132,15 @@ const mapStateToProps = (state) => {
 	return {
 		language: state.app.language,
 		accountInfo: state.user.accountInfo,
-		updateAccountInfoModalIsOpen: state.app.updateAccountInfoModalIsOpen,
+		changePasswordModalIsOpen: state.app.changePasswordModalIsOpen,
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		handleCloseUpdateAccountInfoModal: () => dispatch(actions.handleCloseUpdateAccountInfoModal()),
-		handleUpdateAccountInfo: (data) => dispatch(actions.handleUpdateAccountInfo(data)),
-		fetchAccountInfo: (userId) => dispatch(actions.fetchAccountInfo(userId)),
+		handleCloseChangePasswordModal: () => dispatch(actions.handleCloseChangePasswordModal()),
+		handleChangePassword: (data) => dispatch(actions.handleChangePassword(data)),
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateAccountInfoModal);
+export default connect(mapStateToProps, mapDispatchToProps)(changePasswordModal);

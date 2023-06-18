@@ -8,7 +8,7 @@
   gap            : 30px;
 
   .content-left {
-    width  : 47%;
+    width: 47%;
   }
 
   .content-right {
@@ -118,18 +118,18 @@
           border   : 1px solid #ddd;
           outline  : none;
           font-size: 16px;
-          resize: none;
+          resize   : none;
 
           &::-webkit-scrollbar {
             border-radius: 0;
             width        : 6px;
           }
-  
+
           &::-webkit-scrollbar-thumb {
             border-radius   : 4px;
             background-color: rgba(0, 0, 0, 0.15);
           }
-  
+
           &::-webkit-scrollbar-track {
             border-radius   : 0;
             background-color: rgba(0, 0, 0, 0);
@@ -229,52 +229,92 @@
 .manage-book-table {
   margin: 10px 0;
 
-  table {
-    width          : 100%;
-    border-collapse: collapse;
+  .table-wrapper {
+    width     : 100%;
+    max-height: 490px;
+    overflow-y: scroll;
+    border    : 1px solid #ddd;
 
-    td,
-    th {
-      padding: 5px;
-      border : 1px solid black
+    &::-webkit-scrollbar {
+      border-radius: 0;
+      width        : 6px;
     }
 
-    tbody {
-      tr {
-        &:hover {
-          background: rgba(22, 24, 35, 0.03);
-          cursor: pointer;
+    &::-webkit-scrollbar-thumb {
+      border-radius   : 4px;
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius   : 0;
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    table {
+      width          : 100%;
+      border-collapse: collapse;
+
+      thead {
+        position        : sticky;
+        top             : 0;
+        color           : #fff;
+        background-color: $main-color;
+
+        tr {
+          height: 35px;
+
+          th {
+            padding     : 5px;
+            border-right: 1px solid #ddd;
+          }
         }
       }
-    }
 
-    .book-name {
-      padding: 0 10px;
-    }
+      tbody {
+        tr {
+          height: 35px;
 
-    .options {
-      width     : 20%;
-      text-align: center;
+          td {
+            padding      : 5px;
+            border-right : 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+          }
 
-      button {
-        padding         : 2px 6px;
-        margin          : 0 12px;
-        background-color: transparent;
-      }
-
-      .btn-edit {
-
-        .edit-icon {
-          font-size: 15px;
-          color    : orange;
+          &:hover {
+            background: rgba(22, 24, 35, 0.03);
+            cursor    : pointer;
+          }
         }
       }
 
-      .btn-delete {
+      .book-name {
+        padding: 0 10px;
+      }
 
-        .delete-icon {
-          font-size: 15px;
-          color    : red;
+      .options {
+        width     : 20%;
+        text-align: center;
+
+        button {
+          padding         : 2px 6px;
+          margin          : 0 12px;
+          background-color: transparent;
+        }
+
+        .btn-edit {
+
+          .edit-icon {
+            font-size: 15px;
+            color    : orange;
+          }
+        }
+
+        .btn-delete {
+
+          .delete-icon {
+            font-size: 15px;
+            color    : red;
+          }
         }
       }
     }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import * as actions from './store/actions';
 import { ROLE } from './utils';
 import { guestRoutes, userRoutes, adminRoutes } from './routes';
 
@@ -30,6 +31,9 @@ class App extends Component {
 					currentRoutes: adminRoutes,
 				});
 			}
+		}
+		if (this.props.isLoggedIn === true && this.props.accountInfo !== null) {
+			this.props.fetchAccountInfo(this.props.accountInfo.id);
 		}
 	}
 
@@ -108,7 +112,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-	return {};
+	return {
+		fetchAccountInfo: (userId) => dispatch(actions.fetchAccountInfo(userId)),
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -6,16 +6,9 @@
   .body-container {
     padding-top: $header-heigth;
 
-
-    .sidebar {
-      position: fixed;
-      top     : $header-heigth;
-      left    : 0;
-    }
-
-    .content-container {
-      margin-top : $header-heigth;
-      margin-left: $sidebar-width;
+    .default-content-container {
+      width: calc(100% - $sidebar-width);
+      margin : $header-heigth auto 0;
     }
   }
 }

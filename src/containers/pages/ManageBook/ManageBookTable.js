@@ -33,37 +33,39 @@ class ManageBookTable extends Component {
 		const { allBooks } = this.props;
 		return (
 			<div className="manage-book-table">
-				<table>
-					<thead>
-						<tr>
-							<th>
-								<FormattedMessage id="label.book-name" />
-							</th>
-							<th className="options">
-								<FormattedMessage id="label.options" />
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						{allBooks &&
-							allBooks.length > 0 &&
-							allBooks.map((item, index) => {
-								return (
-									<tr key={index} onClick={() => this.handleViewBookInfo(item.id)}>
-										<td className="book-name">{item.bookName}</td>
-										<td className="options">
-											<button className="btn-edit" onClick={() => this.handleOpenManageBookModal(item.id)}>
-												<FontAwesomeIcon icon={faPencilAlt} className="edit-icon" />
-											</button>
-											<button className="btn-delete" onClick={() => this.handleDeleteBook(item.id)}>
-												<FontAwesomeIcon icon={faTrash} className="delete-icon" />
-											</button>
-										</td>
-									</tr>
-								);
-							})}
-					</tbody>
-				</table>
+				<div className="table-wrapper">
+					<table>
+						<thead>
+							<tr>
+								<th>
+									<FormattedMessage id="label.book-name" />
+								</th>
+								<th className="options">
+									<FormattedMessage id="label.options" />
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							{allBooks &&
+								allBooks.length > 0 &&
+								allBooks.map((item, index) => {
+									return (
+										<tr key={index} onClick={() => this.handleViewBookInfo(item.id)}>
+											<td className="book-name">{item.bookName}</td>
+											<td className="options">
+												<button className="btn-edit" onClick={() => this.handleOpenManageBookModal(item.id)}>
+													<FontAwesomeIcon icon={faPencilAlt} className="edit-icon" />
+												</button>
+												<button className="btn-delete" onClick={() => this.handleDeleteBook(item.id)}>
+													<FontAwesomeIcon icon={faTrash} className="delete-icon" />
+												</button>
+											</td>
+										</tr>
+									);
+								})}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		);
 	}

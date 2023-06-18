@@ -9,13 +9,17 @@ const initialState = {
 	optionMenuIsOpen: false,
 	subOptionsMenuIsOpen: false,
 	updateAccountInfoModalIsOpen: false,
+	changePasswordModalIsOpen: false,
 	allRequiredBookData: [],
 	allBooks: [],
 	allChapters: [],
+	allAccounts: [],
+	roleList: [],
 	newBooks: [],
 	booksFound: null,
 	bookInfo: null,
 	chapterInfo: null,
+	selectedAccountInfo: null,
 	clearSearchValue: true,
 };
 
@@ -85,6 +89,16 @@ const appReducer = (state = initialState, action) => {
 			return {
 				...state,
 				updateAccountInfoModalIsOpen: false,
+			};
+		case actionTypes.OPEN_CHANGE_PASSWORD_MODAL:
+			return {
+				...state,
+				changePasswordModalIsOpen: true,
+			};
+		case actionTypes.CLOSE_CHANGE_PASSWORD_MODAL:
+			return {
+				...state,
+				changePasswordModalIsOpen: false,
 			};
 		case actionTypes.FETCH_REQUIRED_BOOK_DATA_SUCCEED:
 			state.allRequiredBookData = action.allRequiredBookData;
@@ -167,6 +181,36 @@ const appReducer = (state = initialState, action) => {
 			return {
 				...state,
 			};
+		case actionTypes.FETCH_ROLE_DATA_SUCCEED:
+			state.roleList = action.roleList;
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ROLE_DATA_FAILED:
+			state.roleList = [];
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ALL_ACCOUNT_SUCCEED:
+			state.allAccounts = action.allAccounts;
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ALL_ACCOUNT_FAILED:
+			state.allAccounts = [];
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_SELECTED_ACCOUNT_INFO_SUCCEED:
+			state.selectedAccountInfo = action.selectedAccountInfo;
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_SELECTED_ACCOUNT_INFO_FAILED:
+			state.selectedAccountInfo = [];
+			return {
+				...state,
+			};
 		case actionTypes.CLEAR_BOOKS_FOUND:
 			state.booksFound = null;
 			state.clearSearchValue = true;
@@ -190,6 +234,11 @@ const appReducer = (state = initialState, action) => {
 			};
 		case actionTypes.CLEAR_CHAPTER_INFO:
 			state.chapterInfo = null;
+			return {
+				...state,
+			};
+		case actionTypes.CLEAR_SELECTED_ACCOUNT_INFO:
+			state.selectedAccountInfo = null;
 			return {
 				...state,
 			};

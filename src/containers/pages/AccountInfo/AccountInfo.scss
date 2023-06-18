@@ -7,12 +7,12 @@
   justify-content: center;
 
   .account-info {
-    width           : 750px;
-    height          : 300px;
-    border-radius   : 5px;
-    display         : flex;
-    color: #fff;
-    background: -webkit-linear-gradient(left,#00dbde,#fc00ff);
+    width        : 750px;
+    height       : 300px;
+    border-radius: 5px;
+    display      : flex;
+    color        : #fff;
+    background   : -webkit-linear-gradient(left, #00dbde, #fc00ff);
 
     .left-content {
       width          : 40%;
@@ -60,7 +60,7 @@
         gap            : 40px;
 
         .option-btn {
-          padding         : 5px 10px;
+          padding         : 5px 20px;
           border-radius   : 5px;
           color           : #fff;
           background-color: $main-color;
@@ -162,17 +162,17 @@
             display  : flex;
             font-size: 20px;
 
-            .title {
+            label {
               width       : 40%;
               margin-right: 5px;
               font-weight : 600;
             }
 
             input {
-              width        : 60%;
-              line-height  : 1.5;
-              font-size    : 20px;
-              border-bottom: 1px solid #ddd;
+              width           : 60%;
+              line-height     : 1.5;
+              font-size       : 20px;
+              border-bottom   : 1px solid #ddd;
               background-color: inherit;
 
               &:focus {
@@ -188,13 +188,13 @@
           gap            : 40px;
 
           .option-btn {
-            padding         : 5px 10px;
+            padding         : 5px 20px;
             border-radius   : 5px;
             color           : #fff;
             background-color: $main-color;
 
             &:hover {
-              cursor: pointer;
+              cursor : pointer;
               opacity: 0.9;
             }
 
@@ -209,3 +209,102 @@
 }
 
 // Change password modal
+.change-password-modal {
+  width      : 400px;
+  user-select: none;
+
+  .modal-header {
+    display        : flex;
+    justify-content: flex-end;
+
+    .close-modal-icon {
+      padding         : 6px 12px;
+      color           : #ddd;
+      background-color: transparent;
+      font-size       : 20px;
+
+      &:hover {
+        color : #000;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .modal-title {
+    text-align : center;
+    padding    : 5px 10px;
+    font-size  : 30px;
+    font-weight: 600;
+  }
+
+  .modal-content {
+    padding: 20px;
+
+    .input-wrapper {
+      margin-bottom : 20px;
+      display       : flex;
+      flex-direction: column;
+      gap           : 20px;
+
+      .input-data {
+        display       : flex;
+        flex-direction: column;
+
+        label {
+          font-size: 20px;
+        }
+
+        input {
+          width           : 100%;
+          line-height     : 1.5;
+          font-size       : 20px;
+          border-bottom   : 1px solid #ddd;
+          background-color: inherit;
+
+          &:focus {
+            border-bottom: 1px solid $main-color;
+          }
+        }
+      }
+    }
+
+    .show-password {
+      margin-bottom: 80px;
+
+      input {
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      label {
+        font-size: 18px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .btn-wrapper {
+      .change-btn {
+        padding: 5px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        color: #fff;
+        background-color: $main-color;
+
+        &:hover {
+          opacity: 0.8;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

@@ -3,17 +3,19 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions';
 import Header from '../components/Header/Header';
+import Sidebar from '../components/Sidebar/Sidebar';
 import { PageControl } from '../components/Control';
-import './DefaultLayout.scss';
+import './AdminLayout.scss';
 
-class DefaultLayout extends Component {
+class AdminLayout extends Component {
 	render() {
 		const { children } = this.props;
 		return (
 			<div className="wrapper">
 				<Header />
 				<div className="body-container" onClick={() => this.props.handleCloseOptionsMenu()}>
-					<div className="default-content-container">
+					<Sidebar />
+					<div className="content-container">
 						{children}
 						<PageControl />
 					</div>
@@ -33,4 +35,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DefaultLayout);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminLayout);

@@ -49,14 +49,16 @@ class Options extends Component {
 			}
 		}
 		if (prevProps.accountInfo !== this.props.accountInfo) {
-			const { accountInfo } = this.props;
-			let imageBase64 = '';
-			if (accountInfo.avatar) {
-				imageBase64 = new Buffer(accountInfo.avatar, 'base64').toString('binary');
+			const { isLoggedIn, accountInfo } = this.props;
+			if (isLoggedIn === true) {
+				let imageBase64 = '';
+				if (accountInfo.avatar) {
+					imageBase64 = new Buffer(accountInfo.avatar, 'base64').toString('binary');
+				}
+				this.setState({
+					userAvatar: imageBase64,
+				});
 			}
-			this.setState({
-				userAvatar: imageBase64,
-			});
 		}
 	}
 

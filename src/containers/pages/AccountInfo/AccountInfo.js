@@ -10,6 +10,7 @@ import images from '../../../assets/images';
 import SubHeader from '../../../layouts/components/SubHeader/SubHeader';
 import UpdateAccountInfoModal from './UpdateAccountInfoModal';
 import './AccountInfo.scss';
+import ChangePasswordModal from "./ChangePasswordModal";
 
 class AccountInfo extends Component {
 	constructor(props) {
@@ -50,7 +51,9 @@ class AccountInfo extends Component {
 		this.props.handleOpenUpdateAccountInfoModal();
 	};
 
-	handleChangeAccountPassword = () => {};
+	handleOpenChangePasswordModal = () => {
+		this.props.handleOpenChangePasswordModal()
+	};
 
 	render() {
 		const { previewImgURL } = this.state;
@@ -96,7 +99,7 @@ class AccountInfo extends Component {
 												<div className="option-btn" onClick={() => this.handleOpenUpdateAccountInfoModal()}>
 													<span>Update Info</span>
 												</div>
-												<div className="option-btn" onClick={() => this.handleChangeAccountPassword()}>
+												<div className="option-btn" onClick={() => this.handleOpenChangePasswordModal()}>
 													<span>Change password</span>
 												</div>
 											</div>
@@ -108,6 +111,7 @@ class AccountInfo extends Component {
 					})()}
 				</div>
 				<UpdateAccountInfoModal />
+				<ChangePasswordModal />
 			</>
 		);
 	}
@@ -123,6 +127,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		handleOpenUpdateAccountInfoModal: () => dispatch(actions.handleOpenUpdateAccountInfoModal()),
+		handleOpenChangePasswordModal: () => dispatch(actions.handleOpenChangePasswordModal()),
 		fetchAccountInfo: (userId) => dispatch(actions.fetchAccountInfo(userId)),
 	};
 };

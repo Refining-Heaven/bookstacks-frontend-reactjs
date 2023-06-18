@@ -1,13 +1,12 @@
 @import '../../../styles/variables.scss';
 
 .sub-header {
-  width           : 100%;
+  width           : calc(100vW - $sidebar-width);
   height          : $sub-header-height;
   padding         : 0 10px;
   background-color: #fff;
   position        : fixed;
   top             : $header-heigth;
-  left            : $sidebar-width;
   display         : flex;
   align-items     : center;
   box-shadow      : 0px 0 5px rgba(0, 0, 0, 0.2);

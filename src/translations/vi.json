@@ -69,6 +69,7 @@
 		"username": "Tên người dùng",
 		"email": "Email",
 		"role": "Quyền",
+		"banned": "Bị cấm",
 		"book-name": "Tên sách",
 		"another-name": "Tên khác",
 		"author": "Tác giả",
@@ -90,7 +91,7 @@
 		"home": "Trang chủ",
 		"manage-book": "Quản lý sách",
 		"manage-chapter": "Quản lý chương",
-		"manage-user": "Quản lý người dùng",
+		"manage-account": "Quản lý tài khoản",
 		"account-info": "Thông tin tài khoản",
 		"update-account-info": "Cập nhật thông tin tài khoản",
 		"change-password": "Đổi mật khẩu"
@@ -102,6 +103,8 @@
 		"add": "Thêm",
 		"save": "Lưu",
 		"save-change": "Lưu thay đổi",
-		"get": "Lấy"
+		"get": "Lấy",
+		"yes": "Có",
+		"no": "Không"
 	}
 }

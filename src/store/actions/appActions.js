@@ -1,4 +1,4 @@
-import * as services from '../../services/appService';
+import * as services from '../../services';
 import actionTypes from './actionTypes';
 
 // Change language
@@ -27,12 +27,20 @@ export const handleCloseManageChapterModal = () => ({
 	type: actionTypes.CLOSE_MANAGE_CHAPTER_MODAL,
 });
 
-// Update account info menu
+// Update account info modal
 export const handleOpenUpdateAccountInfoModal = () => ({
 	type: actionTypes.OPEN_UPDATE_ACCOUNT_INFO_MODAL,
 });
 export const handleCloseUpdateAccountInfoModal = () => ({
 	type: actionTypes.CLOSE_UPDATE_ACCOUNT_INFO_MODAL,
+});
+
+// Change password modal
+export const handleOpenChangePasswordModal = () => ({
+	type: actionTypes.OPEN_CHANGE_PASSWORD_MODAL,
+});
+export const handleCloseChangePasswordModal = () => ({
+	type: actionTypes.CLOSE_CHANGE_PASSWORD_MODAL,
 });
 
 // Option menu
@@ -268,6 +276,78 @@ const fetchChapterInfoFailed = () => ({
 	type: actionTypes.FETCH_CHAPTER_INFO_FAILED,
 });
 
+// Fetch required book data
+export const fetchRoleData = () => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.getAllCodeService('ROLE');
+			if (response && response.data.errCode === 0) {
+				dispatch(fetchRoleDataSucceed(response.data.data));
+			} else {
+				dispatch(fetchRoleDataFailed());
+			}
+		} catch (e) {
+			dispatch(fetchRoleDataFailed());
+			console.log(e);
+		}
+	};
+};
+const fetchRoleDataSucceed = (data) => ({
+	type: actionTypes.FETCH_ROLE_DATA_SUCCEED,
+	roleList: data,
+});
+const fetchRoleDataFailed = () => ({
+	type: actionTypes.FETCH_ROLE_DATA_FAILED,
+});
+
+// Fetch all account
+export const fetchAllAccount = () => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.getAllAccountService();
+			if (response && response.data.errCode === 0) {
+				dispatch(fetchAllAccountSucceed(response.data.data));
+			} else {
+				dispatch(fetchAllAccountFailed());
+			}
+		} catch (e) {
+			dispatch(fetchAllAccountFailed());
+			console.log(e);
+		}
+	};
+};
+const fetchAllAccountSucceed = (data) => ({
+	type: actionTypes.FETCH_ALL_ACCOUNT_SUCCEED,
+	allAccounts: data,
+});
+const fetchAllAccountFailed = () => ({
+	type: actionTypes.FETCH_ALL_ACCOUNT_FAILED,
+});
+
+// Fetch account info
+export const fetchSelectedAccountInfo = (userId) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.getAccountInfoService(userId);
+			if (response && response.data.errCode === 0) {
+				dispatch(fetchSelectedAccountInfoSucceed(response.data.data));
+			} else {
+				dispatch(fetchSelectedAccountInfoFailed());
+			}
+		} catch (e) {
+			dispatch(fetchSelectedAccountInfoFailed());
+			console.log(e);
+		}
+	};
+};
+const fetchSelectedAccountInfoSucceed = (data) => ({
+	type: actionTypes.FETCH_SELECTED_ACCOUNT_INFO_SUCCEED,
+	selectedAccountInfo: data,
+});
+const fetchSelectedAccountInfoFailed = () => ({
+	type: actionTypes.FETCH_SELECTED_ACCOUNT_INFO_FAILED,
+});
+
 //
 export const clearBooksFound = () => ({
 	type: actionTypes.CLEAR_BOOKS_FOUND,
@@ -283,4 +363,7 @@ export const clearAllChapter = () => ({
 });
 export const clearChapterInfo = () => ({
 	type: actionTypes.CLEAR_CHAPTER_INFO,
+});
+export const clearSelectedAccountInfo = () => ({
+	type: actionTypes.CLEAR_SELECTED_ACCOUNT_INFO,
 });
