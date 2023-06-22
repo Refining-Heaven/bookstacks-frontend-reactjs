@@ -10,10 +10,14 @@ const initialState = {
 	subOptionsMenuIsOpen: false,
 	updateAccountInfoModalIsOpen: false,
 	changePasswordModalIsOpen: false,
+	commentSectionIsOpen: false,
+	chapterListModalIsOpen: false,
 	allRequiredBookData: [],
 	allBooks: [],
 	allChapters: [],
 	allAccounts: [],
+	allComments: [],
+	allReplies: [],
 	roleList: [],
 	newBooks: [],
 	booksFound: null,
@@ -99,6 +103,26 @@ const appReducer = (state = initialState, action) => {
 			return {
 				...state,
 				changePasswordModalIsOpen: false,
+			};
+		case actionTypes.OPEN_COMMENT_SECTION:
+			return {
+				...state,
+				commentSectionIsOpen: true,
+			};
+		case actionTypes.CLOSE_COMMENT_SECTION:
+			return {
+				...state,
+				commentSectionIsOpen: false,
+			};
+		case actionTypes.OPEN_CHAPTER_LIST_MODAL:
+			return {
+				...state,
+				chapterListModalIsOpen: true,
+			};
+		case actionTypes.CLOSE_CHAPTER_LIST_MODAL:
+			return {
+				...state,
+				chapterListModalIsOpen: false,
 			};
 		case actionTypes.FETCH_REQUIRED_BOOK_DATA_SUCCEED:
 			state.allRequiredBookData = action.allRequiredBookData;
@@ -208,6 +232,26 @@ const appReducer = (state = initialState, action) => {
 			};
 		case actionTypes.FETCH_SELECTED_ACCOUNT_INFO_FAILED:
 			state.selectedAccountInfo = [];
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ALL_COMMENT_SUCCEED:
+			state.allComments = action.allComments;
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ALL_COMMENT_FAILED:
+			state.allComments = [];
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ALL_REPLY_SUCCEED:
+			state.allReplies = action.allReplies;
+			return {
+				...state,
+			};
+		case actionTypes.FETCH_ALL_REPLY_FAILED:
+			state.allReplies = [];
 			return {
 				...state,
 			};

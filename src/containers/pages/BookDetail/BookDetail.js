@@ -5,9 +5,11 @@ import SubHeader from '../../../layouts/components/SubHeader/SubHeader';
 import { FormattedMessage } from 'react-intl';
 import images from '../../../assets/images';
 import * as actions from '../../../store/actions';
-import { withRouter, LANGUAGES } from '../../../utils';
+import { withRouter, LANGUAGES, TYPE } from '../../../utils';
+import ChapterList from './ChapterList';
+import CommentSection from '../../components/CommentSection/CommentSection';
+import CommentControl from "../../../layouts/components/Control/CommentControl";
 import './BookDetail.scss';
-import ChapterList from "./ChapterList";
 
 class BookDetail extends Component {
 	constructor(props) {
@@ -34,14 +36,14 @@ class BookDetail extends Component {
 			}
 			this.setState({
 				previewImgURL: imageBase64,
-				currentBookId: bookInfo.id
+				currentBookId: bookInfo.id,
 			});
 		}
 	}
 
 	handleToGenrePage = async (genreId) => {
 		await this.props.fetchAllBookByGenre(genreId);
-		this.props.navigate(`/books-found/genre-id/${genreId}`);
+		window.location.assign(`/books-found/genre-id/${genreId}`);
 	};
 
 	render() {
@@ -139,6 +141,8 @@ class BookDetail extends Component {
 										<div className="content">{bookInfo.intro}</div>
 									</div>
 									<ChapterList />
+									<CommentControl />
+									<CommentSection type={TYPE.BOOK} />
 								</div>
 							);
 						}

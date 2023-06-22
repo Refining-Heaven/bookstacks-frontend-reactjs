@@ -106,5 +106,11 @@
 		"get": "Get",
 		"yes": "Yes",
 		"no": "No"
+	},
+	"date": {
+		"day-ago": "days ago",
+		"hour-ago": "hours ago",
+		"min-ago": "mins ago",
+		"sec-ago": "secs ago"
 	}
 }

@@ -28,15 +28,16 @@
 
 // Chapter control
 .chapter-control {
+  user-select: none;
   position: fixed;
   bottom  : 30px;
-  right   : 550px;
+  right   : 500px;
   display : flex;
   gap     : 20px;
   z-index : 200;
 
   .control-btn {
-    width           : 50px;
+    width           : 60px;
     height          : 30px;
     display         : flex;
     justify-content : center;
@@ -61,5 +62,31 @@
     border          : 1px solid $main-color;
     border-radius   : 5px;
     opacity         : 0.5;
+  }
+}
+
+// Comment control
+.comment-control {
+  position      : fixed;
+  bottom        : 70px;
+  right         : 50px;
+  display       : flex;
+  flex-direction: column;
+  z-index       : 200;
+
+  .control-btn {
+    width           : 40px;
+    height          : 40px;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    background-color: transparent;
+    border          : 1px solid $main-color;
+    border-radius   : 5px;
+
+    &:hover {
+      background: rgba(22, 24, 35, 0.03);
+      cursor    : pointer;
+    }
   }
 }

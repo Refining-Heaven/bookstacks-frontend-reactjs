@@ -36,6 +36,11 @@ class BooksFound extends Component {
 						}
 					}
 				})()}
+				<div className="content-body">
+					<div className="book-found">
+						Hi
+					</div>
+				</div>
 			</>
 		);
 	}

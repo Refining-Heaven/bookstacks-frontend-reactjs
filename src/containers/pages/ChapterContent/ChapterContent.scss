@@ -1,35 +1,107 @@
+@import '../../../styles/variables';
+
 #chapter-content-container {
-  width: 1000px;
-  margin: -40px auto 20px;
-  padding: 30px 40px;
-  border-radius: 5px;
+  width           : 1000px;
+  margin          : -40px auto 20px;
+  padding         : 30px 40px;
+  border-radius   : 5px;
   background-color: #fff;
 
   .chapter-content-body {
-    
+
     .last-update {
       text-align: end;
-      color: #888;
+      color     : #888;
 
-      .date, .time {
+      .date,
+      .time {
         font-style: italic;
       }
     }
 
     .chapter-info {
-      padding: 0 80px;
-      text-align: center;
-      font-size: 35px;
+      padding    : 0 80px;
+      text-align : center;
+      font-size  : 35px;
       font-weight: 600;
-      margin: 30px 0 90px;
+      margin     : 30px 0 90px;
     }
 
     .chapter-content {
       margin-bottom: 50px;
-      padding: 0 40px;
-      font-size: 20px;
-      white-space: pre-wrap;
+      padding      : 0 40px;
+      font-size    : 20px;
+      white-space  : pre-wrap;
     }
   }
 
+}
+
+//
+.chapter-list-modal {
+  width        : 700px;
+  height       : 600px;
+  padding      : 20px;
+  border-radius: 5px;
+
+  .close {
+    margin         : -20px -20px 0 0;
+    position       : sticky;
+    top            : 0;
+    display        : flex;
+    justify-content: flex-end;
+
+    .close-btn {
+      width          : 30px;
+      height         : 30px;
+      display        : flex;
+      justify-content: center;
+      align-items    : center;
+
+      &:hover {
+        color           : #fff;
+        background-color: red;
+        cursor          : pointer;
+      }
+    }
+  }
+
+  .chapter-list-container {
+    margin         : 0 10px;
+    display        : flex;
+    justify-content: space-between;
+    flex-wrap      : wrap;
+
+    .chapter-wrapper {
+      width        : 49%;
+      margin       : 5px 0;
+      padding      : 5px 10px;
+      display      : flex;
+      border       : 1px solid #ddd;
+      border-radius: 5px;
+
+      .number {
+        white-space: nowrap;
+      }
+
+      .title {
+        overflow          : hidden;
+        text-overflow     : ellipsis;
+        white-space       : normal;
+        display           : -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+
+      &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+        cursor: pointer;
+      }
+
+      &.active {
+        color: #fff;
+        background-color: $main-color;
+      }
+    }
+  }
 }

@@ -106,5 +106,11 @@
 		"get": "Lấy",
 		"yes": "Có",
 		"no": "Không"
+	},
+	"date": {
+		"day-ago": "ngày trước",
+		"hour-ago": "giờ trước",
+		"min-ago": "phút trước",
+		"sec-ago": "giây trước"
 	}
 }

@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { convertStringToAddressBar } from '../../../utils';
+import { convertStringToAddressBar, dateCalculation } from '../../../utils';
 import * as actions from '../../../store/actions';
 import { withRouter } from '../../../utils';
 import './BookDetail.scss';
@@ -24,7 +24,7 @@ class ChapterList extends Component {
 	handleReadChapter = async (chapterId, chapterNumber) => {
 		const { bookInfo } = this.props;
 		const convertedBookName = convertStringToAddressBar(bookInfo.bookName);
-		this.props.navigate(`/book/${convertedBookName}/chapter/${chapterNumber}/id/${chapterId}`);
+		window.location.assign(`/book/${convertedBookName}/chapter/${chapterNumber}/id/${chapterId}`);
 	};
 
 	render() {
@@ -34,6 +34,8 @@ class ChapterList extends Component {
 				{allChapters &&
 					allChapters.length > 0 &&
 					allChapters.map((item, index) => {
+						const lastUpdateTime = new Date(item.updatedAt);
+						const updateDate = dateCalculation(lastUpdateTime);
 						return (
 							<div
 								className="chapter-item"
@@ -52,7 +54,7 @@ class ChapterList extends Component {
 								<div className="content-down">
 									<div className="last-update">
 										<span>Last update:&nbsp;</span>
-										<span className="date">{item.date}</span>
+										<span className="date">{updateDate}</span>
 									</div>
 								</div>
 							</div>

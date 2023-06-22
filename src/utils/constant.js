@@ -60,3 +60,10 @@ export const ACTION = {
 	CREATE: 'CREATE',
 	UPDATE: 'UPDATE'
 }
+
+export const TYPE = {
+	BOOK: 'BOOK',
+	CHAPTER: 'CHAPTER',
+	COMMENT: 'COMMENT',
+	REPLY: 'REPLY'
+}

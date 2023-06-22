@@ -42,7 +42,7 @@ class SearchItem extends Component {
 		await this.props.fetchBookInfo(bookId);
 		await this.props.clearBooksFound();
 		const convertedBookName = convertStringToAddressBar(bookName)
-		this.props.navigate(`/book-detail/${convertedBookName}/id/${bookId}`);
+		window.location.assign(`/book-detail/${convertedBookName}/id/${bookId}`);
 	};
 
 	render() {

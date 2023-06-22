@@ -65,7 +65,52 @@ a {
   text-decoration: none;
 }
 
+textarea {
+  padding: 5px;
+  border     : 1px solid #ddd;
+  outline    : none;
+  resize     : none;
+  font-family: Nunito, sans-serif;
+
+  &::-webkit-scrollbar {
+    border-radius: 0;
+    width        : 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius   : 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius   : 0;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  &:focus {
+    outline: 1px solid $main-color;
+  }
+}
+
 // react modal
 .ReactModal__Overlay {
   z-index: 400;
+}
+
+.ReactModal__Content {
+  
+  &::-webkit-scrollbar {
+    border-radius: 0;
+    width        : 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius   : 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius   : 0;
+    background-color: rgba(0, 0, 0, 0);
+  }
 }

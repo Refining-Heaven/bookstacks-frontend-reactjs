@@ -20,10 +20,25 @@ const changePasswordService = (data) => {
   return axios.put('/api/change-password', data);
 }
 
+const addCommentService = (data) => {
+  return axios.post('/api/add-comment', data);
+}
+
+const addReplyService = (data) => {
+  return axios.post('/api/add-reply', data);
+}
+
+const deleteCommentService = (id, type) => {
+	return axios.delete(`/api/delete-comment?id=${id}&type=${type}`);
+};
+
 export {
   userSignUpService,
   userLoginService,
   updateAccountInfoService,
   getAccountInfoService,
-  changePasswordService
+  changePasswordService,
+  addCommentService,
+  addReplyService,
+  deleteCommentService
 }

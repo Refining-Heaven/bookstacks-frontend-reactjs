@@ -44,6 +44,14 @@ const getAllAccountService = () => {
 	return axios.get('/api/get-all-account');
 };
 
+const getAllCommentService = (id, type) => {
+	return axios.get(`/api/get-all-comment?id=${id}&type=${type}`);
+};
+
+const getAllReplyService = (commentId) => {
+	return axios.get(`/api/get-all-reply?id=${commentId}`);
+};
+
 export {
 	getAllGenreService,
 	getAllKindService,
@@ -55,5 +63,7 @@ export {
 	getBookInfoService,
 	getAllChapterService,
 	getChapterInfoService,
-	getAllAccountService
+	getAllAccountService,
+	getAllCommentService,
+	getAllReplyService
 };

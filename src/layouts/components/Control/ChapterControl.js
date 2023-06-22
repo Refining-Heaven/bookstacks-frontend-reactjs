@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretLeft, faCaretRight, faList } from '@fortawesome/free-solid-svg-icons';
+import { faCaretLeft, faCaretRight, faInfo, faList } from '@fortawesome/free-solid-svg-icons';
 import * as actions from '../../../store/actions';
 import { convertStringToAddressBar, withRouter } from '../../../utils';
 import './Control.scss';
@@ -11,7 +11,7 @@ class ChapterControl extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showControl: true,
+			showControl: false,
 			currentChapterIndex: '',
 			chapterList: [],
       prevBtnIsDisable: false,
@@ -66,15 +66,6 @@ class ChapterControl extends Component {
 			const { currentChapterIndex, chapterList } = this.state
       if (currentChapterIndex === 0) {
         this.setState({
-          prevBtnIsDisable: true
-        })
-      } else {
-        this.setState({
-          prevBtnIsDisable: false
-        })
-      }
-      if (currentChapterIndex === chapterList.length - 1) {
-        this.setState({
           nextBtnIsDisable: true
         })
       } else {
@@ -82,34 +73,62 @@ class ChapterControl extends Component {
           nextBtnIsDisable: false
         })
       }
+      if (currentChapterIndex === chapterList.length - 1) {
+        this.setState({
+          prevBtnIsDisable: true
+        })
+      } else {
+        this.setState({
+          prevBtnIsDisable: false
+        })
+      }
 		}
 	}
 
-	handlePrevChapter = async () => {
+	handleViewBookDetail = async () => {
+		const {bookInfo} = this.props
+		await this.props.fetchBookInfo(bookInfo.id);
+    const convertedBookName = convertStringToAddressBar(bookInfo.bookName)
+		window.location.assign(`/book-detail/${convertedBookName}/id/${bookInfo.id}`);
+	};
+
+	handleOpenChapterListModal = () => {
+		this.props.handleOpenChapterListModal()
+	}
+
+	handleNextChapter = async () => {
 		const { chapterList, currentChapterIndex } = this.state;
     if (currentChapterIndex === 0) {
-      return
+      toast.warning('This is the lastest chapter!')
     } else {
       const { bookInfo } = this.props;
       const convertedBookName = convertStringToAddressBar(bookInfo.bookName);
       const prevChapterId = chapterList[currentChapterIndex - 1].id;
       const prevChapterNumber = chapterList[currentChapterIndex - 1].chapterNumber;
-      await this.props.fetchChapterInfo(prevChapterId);
-      this.props.navigate(`/book/${convertedBookName}/chapter/${prevChapterNumber}/id/${prevChapterId}`);
+      // await this.props.fetchChapterInfo(prevChapterId);
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			});
+      window.location.assign(`/book/${convertedBookName}/chapter/${prevChapterNumber}/id/${prevChapterId}`);
     }
 	};
 
-	handleNextChapter = async () => {
+	handlePrevChapter = async () => {
 		const { chapterList, currentChapterIndex } = this.state;
     if (currentChapterIndex === chapterList.length - 1) {
-      toast.warning('This is the lastest chapter!')
+      return
     } else {
       const { bookInfo } = this.props;
       const convertedBookName = convertStringToAddressBar(bookInfo.bookName);
       const nextChapterId = chapterList[currentChapterIndex + 1].id;
       const nextChapterNumber = chapterList[currentChapterIndex + 1].chapterNumber;
-      await this.props.fetchChapterInfo(nextChapterId);
-      this.props.navigate(`/book/${convertedBookName}/chapter/${nextChapterNumber}/id/${nextChapterId}`);
+      // await this.props.fetchChapterInfo(nextChapterId);
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			});
+      window.location.assign(`/book/${convertedBookName}/chapter/${nextChapterNumber}/id/${nextChapterId}`);
     }
 	};
 
@@ -122,8 +141,11 @@ class ChapterControl extends Component {
 						<div className={prevBtnIsDisable === false ? "control-btn" : "disable-control-btn"} onClick={() => this.handlePrevChapter()}>
 							<FontAwesomeIcon icon={faCaretLeft} />
 						</div>
-						<div className="control-btn">
+						<div className="control-btn"  onClick={() => this.handleOpenChapterListModal()}>
 							<FontAwesomeIcon icon={faList} />
+						</div>
+						<div className="control-btn" onClick={() => this.handleViewBookDetail()}>
+							<FontAwesomeIcon icon={faInfo} />
 						</div>
 						<div className={nextBtnIsDisable === false ? "control-btn" : "disable-control-btn"} onClick={() => this.handleNextChapter()}>
 							<FontAwesomeIcon icon={faCaretRight} />
@@ -140,12 +162,15 @@ const mapStateToProps = (state) => {
 		bookInfo: state.app.bookInfo,
 		chapterInfo: state.app.chapterInfo,
 		allChapters: state.app.allChapters,
+		chapterListModalIsOpen: state.app.chapterListModalIsOpen
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
+		fetchBookInfo: (bookId) => dispatch(actions.fetchBookInfo(bookId)),
 		fetchChapterInfo: (chapterId) => dispatch(actions.fetchChapterInfo(chapterId)),
+		handleOpenChapterListModal: () => dispatch(actions.handleOpenChapterListModal()),
 	};
 };
 

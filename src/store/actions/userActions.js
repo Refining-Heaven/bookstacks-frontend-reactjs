@@ -143,4 +143,78 @@ const handleChangePasswordFailed = () => ({
 	type: actionTypes.CHANGE_PASSWORD_FAILED,
 });
 
+// Add comment
+export const handleAddComment = (data) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.addCommentService(data);
+			if (response && response.data.errCode === 0) {
+				dispatch(handleAddCommentSucceed());
+			} else {
+				toast.warning(response.data.errMessage);
+				dispatch(handleAddCommentFailed());
+			}
+		} catch (e) {
+			toast.error('Error from server!');
+			dispatch(handleAddCommentFailed());
+			console.log(e);
+		}
+	}
+};
+const handleAddCommentSucceed = () => ({
+	type: actionTypes.ADD_COMMENT_SUCCEED,
+});
+const handleAddCommentFailed = () => ({
+	type: actionTypes.ADD_COMMENT_FAILED,
+});
+
+// Add reply
+export const handleAddReply = (data) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.addReplyService(data);
+			if (response && response.data.errCode === 0) {
+				dispatch(handleAddReplySucceed());
+			} else {
+				toast.warning(response.data.errMessage);
+				dispatch(handleAddReplyFailed());
+			}
+		} catch (e) {
+			toast.error('Error from server!');
+			dispatch(handleAddReplyFailed());
+			console.log(e);
+		}
+	}
+};
+const handleAddReplySucceed = () => ({
+	type: actionTypes.ADD_REPLY_SUCCEED,
+});
+const handleAddReplyFailed = () => ({
+	type: actionTypes.ADD_REPLY_FAILED,
+});
+
+// Delete comment
+export const handleDeleteComment = (id, type) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.deleteCommentService(id, type);
+			if (response && response.data.errCode === 0) {
+				dispatch(handleDeleteCommentSucceed(response.data.data));
+			} else {
+				dispatch(handleDeleteCommentFailed());
+			}
+		} catch (e) {
+			dispatch(handleDeleteCommentFailed());
+			console.log(e);
+		}
+	};
+};
+const handleDeleteCommentSucceed = () => ({
+	type: actionTypes.DELETE_COMMENT_SUCCEED,
+});
+const handleDeleteCommentFailed = () => ({
+	type: actionTypes.DELETE_COMMENT_FAILED,
+});
+
+
 export { handleUserSignUp, handleUserLogin, handleUserLogout };

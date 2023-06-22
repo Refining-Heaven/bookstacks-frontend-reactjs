@@ -1,4 +1,5 @@
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { FormattedMessage } from "react-intl";
 
 export function withRouter(Child) {
 	return (props) => {
@@ -24,4 +25,45 @@ export function convertStringToAddressBar(str) {
 	str = str.replace(/ + /g, '');
 	str = str.replace(/^\-+|\-+$/g, '');
 	return str;
+}
+
+export function dateCalculation(lastDate) {
+	const currentDate = new Date();
+	const secs = Math.floor(Math.abs(currentDate - lastDate) / 1000);
+	if (secs >= 60) {
+		const mins = Math.floor(secs / 60);
+		if (mins >= 60) {
+			const hours = Math.floor(mins / 60);
+			if (hours >= 24) {
+				const days = Math.floor(hours / 24);
+				return (
+					<>
+						<span>{days}</span>&nbsp;
+						<FormattedMessage id="date.day-ago" />
+					</>
+				)
+			} else {
+				return (
+					<>
+						<span>{hours}</span>&nbsp;
+						<FormattedMessage id="date.hour-ago" />
+					</>
+				)
+			}
+		} else {
+			return (
+				<>
+					<span>{mins}</span>&nbsp;
+					<FormattedMessage id="date.min-ago" />
+				</>
+			)
+		}
+	} else {
+		return (
+			<>
+				<span>{secs}</span>&nbsp;
+				<FormattedMessage id="date.sec-ago" />
+			</>
+		)
+	}
 }

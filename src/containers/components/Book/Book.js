@@ -42,7 +42,7 @@ class Book extends Component {
 	handleViewBookDetail = async (bookId, bookName) => {
 		await this.props.fetchBookInfo(bookId);
     const convertedBookName = convertStringToAddressBar(bookName)
-		this.props.navigate(`/book-detail/${convertedBookName}/id/${bookId}`);
+		window.location.assign(`/book-detail/${convertedBookName}/id/${bookId}`);
 	};
 
 	render() {

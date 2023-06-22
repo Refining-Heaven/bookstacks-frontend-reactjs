@@ -1,9 +1,12 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
-import { withRouter } from '../../../utils';
-import './ChapterContent.scss';
+import { TYPE, dateCalculation, withRouter } from '../../../utils';
 import ChapterControl from '../../../layouts/components/Control/ChapterControl';
+import CommentControl from '../../../layouts/components/Control/CommentControl';
+import CommentSection from '../../components/CommentSection/CommentSection';
+import ChapterListModal from "./ChapterListModal";
+import './ChapterContent.scss';
 
 class ChapterContent extends Component {
 	constructor(props) {
@@ -20,12 +23,17 @@ class ChapterContent extends Component {
 				await this.props.fetchChapterInfo(chapterId),
 				await this.props.fetchBookInfo(this.props.chapterInfo.bookId),
 				await this.props.fetchAllChapter(this.props.chapterInfo.bookId),
-			])
+			]);
 		}
 	}
 
 	render() {
 		const { chapterInfo } = this.props;
+		let updateDate = ''
+		if (chapterInfo) {
+			const lastUpdateTime = new Date(chapterInfo.updatedAt);
+			updateDate = dateCalculation(lastUpdateTime);
+		}
 		return (
 			<>
 				<div id="chapter-content-container">
@@ -35,8 +43,7 @@ class ChapterContent extends Component {
 								<div className="chapter-content-body">
 									<div className="last-update">
 										<span>Last update:&nbsp;</span>
-										<span className="time">{chapterInfo.time}&nbsp;-&nbsp;</span>
-										<span className="date">{chapterInfo.date}</span>
+										<span className="time">{updateDate === '' ? '' : updateDate}</span>
 									</div>
 									<div className="chapter-info">
 										<span>Chapter&nbsp;</span>
@@ -50,6 +57,9 @@ class ChapterContent extends Component {
 					})()}
 				</div>
 				<ChapterControl />
+				<ChapterListModal />
+				<CommentControl />
+				<CommentSection type={TYPE.CHAPTER} />
 			</>
 		);
 	}

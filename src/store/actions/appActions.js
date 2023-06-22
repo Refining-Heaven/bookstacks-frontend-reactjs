@@ -59,6 +59,22 @@ export const handleCloseSubOptionsMenu = () => ({
 	type: actionTypes.CLOSE_SUB_OPTIONS_MENU,
 });
 
+// Comment section
+export const handleOpenCommentSection = () => ({
+	type: actionTypes.OPEN_COMMENT_SECTION,
+});
+export const handleCloseCommentSection = () => ({
+	type: actionTypes.CLOSE_COMMENT_SECTION,
+});
+
+// Chapter list modal
+export const handleOpenChapterListModal = () => ({
+	type: actionTypes.OPEN_CHAPTER_LIST_MODAL,
+});
+export const handleCloseChapterListModal = () => ({
+	type: actionTypes.CLOSE_CHAPTER_LIST_MODAL,
+});
+
 // Fetch required book data
 export const fetchRequiredBookData = () => {
 	return async (dispatch, getState) => {
@@ -346,6 +362,54 @@ const fetchSelectedAccountInfoSucceed = (data) => ({
 });
 const fetchSelectedAccountInfoFailed = () => ({
 	type: actionTypes.FETCH_SELECTED_ACCOUNT_INFO_FAILED,
+});
+
+// Fetch all comment
+export const fetchAllComment = (id, type) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.getAllCommentService(id, type);
+			if (response && response.data.errCode === 0) {
+				dispatch(fetchAllCommentSucceed(response.data.data));
+			} else {
+				dispatch(fetchAllCommentFailed());
+			}
+		} catch (e) {
+			dispatch(fetchAllCommentFailed());
+			console.log(e);
+		}
+	};
+};
+const fetchAllCommentSucceed = (data) => ({
+	type: actionTypes.FETCH_ALL_COMMENT_SUCCEED,
+	allComments: data,
+});
+const fetchAllCommentFailed = () => ({
+	type: actionTypes.FETCH_ALL_COMMENT_FAILED,
+});
+
+// Fetch all reply
+export const fetchAllReply = (commentId) => {
+	return async (dispatch, getState) => {
+		try {
+			const response = await services.getAllReplyService(commentId);
+			if (response && response.data.errCode === 0) {
+				dispatch(fetchAllReplySucceed(response.data.data));
+			} else {
+				dispatch(fetchAllReplyFailed());
+			}
+		} catch (e) {
+			dispatch(fetchAllReplyFailed());
+			console.log(e);
+		}
+	};
+};
+const fetchAllReplySucceed = (data) => ({
+	type: actionTypes.FETCH_ALL_REPLY_SUCCEED,
+	allReplies: data,
+});
+const fetchAllReplyFailed = () => ({
+	type: actionTypes.FETCH_ALL_REPLY_FAILED,
 });
 
 //
