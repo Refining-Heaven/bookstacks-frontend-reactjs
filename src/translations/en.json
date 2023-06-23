@@ -41,15 +41,16 @@
 	},
 	"book": {
 		"status": {
-			"new": "New books",
-			"accomplished": "Accompished books"
-		},
-		"genre": {
-			"action": "Action"
+			"new": "New book"
 		},
 		"kind": {
 			"allegory": "Allegory",
 			"novel": "Novel",
+			"fairy-tale": "Fairy tale",
+			"funny-story": "funny story",
+			"ghost-story": "Ghost story",
+			"horror-story": "Horror story",
+			"myth": "Myth",
 			"short-story": "Short story"
 		}
 	},

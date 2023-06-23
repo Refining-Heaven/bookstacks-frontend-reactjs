@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { LANGUAGES, withRouter } from '../../../utils';
 import * as actions from '../../../store/actions';
 import SubHeader from '../../../layouts/components/SubHeader/SubHeader';
+import Book from '../../components/Book/Book'
 import './BooksFound.scss';
 
 class BooksFound extends Component {
@@ -25,6 +26,7 @@ class BooksFound extends Component {
 
 	render() {
 		const { language, booksFound } = this.props;
+		console.log(booksFound);
 		return (
 			<>
 				{(() => {
@@ -34,11 +36,21 @@ class BooksFound extends Component {
 						} else {
 							return <SubHeader title={booksFound.genreData.valueEn} />;
 						}
+					} else {
+						return <SubHeader />
 					}
 				})()}
 				<div className="content-body">
-					<div className="book-found">
-						Hi
+					<div className="book-found-container">
+						<div className="book-found">
+							{booksFound && booksFound.allBook && booksFound.allBook.length > 0 &&
+								booksFound.allBook.map((item, index) => {
+									return (
+										<Book data={item.bookData} key={index}/>
+									)
+								})
+							}
+						</div>
 					</div>
 				</div>
 			</>

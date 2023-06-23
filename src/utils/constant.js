@@ -38,8 +38,25 @@ export const GENRE_TITLE = {
 export const KIND_TITLE = {
   ALLEGORY: <FormattedMessage id="book.kind.allegory" />,
   NOVEL: <FormattedMessage id="book.kind.novel" />,
+	FAIRY_TALE: <FormattedMessage id="book.kind.fairy-tale" />,
+	FUNNY_STORY: <FormattedMessage id="book.kind.funny-story" />,
+	GHOST_STORY: <FormattedMessage id="book.kind.ghost-story" />,
+	HORROR_STORY: <FormattedMessage id="book.kind.horror-story" />,
+	MYTH: <FormattedMessage id="book.kind.myth" />,
   SHORT_STORY: <FormattedMessage id="book.kind.short-story" />,
 };
+
+export const KIND_ID = {
+	ALLEGORY: 1,
+	NOVEL: 2,
+	FAIRY_TALE: 3,
+	FUNNY_STORY: 4,
+	GHOST_STORY: 5,
+	HORROR_STORY: 6,
+	MYTH: 7,
+	SHORT_STORY: 8
+}
+
 
 export const LANGUAGES = {
 	VI: 'vi',

@@ -41,15 +41,16 @@
 	},
 	"book": {
 		"status": {
-			"new": "Sách mới",
-			"accomplished": "Sách đã hoàn thành"
-		},
-		"genre": {
-			"action": "Hành động"
+			"new": "Sách mới"
 		},
 		"kind": {
 			"allegory": "Truyện ngụ ngôn",
 			"novel": "Tiểu thuyết",
+			"fairy-tale": "Truyện cổ tích",
+			"funny-story": "Truyện cười",
+			"ghost-story": "Truyện ma",
+			"horror-story": "Truyện kinh dị",
+			"myth": "Thần thoại",
 			"short-story": "Truyện ngắn"
 		}
 	},

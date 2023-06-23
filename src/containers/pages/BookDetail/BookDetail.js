@@ -42,7 +42,6 @@ class BookDetail extends Component {
 	}
 
 	handleToGenrePage = async (genreId) => {
-		await this.props.fetchAllBookByGenre(genreId);
 		window.location.assign(`/books-found/genre-id/${genreId}`);
 	};
 
@@ -162,7 +161,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		fetchAllBookByGenre: (genreId) => dispatch(actions.fetchAllBookByGenre(genreId)),
 		fetchBookInfo: (bookId) => dispatch(actions.fetchBookInfo(bookId)),
 	};
 };

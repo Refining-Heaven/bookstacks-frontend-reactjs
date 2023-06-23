@@ -28,6 +28,10 @@ const getAllBookByGenreService = (genreId) => {
 	return axios.get(`/api/get-all-book-by-genre?id=${genreId}`);
 };
 
+const getAllBookByKindService = (kindId, limit) => {
+	return axios.get(`/api/get-all-book-by-kind?id=${kindId}&limit=${limit}`);
+};
+
 const getBookInfoService = (bookId) => {
 	return axios.get(`/api/get-book-info?id=${bookId}`);
 };
@@ -60,6 +64,7 @@ export {
 	getAllNewBookService,
 	getAllBookByNameService,
 	getAllBookByGenreService,
+	getAllBookByKindService,
 	getBookInfoService,
 	getAllChapterService,
 	getChapterInfoService,
