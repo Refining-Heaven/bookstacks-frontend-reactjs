@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl';
 import images from '../../../assets/images';
 import { customStyles } from '../../../config/reactModal';
 import * as actions from '../../../store/actions';
-import { withRouter, LANGUAGES, TYPE, dateCalculation, THEMES } from '../../../utils';
+import { withRouter, TYPE, dateCalculation, THEMES } from '../../../utils';
 import './CommentSection.scss';
 
 class CommentSection extends Component {
