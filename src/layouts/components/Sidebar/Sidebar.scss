@@ -14,3 +14,38 @@
     margin          : 10px 0 10px 10px;
   }
 }
+
+// Dark mode
+.sidebar-container {
+  &.dark-mode {
+    background-color: #333;
+
+    .nav-item {
+      color: #fff;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+      }
+    
+      &.active {
+        width           : 100%;
+        color           : #fff;
+        background-color: $main-color;
+        border-radius   : 6px 0 0 6px;
+        animation       : nav-item-active 0.1s linear;
+    
+        @keyframes nav-item-active {
+          from {
+            width        : 50%;
+            border-radius: 0 50px 50px 0;
+          }
+    
+          to {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { FormattedMessage } from "react-intl";
 import { convertStringToAddressBar, dateCalculation } from '../../../utils';
 import * as actions from '../../../store/actions';
 import { withRouter } from '../../../utils';
@@ -44,7 +45,7 @@ class ChapterList extends Component {
 							>
 								<div className="content-up">
 									<div className="number">
-										<span>Chapter&nbsp;</span>
+										<span><FormattedMessage id="label.chapter" />&nbsp;</span>
 										<span>{item.chapterNumber}:&nbsp;</span>
 									</div>
 									<div className="title">
@@ -53,7 +54,7 @@ class ChapterList extends Component {
 								</div>
 								<div className="content-down">
 									<div className="last-update">
-										<span>Last update:&nbsp;</span>
+										<span><FormattedMessage id="label.last-update" />:&nbsp;</span>
 										<span className="date">{updateDate}</span>
 									</div>
 								</div>

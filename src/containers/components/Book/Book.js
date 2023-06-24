@@ -4,7 +4,7 @@ import { Buffer } from 'buffer';
 import { FormattedMessage } from 'react-intl';
 import images from '../../../assets/images';
 import * as actions from '../../../store/actions';
-import { withRouter, convertStringToAddressBar, LANGUAGES } from '../../../utils';
+import { withRouter, convertStringToAddressBar, LANGUAGES, THEMES } from '../../../utils';
 import './Book.scss';
 
 class Book extends Component {
@@ -47,9 +47,9 @@ class Book extends Component {
 
 	render() {
 		const { previewImgURL } = this.state;
-		const { language, isShowIntro, data } = this.props;
+		const { language, isShowIntro, data, theme } = this.props;
 		return (
-			<div className="book" onDoubleClick={() => this.handleViewBookDetail(data.id, data.bookName)}>
+			<div className={theme === THEMES.LIGHT ? "book" : "book dark-mode"} onDoubleClick={() => this.handleViewBookDetail(data.id, data.bookName)}>
 				<div className="book-cover">
 					<div className="book-cover-image">
 						<img src={previewImgURL === '' ? images.noCoverImage : previewImgURL} alt="" />
@@ -124,6 +124,7 @@ const mapStateToProps = (state) => {
 	return {
 		language: state.app.language,
 		bookInfo: state.app.bookInfo,
+		theme: state.app.theme
 	};
 };
 

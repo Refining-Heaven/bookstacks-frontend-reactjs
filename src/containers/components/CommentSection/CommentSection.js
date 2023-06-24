@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl';
 import images from '../../../assets/images';
 import { customStyles } from '../../../config/reactModal';
 import * as actions from '../../../store/actions';
-import { withRouter, LANGUAGES, TYPE, dateCalculation } from '../../../utils';
+import { withRouter, LANGUAGES, TYPE, dateCalculation, THEMES } from '../../../utils';
 import './CommentSection.scss';
 
 class CommentSection extends Component {
@@ -24,8 +24,7 @@ class CommentSection extends Component {
 		};
 	}
 
-	componentDidMount() {
-	}
+	componentDidMount() {}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		if (prevProps.commentSectionIsOpen !== this.props.commentSectionIsOpen) {
@@ -45,14 +44,15 @@ class CommentSection extends Component {
 
 	handleCloseCommentSection = () => {
 		this.props.handleCloseCommentSection();
-    this.setState({
-      isViewReply: ''
-    })
+		this.setState({
+			isViewReply: '',
+		});
 	};
 
 	handleEnterComment = () => {
 		this.setState({
 			isComment: true,
+			isViewReply: '',
 		});
 	};
 	handleExitComment = () => {
@@ -79,6 +79,7 @@ class CommentSection extends Component {
 				isViewReply: '',
 				isReply: false,
 				replyContent: '',
+				isComment: false,
 			});
 		} else {
 			await this.props.fetchAllReply(commentId);
@@ -86,16 +87,20 @@ class CommentSection extends Component {
 				isViewReply: commentIndex,
 				isReply: false,
 				replyContent: '',
+				isComment: false,
 			});
 		}
 	};
 
 	handleOnChangeInput = (e, id) => {
 		const copyState = { ...this.state };
-		copyState[id] = e.target.value;
-		this.setState({
-			...copyState,
-		});
+		const inputValue = e.target.value;
+		if (inputValue.length < 300) {
+			copyState[id] = inputValue;
+			this.setState({
+				...copyState,
+			});
+		}
 	};
 
 	handleAddComment = async () => {
@@ -119,7 +124,6 @@ class CommentSection extends Component {
 			await this.props.fetchAllComment(this.props.chapterInfo.id, TYPE.CHAPTER);
 		}
 		this.setState({
-			isComment: false,
 			commentContent: '',
 		});
 	};
@@ -132,7 +136,6 @@ class CommentSection extends Component {
 		});
 		await this.props.fetchAllReply(commentId);
 		this.setState({
-			isReply: false,
 			replyContent: '',
 		});
 	};
@@ -154,11 +157,11 @@ class CommentSection extends Component {
 
 	render() {
 		const { isComment, commentContent, isViewReply, isReply, replyContent } = this.state;
-		const { commentSectionIsOpen, allComments, allReplies, accountInfo } = this.props;
+		const { commentSectionIsOpen, allComments, allReplies, accountInfo, theme } = this.props;
 		Modal.setAppElement(document.getElementById('root'));
 		return (
 			<Modal isOpen={commentSectionIsOpen} style={customStyles} contentLabel="Comment section">
-				<div className="comment-section-container">
+				<div className={theme === THEMES.LIGHT ? 'comment-section-container' : 'comment-section-container dark-mode'}>
 					<div className="close">
 						<div className="close-btn" onClick={() => this.handleCloseCommentSection()}>
 							<FontAwesomeIcon icon={faXmark} />
@@ -169,14 +172,16 @@ class CommentSection extends Component {
 							return (
 								<div className="btn-container">
 									<div className="btn comment-btn" onClick={() => this.handleEnterComment()}>
-										Comment
+										<FormattedMessage id="button.comment" />
 									</div>
 								</div>
 							);
 						} else {
 							return (
 								<div className="enter-comment">
-									<label>Nhập bình luận:</label>
+									<label>
+										<FormattedMessage id="label.enter-comment" />:
+									</label>
 									<textarea
 										rows={4}
 										value={commentContent}
@@ -185,10 +190,10 @@ class CommentSection extends Component {
 									></textarea>
 									<div className="btn-container">
 										<div className="btn comment-btn" onClick={() => this.handleAddComment()}>
-											Comment
+											<FormattedMessage id="button.comment" />
 										</div>
 										<div className="btn close-btn" onClick={() => this.handleExitComment()}>
-											Close
+											<FormattedMessage id="button.close" />
 										</div>
 									</div>
 								</div>
@@ -253,7 +258,7 @@ class CommentSection extends Component {
 												{isReply === false ? (
 													<div className="btn-container">
 														<div className="btn comment-btn" onClick={() => this.handleEnterReply()}>
-															Reply
+														<FormattedMessage id="button.reply" />
 														</div>
 													</div>
 												) : (
@@ -266,10 +271,10 @@ class CommentSection extends Component {
 														</div>
 														<div className="btn-container">
 															<div className="btn comment-btn" onClick={() => this.handleAddReply(item.id)}>
-																Reply
+															<FormattedMessage id="button.reply" />
 															</div>
 															<div className="btn close-btn" onClick={() => this.handleExitReply()}>
-																Close
+															<FormattedMessage id="button.close" />
 															</div>
 														</div>
 													</div>
@@ -348,6 +353,7 @@ const mapStateToProps = (state) => {
 		accountInfo: state.user.accountInfo,
 		bookInfo: state.app.bookInfo,
 		chapterInfo: state.app.chapterInfo,
+		theme: state.app.theme,
 	};
 };
 

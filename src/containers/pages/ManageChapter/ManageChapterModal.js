@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import Modal from 'react-modal';
-import { ACTION } from '../../../utils';
+import { ACTION, THEMES } from '../../../utils';
 import { customStyles } from '../../../config/reactModal';
 import * as actions from '../../../store/actions';
 import './ManageChapter.scss';
@@ -81,11 +81,11 @@ class ManageChapterContent extends Component {
 
 	render() {
 		const { chapterNumber, chapterTitle, chapterContent, action } = this.state;
-		const { language, manageChapterModalIsOpen } = this.props;
+		const { manageChapterModalIsOpen, theme } = this.props;
 		Modal.setAppElement(document.getElementById('root'));
 		return (
 			<Modal isOpen={manageChapterModalIsOpen} style={customStyles} contentLabel="Manage chapter modal">
-				<div className="manage-chapter-modal">
+				<div className={theme === THEMES.LIGHT ? "manage-chapter-modal" : "manage-chapter-modal dark-mode"}>
 					<div className="modal-header">
 						<div className="modal-title">
 							<FormattedMessage id="title.manage-chapter" />
@@ -142,6 +142,7 @@ const mapStateToProps = (state) => {
 		language: state.app.language,
 		chapterInfo: state.app.chapterInfo,
 		manageChapterModalIsOpen: state.app.manageChapterModalIsOpen,
+		theme: state.app.theme
 	};
 };
 

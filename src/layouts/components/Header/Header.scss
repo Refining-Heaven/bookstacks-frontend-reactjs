@@ -5,7 +5,7 @@
   height          : $header-heigth;
   position        : fixed;
   background-color: #fff;
-  box-shadow      : 5px 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow      : 5px 0 10px #00000080;
   z-index         : 1000;
 
   .header-content {
@@ -15,12 +15,12 @@
     user-select    : none;
 
     .left-content {
-      width: $sidebar-width;
-      height: $header-heigth;
-      display: flex;
+      width          : $sidebar-width;
+      height         : $header-heigth;
+      display        : flex;
       justify-content: center;
-      align-items: center;
-      border: 1px solid purple;
+      align-items    : center;
+      border         : 1px solid purple;
 
       .logo {
         width : $logo-width;
@@ -34,10 +34,10 @@
     }
 
     .center-content {
-      width : 1070px;
-      display: flex;
+      width          : 1070px;
+      display        : flex;
       justify-content: center;
-      align-items: center;
+      align-items    : center;
     }
 
     .right-content {
@@ -75,6 +75,21 @@
         .login-icon {
           margin-right: 4px;
         }
+      }
+    }
+  }
+}
+
+// Dark mode
+.header-container {
+    
+  &.dark-mode {
+    background-color: #333;
+    color: #fff;
+
+    .right-content {
+      .btn-login {
+        background-color: $main-color;
       }
     }
   }

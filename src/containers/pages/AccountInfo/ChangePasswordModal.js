@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
+import { THEMES } from "../../../utils";
 import * as actions from '../../../store/actions';
 import { customStyles } from '../../../config/reactModal';
 import './AccountInfo.scss';
@@ -71,12 +72,12 @@ class changePasswordModal extends Component {
 	};
 
 	render() {
-		const { changePasswordModalIsOpen } = this.props;
+		const { changePasswordModalIsOpen, theme } = this.props;
 		const { currentPassword, newPassword, confirmNewPassword, showPassword } = this.state;
 		Modal.setAppElement(document.getElementById('root'));
 		return (
 			<Modal isOpen={changePasswordModalIsOpen} style={customStyles} contentLabel="Manage chapter modal">
-				<div className="change-password-modal">
+				<div className={theme === THEMES.LIGHT ? "change-password-modal" : "change-password-modal dark-mode"}>
 					<div className="modal-header">
 						<button className="close-modal-icon" onClick={() => this.handleCloseChangePasswordModal()}>
 							<FontAwesomeIcon icon={faXmark} />
@@ -133,6 +134,7 @@ const mapStateToProps = (state) => {
 		language: state.app.language,
 		accountInfo: state.user.accountInfo,
 		changePasswordModalIsOpen: state.app.changePasswordModalIsOpen,
+		theme: state.app.theme
 	};
 };
 

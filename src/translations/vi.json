@@ -86,7 +86,9 @@
 		"title": "Tiêu đề",
     "chapter-number": "Chương số",
     "chapter-title": "Tiêu đề chương",
-    "chapter-content": "Nội dung chương"
+    "chapter-content": "Nội dung chương",
+		"enter-comment": "Nhập bình luận",
+		"last-update": "Lần cập nhật cuối"
 	},
 	"title": {
 		"home": "Trang chủ",
@@ -106,7 +108,10 @@
 		"save-change": "Lưu thay đổi",
 		"get": "Lấy",
 		"yes": "Có",
-		"no": "Không"
+		"no": "Không",
+		"comment": "Bình luận",
+		"close": "Đóng",
+		"reply": "Trả lời"
 	},
 	"date": {
 		"day-ago": "ngày trước",

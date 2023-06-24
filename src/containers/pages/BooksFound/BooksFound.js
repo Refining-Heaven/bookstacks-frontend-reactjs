@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { LANGUAGES, withRouter } from '../../../utils';
+import { LANGUAGES, THEMES, withRouter } from '../../../utils';
 import * as actions from '../../../store/actions';
 import SubHeader from '../../../layouts/components/SubHeader/SubHeader';
 import Book from '../../components/Book/Book'
@@ -25,7 +25,7 @@ class BooksFound extends Component {
 	}
 
 	render() {
-		const { language, booksFound } = this.props;
+		const { language, booksFound, theme } = this.props;
 		console.log(booksFound);
 		return (
 			<>
@@ -40,7 +40,7 @@ class BooksFound extends Component {
 						return <SubHeader />
 					}
 				})()}
-				<div className="content-body">
+				<div className={theme === THEMES.LIGHT ? "content-body" : "content-body dark-mode"}>
 					<div className="book-found-container">
 						<div className="book-found">
 							{booksFound && booksFound.allBook && booksFound.allBook.length > 0 &&
@@ -62,6 +62,7 @@ const mapStateToProps = (state) => {
 	return {
 		language: state.app.language,
 		booksFound: state.app.booksFound,
+		theme: state.app.theme
 	};
 };
 

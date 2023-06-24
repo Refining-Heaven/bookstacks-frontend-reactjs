@@ -9,7 +9,7 @@ import { faCloudArrowUp, faXmark } from '@fortawesome/free-solid-svg-icons';
 import * as actions from '../../../store/actions';
 import { customStyles } from '../../../config/reactModal';
 import images from '../../../assets/images';
-import { CommonUtils } from '../../../utils';
+import { CommonUtils, THEMES } from '../../../utils';
 import './AccountInfo.scss';
 
 class UpdateAccountInfoModal extends Component {
@@ -121,12 +121,12 @@ class UpdateAccountInfoModal extends Component {
   }
 
 	render() {
-		const { updateAccountInfoModalIsOpen } = this.props;
+		const { updateAccountInfoModalIsOpen, theme } = this.props;
 		const { email, username, previewImgURL } = this.state;
 		Modal.setAppElement(document.getElementById('root'));
 		return (
 			<Modal isOpen={updateAccountInfoModalIsOpen} style={customStyles} contentLabel="Manage chapter modal">
-				<div className="update-account-info-modal">
+				<div className={theme === THEMES.LIGHT ? "update-account-info-modal" : "update-account-info-modal dark-mode"}>
 					<div className="modal-header">
 						<div className="modal-title">
 							<FormattedMessage id="title.update-account-info" />
@@ -189,6 +189,7 @@ const mapStateToProps = (state) => {
 		language: state.app.language,
 		accountInfo: state.user.accountInfo,
 		updateAccountInfoModalIsOpen: state.app.updateAccountInfoModalIsOpen,
+		theme: state.app.theme
 	};
 };
 

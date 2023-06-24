@@ -98,7 +98,11 @@ textarea {
 }
 
 .ReactModal__Content {
-  
+  overflow: unset !important;
+}
+
+// react select
+.css-1n6sfyn-MenuList {
   &::-webkit-scrollbar {
     border-radius: 0;
     width        : 6px;
@@ -112,5 +116,21 @@ textarea {
   &::-webkit-scrollbar-track {
     border-radius   : 0;
     background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+.dark-mode {
+  .css-1n6sfyn-MenuList {
+    color: #fff;
+    background-color: #444;
+    .css-d7l1ni-option {
+      background-color: #444;
+    }
+    .css-d7l1ni-option {
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+      }
+    }
   }
 }

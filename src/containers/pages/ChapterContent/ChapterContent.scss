@@ -3,11 +3,11 @@
 #chapter-content-container {
   width           : 1000px;
   margin          : -40px auto 20px;
-  padding         : 30px 40px;
   border-radius   : 5px;
   background-color: #fff;
 
   .chapter-content-body {
+    padding: 30px 40px;
 
     .last-update {
       text-align: end;
@@ -40,14 +40,30 @@
 //
 .chapter-list-modal {
   width        : 700px;
-  height       : 600px;
+  height       : 580px;
   padding      : 20px;
   border-radius: 5px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    border-radius: 0;
+    width        : 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius   : 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius   : 0;
+    background-color: rgba(0, 0, 0, 0);
+  }
 
   .close {
     margin         : -20px -20px 0 0;
     position       : sticky;
-    top            : 0;
+    top            : -20px;
     display        : flex;
     justify-content: flex-end;
 
@@ -95,13 +111,28 @@
 
       &:hover {
         background-color: rgba(22, 24, 35, 0.03);
-        cursor: pointer;
+        cursor          : pointer;
       }
 
       &.active {
-        color: #fff;
+        color           : #fff;
         background-color: $main-color;
       }
     }
+  }
+}
+
+// Dark mode
+.chapter-content-body {
+  &.dark-mode {
+    color           : #fff;
+    background-color: #333;
+  }
+}
+
+.chapter-list-modal {
+  &.dark-mode {
+    color           : #fff;
+    background-color: #333;
   }
 }

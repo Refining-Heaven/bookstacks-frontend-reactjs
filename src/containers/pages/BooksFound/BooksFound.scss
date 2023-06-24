@@ -12,3 +12,10 @@
     gap: 20px;
   }
 }
+
+.content-body {
+  &.dark-mode {
+    color           : #fff;
+    background-color: #333;
+  }
+}

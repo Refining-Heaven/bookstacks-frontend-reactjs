@@ -161,7 +161,7 @@
   // Chapter list
   .chapter-list {
     width          : 80%;
-    max-height     : 422px;
+    max-height     : 490px;
     margin         : 0 auto 50px;
     padding        : 10px 20px;
     border         : 2px solid #ddd;
@@ -231,5 +231,13 @@
         }
       }
     }
+  }
+}
+
+// Dark mode
+.content-body {
+  &.dark-mode {
+    color           : #fff;
+    background-color: #333;
   }
 }

@@ -31,11 +31,13 @@
         }
 
         input[type=text] {
-          width        : 170px;
-          padding-top  : 3px;
-          line-height  : 1.4;
-          border-bottom: 1px solid #ddd;
-          font-size    : 16px;
+          width           : 300px;
+          padding-top     : 3px;
+          line-height     : 1.4;
+          border-bottom   : 1px solid #ddd;
+          font-size       : 16px;
+          color           : inherit;
+          background-color: inherit;
 
           &:focus {
             border-bottom: 1px solid $main-color;
@@ -116,7 +118,7 @@
           width    : 640px;
           padding  : 5px;
           font-size: 16px;
-          
+
         }
 
         select {
@@ -297,6 +299,121 @@
           .delete-icon {
             font-size: 15px;
             color    : red;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dark mode
+.content-body {
+  &.dark-mode {
+    color           : #fff;
+    background-color: #333;
+
+    // table
+    .manage-book-table {
+      .table-wrapper {
+        table {
+          tbody {
+            tr {
+              &:hover {
+                background: rgba(255, 255, 255, 0.1);
+                cursor    : pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// modal
+.manage-book-modal {
+  &.dark-mode {
+
+    .modal-content {
+      background-color: #333;
+
+      .manage-book-form {
+
+        .input-book-info {
+
+          label {
+            color: #fff;
+          }
+
+          input[type=text] {
+            color           : #fff;
+            background-color: inherit;
+
+            &:focus {
+              border-bottom: 1px solid $main-color;
+            }
+          }
+
+          textarea {
+            color           : #fff;
+            background-color: inherit;
+          }
+
+          select {
+            color           : #fff;
+            background-color: inherit;
+
+            &:focus {
+              border-bottom: 1px solid $main-color;
+            }
+
+            option {
+              color           : #fff;
+              background-color: #444;
+            }
+          }
+        }
+
+        .book-genre-image-container {
+          display  : flex;
+          font-size: 16px;
+
+          .book-genre {
+            width: 50%;
+
+            label {
+              color: #fff;
+            }
+
+            .select-genre-container {
+              display  : flex;
+              flex-wrap: wrap;
+              gap      : 10px;
+
+              .btn-genre {
+                padding         : 3px 5px;
+                border          : 1px solid #ddd;
+                color           : #000;
+                background-color: #fff;
+
+                &.active {
+                  color           : #fff;
+                  background-color: $main-color;
+                }
+              }
+            }
+          }
+
+          .book-cover-image {
+            .upload-cover-image {
+              label {
+                color: #fff;
+              }
+
+              .label-upload {
+                color: #000;
+              }
+            }
           }
         }
       }

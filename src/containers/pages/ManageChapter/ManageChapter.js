@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { toast } from 'react-toastify';
 import Select from 'react-select';
-import { TITLE } from '../../../utils';
+import { THEMES, TITLE } from '../../../utils';
 import * as actions from '../../../store/actions';
 import SubHeader from '../../../layouts/components/SubHeader/SubHeader';
 import ManageChapterModal from './ManageChapterModal';
@@ -82,11 +82,11 @@ class ManageChapter extends Component {
 
 	render() {
 		const { bookId, bookList, isDisabled, isLoading } = this.state;
-		const { chapterInfo } = this.props
+		const { chapterInfo, theme } = this.props
 		return (
 			<>
 				<SubHeader title={TITLE.MANAGE_CHAPTER} />
-				<div className="content-body">
+				<div className={theme === THEMES.LIGHT ? "content-body" : "content-body dark-mode"}>
 					<div className="manage-chapter-container">
 						<div className="content-left">
 							{chapterInfo !== null && <ChapterPreview />}
@@ -129,6 +129,7 @@ const mapStateToProps = (state) => {
 		chapterInfo: state.app.chapterInfo,
 		allBooks: state.app.allBooks,
 		allChapters: state.app.allChapters,
+		theme: state.app.theme
 	};
 };
 

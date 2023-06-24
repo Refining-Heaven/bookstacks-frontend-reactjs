@@ -29,12 +29,12 @@
 // Chapter control
 .chapter-control {
   user-select: none;
-  position: fixed;
-  bottom  : 30px;
-  right   : 500px;
-  display : flex;
-  gap     : 20px;
-  z-index : 200;
+  position   : fixed;
+  bottom     : 30px;
+  right      : 500px;
+  display    : flex;
+  gap        : 20px;
+  z-index    : 200;
 
   .control-btn {
     width           : 60px;
@@ -88,5 +88,12 @@
       background: rgba(22, 24, 35, 0.03);
       cursor    : pointer;
     }
+  }
+}
+
+// Dark mode
+.chapter-control{
+  &.dark-mode {
+    color: #fff;
   }
 }

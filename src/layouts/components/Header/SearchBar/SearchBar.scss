@@ -119,3 +119,42 @@
     }
   }
 }
+
+//Dark mode
+.search {
+  &.dark-mode {
+    background-color: rgba(167, 157, 157, 0.1);
+
+    &:focus-within {
+      border-color: rgba(92, 93, 97, 0.4);
+    }
+
+    input:not(:placeholder-shown)~.search-btn {
+      color: #ddd
+    }
+
+    .search-btn {
+      color: rgba(124, 117, 117, 0.75);
+    }
+
+    input,
+    .clear-icon,
+    .loading-icon {
+      color: #fff;
+    }
+  }
+}
+
+.search-result {
+  &.dark-mode {
+    background-color: #444;
+
+    .item-found {
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        cursor    : pointer;
+      }
+    }
+  }
+}

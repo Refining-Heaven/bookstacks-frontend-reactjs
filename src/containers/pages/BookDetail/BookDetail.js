@@ -5,7 +5,7 @@ import SubHeader from '../../../layouts/components/SubHeader/SubHeader';
 import { FormattedMessage } from 'react-intl';
 import images from '../../../assets/images';
 import * as actions from '../../../store/actions';
-import { withRouter, LANGUAGES, TYPE } from '../../../utils';
+import { withRouter, LANGUAGES, TYPE, THEMES } from '../../../utils';
 import ChapterList from './ChapterList';
 import CommentSection from '../../components/CommentSection/CommentSection';
 import CommentControl from "../../../layouts/components/Control/CommentControl";
@@ -46,12 +46,12 @@ class BookDetail extends Component {
 	};
 
 	render() {
-		const { language, bookInfo } = this.props;
+		const { language, bookInfo, theme } = this.props;
 		const { previewImgURL } = this.state;
 		return (
 			<>
 				<SubHeader title={bookInfo && bookInfo.bookName} />
-				<div className="content-body">
+				<div className={theme === THEMES.LIGHT ? "content-body" : "content-body dark-mode"}>
 					{(() => {
 						if (bookInfo) {
 							return (
@@ -156,6 +156,7 @@ const mapStateToProps = (state) => {
 	return {
 		language: state.app.language,
 		bookInfo: state.app.bookInfo,
+		theme: state.app.theme
 	};
 };
 

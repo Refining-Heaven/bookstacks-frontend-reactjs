@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Buffer } from 'buffer';
 import { FormattedMessage } from 'react-intl';
 import Modal from 'react-modal';
-import { LANGUAGES, CommonUtils } from '../../../utils';
+import { LANGUAGES, CommonUtils, THEMES } from '../../../utils';
 import { customStyles } from '../../../config/reactModal';
 import * as actions from '../../../store/actions';
 import './ManageBook.scss';
@@ -187,7 +187,7 @@ class ManageBookModal extends Component {
 			intro,
 			previewImgURL,
 		} = this.state;
-		const { language, manageBookModalIsOpen } = this.props;
+		const { language, manageBookModalIsOpen, theme } = this.props;
 		Modal.setAppElement(document.getElementById('root'));
 		return (
 			<Modal
@@ -197,7 +197,7 @@ class ManageBookModal extends Component {
 				style={customStyles}
 				contentLabel="Manage book modal"
 			>
-				<div className="manage-book-modal">
+				<div className={theme === THEMES.LIGHT ? "manage-book-modal" : "manage-book-modal dark-mode"}>
 					<div className="modal-header">
 						<div className="modal-title">
 							<FormattedMessage id="title.manage-book" />
@@ -384,6 +384,7 @@ const mapStateToProps = (state) => {
 		bookInfo: state.app.bookInfo,
 		manageBookModalIsOpen: state.app.manageBookModalIsOpen,
 		allRequiredBookData: state.app.allRequiredBookData,
+		theme: state.app.theme
 	};
 };
 

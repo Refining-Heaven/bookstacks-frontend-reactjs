@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { GUEST_SIDEBAR, USER_SIDEBAR, ADMIN_SIDEBAR, ROLE } from '../../../utils';
+import { GUEST_SIDEBAR, USER_SIDEBAR, ADMIN_SIDEBAR, ROLE, THEMES } from '../../../utils';
 import SidebarNav from '../Sidebar/SidebarNav/SidebarNav';
 import SidebarNavItem from '../Sidebar/SidebarNav/SidebarNavItem';
 import './Sidebar.scss';
@@ -55,8 +55,9 @@ class Sidebar extends Component {
 
 	render() {
 		const { currentSidebar } = this.state;
+		const { theme } = this.props
 		return (
-			<div className="sidebar-container">
+			<div className={theme === THEMES.LIGHT ? "sidebar-container" : "sidebar-container dark-mode"}>
 				<div className="sidebar-content">
 					<SidebarNav>
 						{currentSidebar &&
@@ -75,6 +76,7 @@ const mapStateToProps = (state) => {
 	return {
 		isLoggedIn: state.user.isLoggedIn,
 		accountInfo: state.user.accountInfo,
+		theme: state.app.theme
 	};
 };
 

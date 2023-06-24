@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, PATH } from '../../../utils'
+import { withRouter, PATH, THEMES } from '../../../utils'
 import * as actions from '../../../store/actions'
 import Options from "./Options/Options";
 import SearchBar from "./SearchBar/SearchBar";
@@ -18,8 +18,9 @@ class Header extends Component {
 	}
 
 	render() {
+		const { theme } = this.props
 		return (
-			<div className="header-container">
+			<div className={theme === THEMES.LIGHT ? "header-container" : "header-container dark-mode"}>
 				<div className="header-content">
 					<div className="left-content"  onClick={() => this.props.handleCloseOptionsMenu()}>
 						<div className="logo" onClick={() => this.handleToHomePage()}>
@@ -42,6 +43,7 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
 	return {
+		theme: state.app.theme
 	};
 };
 

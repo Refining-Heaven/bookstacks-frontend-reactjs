@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { FormattedMessage } from "react-intl";
 import * as actions from '../../../store/actions';
-import { TYPE, dateCalculation, withRouter } from '../../../utils';
+import { THEMES, TYPE, dateCalculation, withRouter } from '../../../utils';
 import ChapterControl from '../../../layouts/components/Control/ChapterControl';
 import CommentControl from '../../../layouts/components/Control/CommentControl';
 import CommentSection from '../../components/CommentSection/CommentSection';
@@ -28,7 +29,7 @@ class ChapterContent extends Component {
 	}
 
 	render() {
-		const { chapterInfo } = this.props;
+		const { chapterInfo, theme } = this.props;
 		let updateDate = ''
 		if (chapterInfo) {
 			const lastUpdateTime = new Date(chapterInfo.updatedAt);
@@ -40,13 +41,13 @@ class ChapterContent extends Component {
 					{(() => {
 						if (chapterInfo) {
 							return (
-								<div className="chapter-content-body">
+								<div className={theme === THEMES.LIGHT ? "chapter-content-body" : "chapter-content-body dark-mode"}>
 									<div className="last-update">
-										<span>Last update:&nbsp;</span>
+										<span><FormattedMessage id="label.last-update" />:&nbsp;</span>
 										<span className="time">{updateDate === '' ? '' : updateDate}</span>
 									</div>
 									<div className="chapter-info">
-										<span>Chapter&nbsp;</span>
+										<span><FormattedMessage id="label.chapter" />&nbsp;</span>
 										<span>{chapterInfo.chapterNumber}:&nbsp;</span>
 										<span>{chapterInfo.chapterTitle}</span>
 									</div>
@@ -71,6 +72,7 @@ const mapStateToProps = (state) => {
 		bookInfo: state.app.bookInfo,
 		chapterInfo: state.app.chapterInfo,
 		allChapters: state.app.allChapters,
+		theme: state.app.theme
 	};
 };
 

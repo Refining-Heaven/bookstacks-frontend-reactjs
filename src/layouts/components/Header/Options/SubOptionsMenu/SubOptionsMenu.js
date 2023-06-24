@@ -1,6 +1,8 @@
 import { Component } from 'react';
-import './SubOptionsMenu.scss';
+import { connect } from "react-redux";
 import SubOptionsMenuItem from './SubOptionsMenuItem';
+import './SubOptionsMenu.scss';
+import { THEMES } from "../../../../../utils";
 
 class SubOptionsMenu extends Component {
 	constructor(props) {
@@ -18,8 +20,9 @@ class SubOptionsMenu extends Component {
 
 	render() {
 		const { SubMenuItemList } = this.state;
+		const { theme } = this.props;
 		return (
-			<div className="sub-option-menu">
+			<div className={theme === THEMES.LIGHT ? "sub-option-menu" : "sub-option-menu dark-mode"}>
 				<div className="sub-option-menu-list" tabIndex="-1">
 					{SubMenuItemList &&
 						SubMenuItemList.length > 0 &&
@@ -33,4 +36,15 @@ class SubOptionsMenu extends Component {
 	}
 }
 
-export default SubOptionsMenu;
+const mapStateToProps = (state) => {
+	return {
+		theme: state.app.theme
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SubOptionsMenu);

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import * as actions from '../../../store/actions';
 import SubHeader from '../../../layouts/components/SubHeader/SubHeader';
-import { TITLE } from '../../../utils';
+import { THEMES, TITLE } from '../../../utils';
 import Book from '../../components/Book/Book';
 import ManageBookModal from './ManageBookModal';
 import ManageBookTable from './ManageBookTable';
@@ -54,11 +54,11 @@ class ManageBook extends Component {
 
 	render() {
 		const { allBooks, bookName } = this.state;
-		const { bookInfo } = this.props;
+		const { bookInfo, theme } = this.props;
 		return (
 			<>
 				<SubHeader title={TITLE.MANAGE_BOOK} />
-				<div className="content-body">
+				<div className={theme === THEMES.LIGHT ? "content-body" : "content-body dark-mode"}>
 					<div className="manage-book-container">
 						<div className="content-left">{bookInfo !== null && <Book isShowIntro={true} data={bookInfo} />}</div>
 						<div className="content-right">
@@ -90,6 +90,7 @@ const mapStateToProps = (state) => {
 		accountInfo: state.user.accountInfo,
 		bookInfo: state.app.bookInfo,
 		allBooks: state.app.allBooks,
+		theme: state.app.theme
 	};
 };
 

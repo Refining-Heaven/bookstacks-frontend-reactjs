@@ -4,14 +4,15 @@ import { connect } from "react-redux";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import { THEMES } from "../../../utils";
 import Book from '../Book/Book';
 import './BookSlider.scss';
 
 class BookSlider extends Component {
 	render() {
-		const { data } = this.props;
+		const { data, theme } = this.props;
 		return (
-			<div className="book-slider-section">
+			<div className={theme === THEMES.LIGHT ? "book-slider-section" : "book-slider-section dark-mode"}>
 				<div className="section-title">{this.props.name}</div>
 				<div className="section-body">
 					<Slider {...this.props.settings}>
@@ -33,6 +34,7 @@ class BookSlider extends Component {
 
 const mapStateToProps = (state) => {
 	return {
+		theme: state.app.theme
 	};
 };
 

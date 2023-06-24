@@ -47,7 +47,7 @@ class SearchItem extends Component {
 
 	render() {
 		const { previewImgURL } = this.state;
-		const { data } = this.props;
+		const { data, theme } = this.props;
 		return (
 			<div className="item-found" onClick={() => this.handleViewBookDetail(data.id, data.bookName)}>
 				<div className="book-cover-image">
@@ -63,7 +63,9 @@ class SearchItem extends Component {
 }
 
 const mapStateToProps = (state) => {
-	return {};
+	return {
+		theme: state.app.theme
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {

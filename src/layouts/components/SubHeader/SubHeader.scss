@@ -17,3 +17,16 @@
     font-weight: 600;
   }
 }
+
+// Dark mode
+.sub-header {
+  &.dark-mode {
+    background-color: #333;
+  }
+
+  .sub-header-title {
+    color: #fff;
+    font-size  : 28px;
+    font-weight: 600;
+  }
+}

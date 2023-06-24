@@ -1,11 +1,11 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { toast } from "react-toastify";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight, faInfo, faList } from '@fortawesome/free-solid-svg-icons';
 import * as actions from '../../../store/actions';
-import { convertStringToAddressBar, withRouter } from '../../../utils';
+import { THEMES, convertStringToAddressBar, withRouter } from '../../../utils';
 import './Control.scss';
-import { toast } from "react-toastify";
 
 class ChapterControl extends Component {
 	constructor(props) {
@@ -134,8 +134,9 @@ class ChapterControl extends Component {
 
 	render() {
 		const { showControl, prevBtnIsDisable, nextBtnIsDisable } = this.state;
+		const { theme } = this.props;
 		return (
-			<div className="chapter-control">
+			<div className={theme === THEMES.LIGHT ? "chapter-control" : "chapter-control dark-mode"}>
 				{showControl === true && (
 					<>
 						<div className={prevBtnIsDisable === false ? "control-btn" : "disable-control-btn"} onClick={() => this.handlePrevChapter()}>
@@ -162,7 +163,8 @@ const mapStateToProps = (state) => {
 		bookInfo: state.app.bookInfo,
 		chapterInfo: state.app.chapterInfo,
 		allChapters: state.app.allChapters,
-		chapterListModalIsOpen: state.app.chapterListModalIsOpen
+		chapterListModalIsOpen: state.app.chapterListModalIsOpen,
+		theme: state.app.theme
 	};
 };
 

@@ -49,3 +49,27 @@
     margin-right   : 5px;
   }
 }
+
+// Dark mode
+.sub-option-menu {
+  
+  &.dark-mode {
+    background-color: #444;
+    
+    .sub-option-menu-item {
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        cursor    : pointer;
+      }
+
+      &.active {
+        background-color: $main-color;
+    
+        .sub-item-icon,
+        .sub-item-title {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

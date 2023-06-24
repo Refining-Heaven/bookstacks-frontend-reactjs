@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faXmarkCircle } from '@fortawesome/free-regular-svg-icons';
+import { THEMES } from "../../../../utils";
 import * as actions from '../../../../store/actions';
 import './SearchBar.scss';
 import SearchItem from './SearchItem';
@@ -62,10 +63,10 @@ class SearchBar extends Component {
 
 	render() {
 		const { searchValue, isLoading } = this.state;
-		const { booksFound } = this.props;
+		const { booksFound, theme } = this.props;
 		return (
 			<>
-				<div className="search">
+				<div className={theme === THEMES.LIGHT ? "search" : "search dark-mode"}>
 					<FormattedMessage id="placeholder.search">
 						{(placeholder) => (
 							<input placeholder={placeholder} value={searchValue} onChange={(e) => this.handleOnChangeInput(e)} />
@@ -88,7 +89,7 @@ class SearchBar extends Component {
 				{(() => {
 					if (booksFound && booksFound.length > 0) {
 						return (
-							<div className="search-result">
+							<div className={theme === THEMES.LIGHT ? "search-result" : "search-result dark-mode"}>
 								{booksFound.map((item, index) => {
 									return <SearchItem data={item} key={index} />;
 								})}
@@ -105,6 +106,7 @@ const mapStateToProps = (state) => {
 	return {
 		booksFound: state.app.booksFound,
 		clearSearchValue: state.app.clearSearchValue,
+		theme: state.app.theme
 	};
 };
 

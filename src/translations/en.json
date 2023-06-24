@@ -86,7 +86,9 @@
 		"title": "Title",
     "chapter-number": "Chapter number",
     "chapter-title": "Chapter title",
-    "chapter-content": "Chapter content"
+    "chapter-content": "Chapter content",
+		"enter-comment": "Enter comment",
+		"last-update": "Last update"
 	},
 	"title": {
 		"home": "Home",
@@ -106,7 +108,10 @@
 		"save-change": "Save change",
 		"get": "Get",
 		"yes": "Yes",
-		"no": "No"
+		"no": "No",
+		"comment": "Comment",
+		"close": "Close",
+		"reply": "Reply"
 	},
 	"date": {
 		"day-ago": "days ago",

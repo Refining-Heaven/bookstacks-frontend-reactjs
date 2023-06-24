@@ -1,6 +1,13 @@
 .content-body {
-  margin: 0 20px 20px;
-  border-radius: 5px;
+  margin          : 0 20px 20px;
+  border-radius   : 5px;
   background-color: #fff;
 }
 
+// Dark mode
+.content-body {
+  &.dark-mode {
+    color           : #fff;
+    background-color: #333;
+  }
+}

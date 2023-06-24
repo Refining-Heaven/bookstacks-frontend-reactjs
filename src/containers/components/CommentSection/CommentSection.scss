@@ -6,6 +6,22 @@
   height       : 600px;
   padding      : 20px;
   border-radius: 5px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    border-radius: 0;
+    width        : 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius   : 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius   : 0;
+    background-color: rgba(0, 0, 0, 0);
+  }
 
   .close {
     margin         : -20px -20px 0 0;
@@ -97,7 +113,6 @@
   }
 
   .comment-content-container {
-    height        : 500px;
     margin-top    : 20px;
     padding       : 20px;
     display       : flex;
@@ -338,11 +353,50 @@
                   word-wrap: break-word;
                 }
               }
-              
+
               .time {
                 color     : #888;
                 text-align: right;
                 font-style: italic;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dark mode
+.comment-section-container {
+  &.dark-mode {
+    color           : #fff;
+    background-color: #333;
+
+    .enter-comment {
+      display       : flex;
+      flex-direction: column;
+      gap           : 10px;
+  
+      textarea {
+        color: inherit;
+        background-color: inherit;
+      }
+    }
+
+    .comment-content-container {
+  
+      .comment-wrapper {
+  
+        .reply-section {
+  
+          .enter-reply-wrapper {
+  
+            .enter-reply {
+
+              textarea {
+                color: inherit;
+                background-color: inherit;
               }
             }
           }

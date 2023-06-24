@@ -1,6 +1,8 @@
 import { Component } from 'react';
-import './OptionsMenu.scss';
+import { connect } from "react-redux";
+import { THEMES } from "../../../../../utils";
 import OptionsMenuItem from './OptionsMenuItem';
+import './OptionsMenu.scss';
 
 class OptionsMenu extends Component {
 	constructor(props) {
@@ -18,8 +20,9 @@ class OptionsMenu extends Component {
 
 	render() {
 		const { menuItemList } = this.state;
+		const { theme } = this.props;
 		return (
-			<div className="option-menu">
+			<div className={theme === THEMES.LIGHT ? "option-menu" : "option-menu dark-mode"}>
 				<div className="option-menu-list" tabIndex="-1">
 					{menuItemList &&
 						menuItemList.length > 0 &&
@@ -33,4 +36,15 @@ class OptionsMenu extends Component {
 	}
 }
 
-export default OptionsMenu;
+const mapStateToProps = (state) => {
+	return {
+		theme: state.app.theme
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(OptionsMenu);

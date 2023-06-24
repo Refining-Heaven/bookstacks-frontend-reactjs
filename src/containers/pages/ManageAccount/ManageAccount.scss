@@ -48,7 +48,7 @@
         }
 
         select {
-          height: 29px;
+          height       : 29px;
           border-bottom: 1px solid #ddd;
           font-size    : 20px;
 
@@ -90,21 +90,21 @@
       }
 
       .reset-password-wrapper {
-        display: flex;
+        display    : flex;
         align-items: center;
 
         label {
-          font-size: 18px;
-          font-weight: 600;
+          font-size   : 18px;
+          font-weight : 600;
           margin-right: 10px;
         }
 
         input {
-          margin-right: 20px;
-          padding: 0 5px;
-          line-height: 1.5;
+          margin-right : 20px;
+          padding      : 0 5px;
+          line-height  : 1.5;
           font-size    : 18px;
-          border: 1px solid #ddd;
+          border       : 1px solid #ddd;
           border-radius: 3px;
 
           &:focus {
@@ -117,7 +117,7 @@
           border-radius   : 5px;
           color           : #fff;
           background-color: purple;
-  
+
           &:hover {
             opacity: 0.8;
             cursor : pointer;
@@ -216,6 +216,60 @@
 
         .account-email {
           padding: 0 10px;
+        }
+      }
+    }
+  }
+}
+
+// Dark mode
+.content-body {
+  &.dark-mode {
+    .manage-account-container {
+      .content-up {
+
+        .account-info-wrapper {
+
+          .account-info {
+
+            input {
+              color           : inherit;
+              background-color: inherit;
+
+              &:focus {
+                border-bottom: 1px solid $main-color;
+              }
+            }
+
+            select {
+              color           : inherit;
+              background-color: inherit;
+
+              option {
+                color           : #fff;
+                background-color: #444;
+              }
+
+              &:focus {
+                border-bottom: 1px solid $main-color;
+              }
+            }
+          }
+
+        }
+
+        .account-options {
+
+          .reset-password-wrapper {
+            input {
+              color: inherit;
+              background-color: inherit;
+
+              &:focus {
+                border: 1px solid $main-color;
+              }
+            }
+          }
         }
       }
     }

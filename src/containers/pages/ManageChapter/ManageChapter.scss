@@ -183,6 +183,7 @@
 
         tr {
           height: 35px;
+
           th {
             padding     : 5px;
             border-right: 1px solid #ddd;
@@ -229,6 +230,7 @@
 
         tr {
           height: 35px;
+
           td {
             padding      : 5px;
             border-right : 1px solid #ddd;
@@ -333,8 +335,84 @@
     }
 
     .chapter-content {
-      margin     : 0 30px;
+      margin     : 0 30px 25px;
       white-space: pre-wrap;
+    }
+  }
+}
+
+// Dark mode
+.content-body {
+  &.dark-mode {
+    color           : #fff;
+    background-color: #333;
+
+    .manage-chapter-container {
+      .content-right {
+        .select-book-container {
+          .select-book {
+            .select-book-name {
+              background-color: #333;
+            }
+          }
+        }
+      }
+    }
+
+    .chapter-preview-container {
+
+      .chapter-preview-body {
+
+        .chapter-info {
+          color: #000;
+        }
+
+        .chapter-content {
+          color: #000;
+
+        }
+      }
+    }
+  }
+}
+
+.manage-chapter-modal {
+  &.dark-mode {
+    .modal-content {
+      color: #fff;
+      background-color: #333;
+  
+      .manage-chapter-form {
+        .input-chapter-content {
+  
+          label {
+            color: #fff;
+          }
+  
+          input[type=number] {
+            color           : inherit;
+            background-color: inherit;
+  
+            &:focus {
+              border-bottom: 1px solid $main-color;
+            }
+          }
+  
+          input[type=text] {
+            color           : inherit;
+            background-color: inherit;
+  
+            &:focus {
+              border-bottom: 1px solid $main-color;
+            }
+          }
+  
+          textarea {
+            color           : inherit;
+            background-color: inherit;
+          }
+        }
+      }
     }
   }
 }

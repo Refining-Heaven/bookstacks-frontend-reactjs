@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import * as actions from '../../../store/actions';
-import { TITLE, LANGUAGES } from '../../../utils';
+import { TITLE, LANGUAGES, THEMES } from '../../../utils';
 import SubHeader from '../../../layouts/components/SubHeader/SubHeader';
 import './ManageAccount.scss';
 import ManageAccountTable from './ManageAccountTable';
@@ -118,12 +118,12 @@ class ManageAccount extends Component {
 	};
 
 	render() {
-		const { language, selectedAccountInfo, roleList } = this.props;
+		const { language, selectedAccountInfo, roleList, theme } = this.props;
 		const { editMode, deleteMode, username, email, role, roleData, banned, resetPassword } = this.state;
 		return (
 			<>
 				<SubHeader title={TITLE.MANAGE_ACCOUNT} />
-				<div className="content-body">
+				<div className={theme === THEMES.LIGHT ? "content-body" : "content-body dark-mode"}>
 					<div className="manage-account-container">
 						<div className="content-up">
 							{(() => {
@@ -273,6 +273,7 @@ const mapStateToProps = (state) => {
 		language: state.app.language,
 		selectedAccountInfo: state.app.selectedAccountInfo,
 		roleList: state.app.roleList,
+		theme: state.app.theme
 	};
 };
 

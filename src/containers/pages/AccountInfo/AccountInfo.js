@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Buffer } from 'buffer';
 
-import { TITLE, LANGUAGES } from '../../../utils';
+import { TITLE, LANGUAGES, THEMES } from '../../../utils';
 import * as actions from '../../../store/actions';
 import * as services from '../../../services/appService';
 import images from '../../../assets/images';
@@ -57,11 +57,11 @@ class AccountInfo extends Component {
 
 	render() {
 		const { previewImgURL } = this.state;
-		const { language, accountInfo } = this.props;
+		const { language, accountInfo, theme } = this.props;
 		return (
 			<>
 				<SubHeader title={TITLE.ACCOUNT_INFO} />
-				<div className="content-body">
+				<div className={theme === THEMES.LIGHT ? "content-body" : "content-body dark-mode"}>
 					{(() => {
 						if (accountInfo !== null && accountInfo.roleData) {
 							return (
@@ -121,6 +121,7 @@ const mapStateToProps = (state) => {
 	return {
 		language: state.app.language,
 		accountInfo: state.user.accountInfo,
+		theme: state.app.theme
 	};
 };
 

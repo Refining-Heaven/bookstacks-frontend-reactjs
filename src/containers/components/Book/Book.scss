@@ -100,3 +100,10 @@
     }
   }
 }
+
+// Dark mode
+.book {
+  &.dark-mode {
+    color: #fff;
+  }
+}

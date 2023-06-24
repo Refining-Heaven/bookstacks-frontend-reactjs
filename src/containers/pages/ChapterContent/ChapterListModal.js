@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FormattedMessage } from "react-intl";
 import { customStyles } from '../../../config/reactModal';
 import * as actions from '../../../store/actions';
-import { withRouter, convertStringToAddressBar } from '../../../utils';
+import { withRouter, convertStringToAddressBar, THEMES } from '../../../utils';
 import './ChapterContent.scss';
 
 class ChapterListModal extends Component {
@@ -32,11 +33,11 @@ class ChapterListModal extends Component {
 	};
 
 	render() {
-		const { chapterListModalIsOpen, allChapters, chapterInfo } = this.props;
+		const { chapterListModalIsOpen, allChapters, chapterInfo, theme } = this.props;
 		Modal.setAppElement(document.getElementById('root'));
 		return (
 			<Modal isOpen={chapterListModalIsOpen} style={customStyles} contentLabel="chapter list">
-				<div className="chapter-list-modal">
+				<div className={theme === THEMES.LIGHT ? "chapter-list-modal" : "chapter-list-modal dark-mode"}>
 					<div className="close">
 						<div className="close-btn" onClick={() => this.handleCloseChapterListModal()}>
 							<FontAwesomeIcon icon={faXmark} />
@@ -51,7 +52,7 @@ class ChapterListModal extends Component {
                   onClick={() => this.handleReadChapter(item.id, item.chapterNumber)}
                   >
 										<div className="number">
-											<span>Chapter&nbsp;</span>
+											<span><FormattedMessage id="label.chapter" />&nbsp;</span>
 											<span>{item.chapterNumber}:&nbsp;</span>
 										</div>
 										<div className="title">
@@ -73,6 +74,7 @@ const mapStateToProps = (state) => {
     chapterInfo: state.app.chapterInfo,
     bookInfo: state.app.bookInfo,
 		chapterListModalIsOpen: state.app.chapterListModalIsOpen,
+		theme: state.app.theme
 	};
 };
 

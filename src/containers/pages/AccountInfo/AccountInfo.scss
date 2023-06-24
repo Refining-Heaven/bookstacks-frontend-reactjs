@@ -9,6 +9,7 @@
   .account-info {
     width        : 750px;
     height       : 300px;
+    margin: auto;
     border-radius: 5px;
     display      : flex;
     color        : #fff;
@@ -136,10 +137,10 @@
             border-radius   : 3px;
             background-color: #ddd;
             font-size       : 16px;
-            cursor          : pointer;
-
+            
             &:hover {
               opacity: 0.9;
+              cursor          : pointer;
             }
           }
         }
@@ -303,6 +304,81 @@
         &:hover {
           opacity: 0.8;
           cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+// Dark mode
+.content-body {
+  &.dark-mode {
+    color           : #fff;
+    background-color: #333;
+  }
+}
+
+.update-account-info-modal {
+  &.dark-mode {
+    color           : #fff;
+    background-color: #333;
+    .account-info {
+      background-color: #444;
+
+      .left-content {
+
+        .upload-avatar {
+
+          .label-upload {
+            color: #000;
+            
+            &:hover {
+              opacity: 0.9;
+              cursor          : pointer;
+            }
+          }
+        }
+      }
+
+      .right-content {
+
+        .info-wrapper {
+
+          .info-content {
+
+            input {
+              color: #fff;
+              background-color: inherit;
+
+              &:focus {
+                border-bottom: 1px solid $main-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.change-password-modal {
+  &.dark-mode {
+    color           : #fff;
+    background-color: #333;
+    .modal-content {
+  
+      .input-wrapper {
+  
+        .input-data {
+  
+          input {
+            color: #fff;
+            background-color: inherit;
+  
+            &:focus {
+              border-bottom: 1px solid $main-color;
+            }
+          }
         }
       }
     }

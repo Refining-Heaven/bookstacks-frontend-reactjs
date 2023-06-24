@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { settings } from '../../../config/reactSlider';
-import { TITLE, STATUS_TITLE, KIND_TITLE, KIND_ID } from '../../../utils';
+import { TITLE, STATUS_TITLE, KIND_TITLE, KIND_ID, THEMES } from '../../../utils';
 import * as actions from '../../../store/actions';
 import * as services from '../../../services'
 import BookSlider from '../../components/BookSlider/BookSlider';
@@ -38,13 +38,13 @@ class Home extends Component {
 	
 
 	render() {
-		const { newBooks } = this.props;
+		const { newBooks, theme } = this.props;
 		const {mythList, novelList} = this.state
 		console.log(novelList);
 		return (
 			<>
 				<SubHeader title={TITLE.HOME} />
-				<div className="content-body">
+				<div className={theme === THEMES.LIGHT ? "content-body" : "content-body dark-mode"}>
 					<BookSlider settings={settings} name={STATUS_TITLE.NEW} data={newBooks} />
 					<BookSlider settings={settings} name={KIND_TITLE.NOVEL} data={novelList} />
 					<BookSlider settings={settings} name={KIND_TITLE.MYTH} data={mythList} />
@@ -58,6 +58,7 @@ const mapStateToProps = (state) => {
 	return {
 		accountInfo: state.user.accountInfo,
 		newBooks: state.app.newBooks,
+		theme: state.app.theme
 	};
 };
 
