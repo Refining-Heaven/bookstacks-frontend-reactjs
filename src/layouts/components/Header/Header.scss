@@ -20,15 +20,20 @@
       display        : flex;
       justify-content: center;
       align-items    : center;
-      border         : 1px solid purple;
 
       .logo {
         width : $logo-width;
         height: 50px;
-        border: 1px solid blue;
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
         &:hover {
           cursor: pointer;
+        }
+
+        img {
+          width : 330px;
         }
       }
     }
@@ -82,10 +87,10 @@
 
 // Dark mode
 .header-container {
-    
+
   &.dark-mode {
     background-color: #333;
-    color: #fff;
+    color           : #fff;
 
     .right-content {
       .btn-login {

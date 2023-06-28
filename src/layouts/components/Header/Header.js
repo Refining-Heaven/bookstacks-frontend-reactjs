@@ -4,6 +4,7 @@ import { withRouter, PATH, THEMES } from '../../../utils'
 import * as actions from '../../../store/actions'
 import Options from "./Options/Options";
 import SearchBar from "./SearchBar/SearchBar";
+import images from "../../../assets/images";
 import './Header.scss';
 
 class Header extends Component {
@@ -24,7 +25,7 @@ class Header extends Component {
 				<div className="header-content">
 					<div className="left-content"  onClick={() => this.props.handleCloseOptionsMenu()}>
 						<div className="logo" onClick={() => this.handleToHomePage()}>
-
+							<img src={images.logo} alt="" />
 						</div>
 					</div>
 					<div className="center-content"  onClick={() => this.props.handleCloseOptionsMenu()}>

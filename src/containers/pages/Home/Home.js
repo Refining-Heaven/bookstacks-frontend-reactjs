@@ -40,7 +40,6 @@ class Home extends Component {
 	render() {
 		const { newBooks, theme } = this.props;
 		const {mythList, novelList} = this.state
-		console.log(novelList);
 		return (
 			<>
 				<SubHeader title={TITLE.HOME} />
