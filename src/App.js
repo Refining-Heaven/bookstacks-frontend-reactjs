@@ -56,6 +56,11 @@ class App extends Component {
 				}
 			}
 		}
+		if (prevProps.accountInfo !== this.props.accountInfo) {
+			if (this.props.accountInfo && !!this.props.accountInfo.banned === true) {
+				this.props.handleUserLogout()
+			}
+		}
 	}
 
 	render() {
@@ -114,6 +119,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		fetchAccountInfo: (userId) => dispatch(actions.fetchAccountInfo(userId)),
+		handleUserLogout: () => dispatch(actions.handleUserLogout()),
 	};
 };
 

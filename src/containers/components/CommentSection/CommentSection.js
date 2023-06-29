@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl';
 import images from '../../../assets/images';
 import { customStyles } from '../../../config/reactModal';
 import * as actions from '../../../store/actions';
-import { withRouter, TYPE, dateCalculation, THEMES } from '../../../utils';
+import { withRouter, TYPE, dateCalculation, THEMES, PATH } from '../../../utils';
 import './CommentSection.scss';
 
 class CommentSection extends Component {
@@ -104,40 +104,50 @@ class CommentSection extends Component {
 	};
 
 	handleAddComment = async () => {
-		if (this.props.type === TYPE.BOOK) {
-			await this.props.handleAddComment({
-				content: this.state.commentContent,
-				userId: this.props.accountInfo.id,
-				bookId: this.props.bookInfo.id,
-				type: this.props.type,
+		const { accountInfo, bookInfo, chapterInfo } = this.props;
+		if (accountInfo && accountInfo.id) {
+			if (this.props.type === TYPE.BOOK) {
+				await this.props.handleAddComment({
+					content: this.state.commentContent,
+					userId: accountInfo.id,
+					bookId: bookInfo.id,
+					type: this.props.type,
+				});
+				await this.props.fetchAllComment(this.props.bookInfo.id, TYPE.BOOK);
+			}
+			if (this.props.type === TYPE.CHAPTER) {
+				await this.props.handleAddComment({
+					content: this.state.commentContent,
+					userId: accountInfo.id,
+					bookId: bookInfo.id,
+					chapterId: chapterInfo.id,
+					type: this.props.type,
+				});
+				await this.props.fetchAllComment(this.props.chapterInfo.id, TYPE.CHAPTER);
+			}
+			this.setState({
+				commentContent: '',
 			});
-			await this.props.fetchAllComment(this.props.bookInfo.id, TYPE.BOOK);
+		} else {
+			window.location.assign(PATH.LOGIN);
 		}
-		if (this.props.type === TYPE.CHAPTER) {
-			await this.props.handleAddComment({
-				content: this.state.commentContent,
-				userId: this.props.accountInfo.id,
-				bookId: this.props.bookInfo.id,
-				chapterId: this.props.chapterInfo.id,
-				type: this.props.type,
-			});
-			await this.props.fetchAllComment(this.props.chapterInfo.id, TYPE.CHAPTER);
-		}
-		this.setState({
-			commentContent: '',
-		});
 	};
 
 	handleAddReply = async (commentId) => {
-		await this.props.handleAddReply({
-			content: this.state.replyContent,
-			userId: this.props.accountInfo.id,
-			commentId: commentId,
-		});
-		await this.props.fetchAllReply(commentId);
-		this.setState({
-			replyContent: '',
-		});
+		const { accountInfo } = this.props;
+		if (accountInfo && accountInfo.id) {
+			await this.props.handleAddReply({
+				content: this.state.replyContent,
+				userId: accountInfo.id,
+				commentId: commentId,
+			});
+			await this.props.fetchAllReply(commentId);
+			this.setState({
+				replyContent: '',
+			});
+		} else {
+			window.location.assign(PATH.LOGIN);
+		}
 	};
 
 	handleDeleteComment = async (id, type, commentId) => {
@@ -258,7 +268,7 @@ class CommentSection extends Component {
 												{isReply === false ? (
 													<div className="btn-container">
 														<div className="btn comment-btn" onClick={() => this.handleEnterReply()}>
-														<FormattedMessage id="button.reply" />
+															<FormattedMessage id="button.reply" />
 														</div>
 													</div>
 												) : (
@@ -271,10 +281,10 @@ class CommentSection extends Component {
 														</div>
 														<div className="btn-container">
 															<div className="btn comment-btn" onClick={() => this.handleAddReply(item.id)}>
-															<FormattedMessage id="button.reply" />
+																<FormattedMessage id="button.reply" />
 															</div>
 															<div className="btn close-btn" onClick={() => this.handleExitReply()}>
-															<FormattedMessage id="button.close" />
+																<FormattedMessage id="button.close" />
 															</div>
 														</div>
 													</div>

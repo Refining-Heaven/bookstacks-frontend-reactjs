@@ -80,6 +80,7 @@
     display         : flex;
     justify-content : center;
     align-items     : center;
+    color           : #000;
     background-color: transparent;
     border          : 1px solid $main-color;
     border-radius   : 5px;
@@ -92,7 +93,7 @@
 }
 
 // Dark mode
-.chapter-control{
+.chapter-control {
   &.dark-mode {
     color: #fff;
   }
