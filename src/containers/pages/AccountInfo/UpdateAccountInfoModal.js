@@ -169,10 +169,10 @@ class UpdateAccountInfoModal extends Component {
 								</div>
 								<div className="options">
 									<div className="option-btn" onClick={() => this.handleUpdateAccountInfo()}>
-										<span>Update</span>
+										<span><FormattedMessage id="button.update" /></span>
 									</div>
 									<div className="option-btn cancel" onClick={() => this.handleCancelUpdate()}>
-										<span>Cancel</span>
+										<span><FormattedMessage id="button.cancel" /></span>
 									</div>
 								</div>
 							</div>

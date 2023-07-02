@@ -88,7 +88,12 @@
     "chapter-title": "Chapter title",
     "chapter-content": "Chapter content",
 		"enter-comment": "Enter comment",
-		"last-update": "Last update"
+		"last-update": "Last update",
+		"current-password": "Current password",
+		"new-password": "New password",
+		"confirm-new-password": "Confirm new password",
+		"show-password": "Show password",
+		"reset-password-to": "Reset password to"
 	},
 	"title": {
 		"home": "Home",
@@ -111,7 +116,15 @@
 		"no": "No",
 		"comment": "Comment",
 		"close": "Close",
-		"reply": "Reply"
+		"reply": "Reply",
+		"update-info": "Update info",
+		"change-password": "Change password",
+		"update": "Update",
+		"cancel": "Cancel",
+		"edit": "Edit",
+		"delete": "Delete",
+		"reset-password": "Reset password",
+		"delete-account": "Delete account"
 	},
 	"date": {
 		"day-ago": "days ago",

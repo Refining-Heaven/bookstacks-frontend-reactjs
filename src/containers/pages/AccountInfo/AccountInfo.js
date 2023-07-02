@@ -97,10 +97,10 @@ class AccountInfo extends Component {
 											</div>
 											<div className="options">
 												<div className="option-btn" onClick={() => this.handleOpenUpdateAccountInfoModal()}>
-													<span>Update Info</span>
+													<span><FormattedMessage id="button.update-info" /></span>
 												</div>
 												<div className="option-btn" onClick={() => this.handleOpenChangePasswordModal()}>
-													<span>Change password</span>
+													<span><FormattedMessage id="button.change-password" /></span>
 												</div>
 											</div>
 										</div>

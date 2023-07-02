@@ -89,7 +89,7 @@ class changePasswordModal extends Component {
 					<div className="modal-content">
 						<div className="input-wrapper">
 							<div className="input-data">
-								<label>Current password:</label>
+								<label><FormattedMessage id="label.current-password" />:</label>
 								<input
 									type={showPassword === false ? 'password' : 'text'}
 									value={currentPassword}
@@ -97,7 +97,7 @@ class changePasswordModal extends Component {
 								/>
 							</div>
 							<div className="input-data">
-								<label>New password:</label>
+								<label><FormattedMessage id="label.new-password" />:</label>
 								<input
 									type={showPassword === false ? 'password' : 'text'}
 									value={newPassword}
@@ -105,7 +105,7 @@ class changePasswordModal extends Component {
 								/>
 							</div>
 							<div className="input-data">
-								<label>Confirm new password:</label>
+								<label><FormattedMessage id="label.confirm-new-password" />:</label>
 								<input
 									type={showPassword === false ? 'password' : 'text'}
 									value={confirmNewPassword}
@@ -115,11 +115,11 @@ class changePasswordModal extends Component {
 						</div>
 						<div className="show-password">
 							<input type="checkbox" id="check" onChange={(e) => this.handleShowPassword(e)} />
-							<label htmlFor="check">Show password</label>
+							<label htmlFor="check"><FormattedMessage id="label.show-password" /></label>
 						</div>
 						<div className="btn-wrapper">
 							<div className="change-btn" onClick={() => this.handleChangePassword()}>
-								<span>Change password</span>
+								<span><FormattedMessage id="button.change-password" /></span>
 							</div>
 						</div>
 					</div>

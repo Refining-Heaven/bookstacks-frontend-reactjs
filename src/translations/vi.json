@@ -88,7 +88,12 @@
     "chapter-title": "Tiêu đề chương",
     "chapter-content": "Nội dung chương",
 		"enter-comment": "Nhập bình luận",
-		"last-update": "Lần cập nhật cuối"
+		"last-update": "Lần cập nhật cuối",
+		"current-password": "Mật khẩu hiện tại",
+		"new-password": "Mật khẩu mới",
+		"confirm-new-password": "Xác nhận mật khẩu mới",
+		"show-password": "Hiện mật khẩu",
+		"reset-password-to": "Cài lại mật khẩu thành"
 	},
 	"title": {
 		"home": "Trang chủ",
@@ -111,7 +116,15 @@
 		"no": "Không",
 		"comment": "Bình luận",
 		"close": "Đóng",
-		"reply": "Trả lời"
+		"reply": "Trả lời",
+		"update-info": "Cập nhật thông tin",
+		"change-password": "Đổi mật khẩu",
+		"update": "Cập nhật",
+		"cancel": "Hủy",
+		"edit": "Sửa",
+		"delete": "Xóa",
+		"reset-password": "Cài lại mật khẩu",
+		"delete-account": "Xóa tài khoản"
 	},
 	"date": {
 		"day-ago": "ngày trước",

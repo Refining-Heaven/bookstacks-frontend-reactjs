@@ -165,19 +165,19 @@ class ManageAccount extends Component {
 											{deleteMode === false ? (
 												<div className="account-options">
 													<div className="edit-btn" onClick={() => this.handleEnterEditMode()}>
-														<span>Edit</span>
+														<span><FormattedMessage id="button.edit" /></span>
 													</div>
 													<div className="delete-btn" onClick={() => this.handleEnterDeleteMode()}>
-														<span>Delete </span>
+														<span><FormattedMessage id="button.delete" /></span>
 													</div>
 												</div>
 											) : (
 												<div className="account-options">
 													<div className="delete-btn" onClick={() => this.handleDeleteAccount()}>
-														<span>Delete account</span>
+														<span><FormattedMessage id="button.delete-account" /></span>
 													</div>
 													<div className="edit-btn" onClick={() => this.handleExitDeleteMode()}>
-														<span>Cancel</span>
+														<span><FormattedMessage id="button.cancel" /></span>
 													</div>
 												</div>
 											)}
@@ -236,21 +236,21 @@ class ManageAccount extends Component {
 											</div>
 											<div className="account-options">
 												<div className="reset-password-wrapper">
-													<label>Reset password to:</label>
+													<label><FormattedMessage id="label.reset-password-to" />:</label>
 													<input
 														type="text"
 														value={resetPassword}
 														onChange={(e) => this.handleOnChangeInput(e, 'resetPassword')}
 													/>
 													<div className="reset-btn" onClick={() => this.handleResetAccountPassword()}>
-														<span>Reset password</span>
+														<span><FormattedMessage id="button.reset-password" /></span>
 													</div>
 												</div>
 												<div className="save-btn" onClick={() => this.handleChangeAccountInfo()}>
-													<span>Save</span>
+													<span><FormattedMessage id="button.save" /></span>
 												</div>
 												<div className="edit-btn" onClick={() => this.handleExitEditMode()}>
-													<span>Cancel</span>
+													<span><FormattedMessage id="button.cancel" /></span>
 												</div>
 											</div>
 										</>
