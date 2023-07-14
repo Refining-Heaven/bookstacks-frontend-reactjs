@@ -1,7 +1,7 @@
 @import '../../../styles/variables.scss';
 
 .sub-header {
-  width           : calc(100vW - $sidebar-width);
+  width           : calc($header-width - $sidebar-width);
   height          : $sub-header-height;
   padding         : 0 10px;
   background-color: #fff;

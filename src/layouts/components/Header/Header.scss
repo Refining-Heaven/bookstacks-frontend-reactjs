@@ -1,7 +1,7 @@
 @import '../../../styles/variables.scss';
 
 .header-container {
-  width           : 100vw;
+  width           : $header-width;
   height          : $header-heigth;
   position        : fixed;
   background-color: #fff;
