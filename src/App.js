@@ -60,6 +60,9 @@ class App extends Component {
 			if (this.props.accountInfo && !!this.props.accountInfo.banned === true) {
 				this.props.handleUserLogout()
 			}
+			if (this.props.isLoggedIn === true && this.props.accountInfo === null) {
+				this.props.handleUserLogout()
+			}
 		}
 	}
 
