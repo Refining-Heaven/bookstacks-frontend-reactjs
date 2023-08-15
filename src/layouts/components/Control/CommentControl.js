@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from "@fortawesome/free-regular-svg-icons";
 import * as actions from '../../../store/actions'
-import { withRouter } from '../../../utils';
+import { THEMES, withRouter } from '../../../utils';
 import './Control.scss';
 
 class CommentControl extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showControl: true,
+			showCommentControl: true,
 		};
 	}
 
@@ -22,10 +22,11 @@ class CommentControl extends Component {
 	}
 
 	render() {
-    const { showControl } = this.state
+    const { showCommentControl } = this.state
+    const { theme } = this.props
 		return (
-			<div className="comment-control">
-				{showControl === true && (
+			<div className={theme === THEMES.LIGHT ? "comment-control" : "comment-control dark-mode"}>
+				{showCommentControl === true && (
 					<div className="control-btn" onClick={() => this.handleOpenCommentSection()}>
 						<FontAwesomeIcon icon={faComment} />
 					</div>
@@ -36,7 +37,9 @@ class CommentControl extends Component {
 }
 
 const mapStateToProps = (state) => {
-	return {};
+	return {
+		theme: state.app.theme
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {

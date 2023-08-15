@@ -1,7 +1,14 @@
 
-$header-width: 1536px;
+$header-width: 100%;
 $logo-width: 200px;
 $sidebar-width: 240px;
+$mobile-header-width: 100%;
+$mobile-logo-width: 100px;
+$mobile-sidebar-width: 100px;
+$tablet-header-width: 100%;
+$tablet-logo-width: 180px;
+$tablet-sidebar-width: 180px;
+
 
 $header-heigth: 60px;
 $sub-header-height: 40px;
@@ -9,6 +16,10 @@ $manage-book-container-height: 610px;
 $manage-chapter-container-height: 610px;
 $manage-account-container-height: 610px;
 $account-info-container-height: 610px;
+$mobile-header-heigth: 40px;
+$tablet-header-heigth: 50px;
+$mobile-account-info-container-height: 100vh;
+
 
 $bg-main-color: #ecf3f7;
 $main-color: #2eceed;

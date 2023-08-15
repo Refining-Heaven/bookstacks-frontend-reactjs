@@ -19,3 +19,45 @@
     }
   }
 }
+
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+  .wrapper {
+    background-color: $bg-main-color;
+  
+    .body-container {
+      padding-top: $tablet-header-heigth;
+  
+      .sidebar {
+        position: fixed;
+        top     : $tablet-header-heigth;
+        left    : 0;
+      }
+  
+      .content-container {
+        margin-top : $tablet-header-heigth;
+        // margin-left: $mobile-sidebar-width;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  .wrapper {
+    background-color: $bg-main-color;
+  
+    .body-container {
+      padding-top: $mobile-header-heigth;
+  
+      .sidebar {
+        position: fixed;
+        top     : $mobile-header-heigth;
+        left    : 0;
+      }
+  
+      .content-container {
+        margin-top : $mobile-header-heigth;
+        // margin-left: $mobile-sidebar-width;
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@
 		"account": "Tài khoản",
 		"language": "Ngôn ngữ",
 		"theme": "Chủ đề",
+		"login": "Đăng nhập",
 		"log-out": "Đăng xuất",
 		"sub-menu-item": {
 			"language": {
@@ -41,7 +42,8 @@
 	},
 	"book": {
 		"status": {
-			"new": "Sách mới"
+			"new": "Sách mới",
+			"lastest-update": "Mới cập nhật"
 		},
 		"kind": {
 			"allegory": "Truyện ngụ ngôn",
@@ -67,7 +69,7 @@
 		"genre": "Thể loại"
 	},
 	"label": {
-		"username": "Tên người dùng",
+		"username": "Username",
 		"email": "Email",
 		"role": "Quyền",
 		"banned": "Bị cấm",

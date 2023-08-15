@@ -5,6 +5,7 @@ import * as actions from '../../../store/actions';
 import SubHeader from '../../../layouts/components/SubHeader/SubHeader';
 import Book from '../../components/Book/Book'
 import './BooksFound.scss';
+import BookList from "../../components/BookList/BookList";
 
 class BooksFound extends Component {
 	constructor(props) {
@@ -15,7 +16,7 @@ class BooksFound extends Component {
 	async componentDidMount() {
 		if (this.props && this.props.params && this.props.params.id) {
 			const genreId = this.props.params.id;
-			await this.props.fetchAllBookByGenre(genreId);
+			await this.props.fetchAllBookByGenre(genreId, 6);
 		}
 	}
 
@@ -41,17 +42,7 @@ class BooksFound extends Component {
 					}
 				})()}
 				<div className={theme === THEMES.LIGHT ? "content-body" : "content-body dark-mode"}>
-					<div className="book-found-container">
-						<div className="book-found">
-							{booksFound && booksFound.allBook && booksFound.allBook.length > 0 &&
-								booksFound.allBook.map((item, index) => {
-									return (
-										<Book data={item.bookData} key={index}/>
-									)
-								})
-							}
-						</div>
-					</div>
+					<BookList showTitle={false} bookList={booksFound} />
 				</div>
 			</>
 		);
@@ -68,7 +59,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		fetchAllBookByGenre: (genreId) => dispatch(actions.fetchAllBookByGenre(genreId)),
+		fetchAllBookByGenre: (genreId, limit) => dispatch(actions.fetchAllBookByGenre(genreId, limit)),
 	};
 };
 

@@ -4,10 +4,6 @@ const getAllGenreService = () => {
 	return axios.get('/api/get-all-genre');
 };
 
-const getAllKindService = () => {
-	return axios.get('/api/get-all-kind');
-};
-
 const getAllCodeService = (type) => {
 	return axios.get(`/api/get-all-code?type=${type}`);
 };
@@ -16,20 +12,16 @@ const getAllBookService = () => {
 	return axios.get('/api/get-all-book');
 };
 
-const getAllNewBookService = () => {
-	return axios.get('/api/get-all-new-book');
+const getAllNewBookService = (limit) => {
+	return axios.get(`/api/get-all-new-book?limit=${limit}`);
 };
 
 const getAllBookByNameService = (name) => {
 	return axios.get(`/api/get-all-book-by-name?name=${name}`);
 };
 
-const getAllBookByGenreService = (genreId) => {
-	return axios.get(`/api/get-all-book-by-genre?id=${genreId}`);
-};
-
-const getAllBookByKindService = (kindId, limit) => {
-	return axios.get(`/api/get-all-book-by-kind?id=${kindId}&limit=${limit}`);
+const getAllBookByGenreService = (genreId, limit) => {
+	return axios.get(`/api/get-all-book-by-genre?id=${genreId}&limit=${limit}`);
 };
 
 const getBookInfoService = (bookId) => {
@@ -58,13 +50,11 @@ const getAllReplyService = (commentId) => {
 
 export {
 	getAllGenreService,
-	getAllKindService,
 	getAllCodeService,
 	getAllBookService,
 	getAllNewBookService,
 	getAllBookByNameService,
 	getAllBookByGenreService,
-	getAllBookByKindService,
 	getBookInfoService,
 	getAllChapterService,
 	getChapterInfoService,

@@ -1,9 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faLanguage, faPalette, faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
+import { faLanguage, faPalette, faRightFromBracket, faRightToBracket } from "@fortawesome/free-solid-svg-icons"
 import { FormattedMessage } from "react-intl";
 
 const OPTIONS_MENU = [
+  {
+    type: "LOGIN",
+    icon: <FontAwesomeIcon icon={faRightToBracket} />,
+    title: <FormattedMessage id="option-menu-item.login" />,
+  },
   {
     icon: <FontAwesomeIcon icon={faLanguage} />,
     title: <FormattedMessage id="option-menu-item.language" />,
@@ -48,7 +53,7 @@ const USER_OPTIONS_MENU = [
     icon: <FontAwesomeIcon icon={faUser} />,
     title: <FormattedMessage id="option-menu-item.account" />,
   },
-  ...OPTIONS_MENU,
+  ...OPTIONS_MENU.slice(1),
   {
     type: "LOGOUT",
     icon: <FontAwesomeIcon icon={faRightFromBracket} />,

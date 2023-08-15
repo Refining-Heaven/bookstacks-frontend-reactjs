@@ -1,11 +1,9 @@
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Buffer } from 'buffer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
-import { FormattedMessage } from 'react-intl';
-import { PATH, OPTIONS_MENU, USER_OPTIONS_MENU } from '../../../../utils';
+import { faGear } from '@fortawesome/free-solid-svg-icons';
+import { OPTIONS_MENU, USER_OPTIONS_MENU } from '../../../../utils';
 import images from '../../../../assets/images';
 import OptionsMenu from './OptionsMenu/OptionsMenu';
 import * as actions from '../../../../store/actions';
@@ -82,12 +80,6 @@ class Options extends Component {
 					} else {
 						return (
 							<>
-								<Link to={PATH.LOGIN}>
-									<button className="btn-login">
-										<FontAwesomeIcon icon={faRightToBracket} className="login-icon" />
-										<FormattedMessage id="button.login" />
-									</button>
-								</Link>
 								<div className="more-option" onClick={() => this.props.handleOpenCloseOptionsMenu()}>
 									<FontAwesomeIcon icon={faGear} className="more-option-icon" />
 								</div>

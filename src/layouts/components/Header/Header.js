@@ -1,34 +1,34 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, PATH, THEMES } from '../../../utils'
-import * as actions from '../../../store/actions'
-import Options from "./Options/Options";
-import SearchBar from "./SearchBar/SearchBar";
-import images from "../../../assets/images";
+import MediaQuery from 'react-responsive';
+import { withRouter, PATH, THEMES } from '../../../utils';
+import * as actions from '../../../store/actions';
+import Options from './Options/Options';
+import SearchBar from './SearchBar/SearchBar';
+import images from '../../../assets/images';
 import './Header.scss';
 
 class Header extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-		};
+		this.state = {};
 	}
 
 	handleToHomePage = () => {
-		window.location.assign(PATH.HOME)
-	}
+		window.location.assign(PATH.HOME);
+	};
 
 	render() {
-		const { theme } = this.props
+		const { theme } = this.props;
 		return (
-			<div className={theme === THEMES.LIGHT ? "header-container" : "header-container dark-mode"}>
+			<div className={theme === THEMES.LIGHT ? 'header-container' : 'header-container dark-mode'}>
 				<div className="header-content">
-					<div className="left-content"  onClick={() => this.props.handleCloseOptionsMenu()}>
+					<div className="left-content" onClick={() => this.props.handleCloseOptionsMenu()}>
 						<div className="logo" onClick={() => this.handleToHomePage()}>
 							<img src={images.logo} alt="" />
 						</div>
 					</div>
-					<div className="center-content"  onClick={() => this.props.handleCloseOptionsMenu()}>
+					<div className="center-content" onClick={() => this.props.handleCloseOptionsMenu()}>
 						<div className="search-bar">
 							<SearchBar />
 						</div>
@@ -44,7 +44,7 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		theme: state.app.theme
+		theme: state.app.theme,
 	};
 };
 

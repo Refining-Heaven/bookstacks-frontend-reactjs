@@ -99,3 +99,143 @@
     }
   }
 }
+
+// Responsive
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+  .header-container {
+    width           : $tablet-header-width;
+    height          : $tablet-header-heigth;
+  
+    .header-content {
+      display        : flex;
+      justify-content: space-between;
+      position       : relative;
+      user-select    : none;
+  
+      .left-content {
+        width          : $tablet-sidebar-width;
+        height         : $tablet-header-heigth;
+  
+        .logo {
+          width : $tablet-logo-width;
+          height: $tablet-header-heigth;
+          
+          &:hover {
+            cursor: pointer;
+          }
+  
+          img {
+            width : 150px;
+          }
+        }
+      }
+  
+      .center-content {
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+      }
+  
+      .right-content {
+        width          : 50px;
+        padding        : 0 8px;
+  
+  
+        .more-option {
+          width          : 30px;
+          height         : 30px;
+          margin-left    : 0px;
+          font-size      : 18px;
+  
+          &:hover {
+            cursor: pointer;
+  
+            .more-option-icon {
+              opacity: 0.8;
+            }
+          }
+        }
+  
+        .btn-login {
+          padding    : 7px 12px;
+          font-size  : 14;
+          font-weight: 600;
+  
+          .login-icon {
+            margin-right: 4px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  .header-container {
+    width           : $mobile-header-width;
+    height          : $mobile-header-heigth;
+  
+    .header-content {
+      display        : flex;
+      justify-content: space-between;
+      position       : relative;
+      user-select    : none;
+  
+      .left-content {
+        width          : $mobile-sidebar-width;
+        height         : $mobile-header-heigth;
+  
+        .logo {
+          width : $mobile-logo-width;
+          height: $mobile-header-heigth;
+          
+          &:hover {
+            cursor: pointer;
+          }
+  
+          img {
+            width : 90px;
+          }
+        }
+      }
+  
+      .center-content {
+        width          : 1070px;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+      }
+  
+      .right-content {
+        width          : 40px;
+        padding        : 0 8px;
+  
+  
+        .more-option {
+          width          : 20px;
+          height         : 20px;
+          margin-left    : 0px;
+          font-size      : 16px;
+  
+          &:hover {
+            cursor: pointer;
+  
+            .more-option-icon {
+              opacity: 0.8;
+            }
+          }
+        }
+  
+        .btn-login {
+          padding    : 7px 12px;
+          font-size  : 14;
+          font-weight: 600;
+  
+          .login-icon {
+            margin-right: 4px;
+          }
+        }
+      }
+    }
+  }
+}

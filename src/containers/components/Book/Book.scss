@@ -16,12 +16,12 @@
     height         : 280px;
     display        : flex;
     justify-content: center;
-    align-items    : center;
-
+    
     .book-cover-image {
       width          : 190px;
       display        : flex;
       justify-content: center;
+      align-items    : center;
 
       img {
         width        : 100%;
@@ -105,5 +105,202 @@
 .book {
   &.dark-mode {
     color: #fff;
+  }
+}
+
+//
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+  .book {
+    width    : 355px;
+    display      : flex;
+    flex-wrap    : wrap;
+    border-radius: 5px;
+    border       : 1px solid #ddd;
+  
+    &:hover {
+      cursor: pointer;
+    }
+  
+    .book-cover {
+      width          : 40%;
+      height         : 205px;
+  
+      .book-cover-image {
+        width          : 130px;
+  
+        img {
+          width        : 100%;
+          height       : 190px;
+          border-radius: 5px;
+        }
+      }
+    }
+  
+    .book-info {
+      width      : 60%;
+      padding    : 10px;
+      border-left: 1px solid #ddd;
+  
+      .book-info-content {
+        overflow          : hidden;
+        text-overflow     : ellipsis;
+        white-space       : normal;
+        display           : -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+  
+        &.long {
+          -webkit-line-clamp: 2;
+        }
+  
+        .title {
+          font-size  : 16px;
+          font-weight: 600;
+        }
+  
+        .content {
+          font-size: 16px;
+        }
+      }
+    }
+  
+    .book-intro {
+      width     : 100%;
+      height    : 285px;
+      padding   : 10px;
+      border-top: 1px solid #ddd;
+  
+      .book-intro-content {
+  
+        .title {
+          font-size  : 16px;
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
+  
+        .content {
+          font-size    : 16px;
+          max-height   : 230px;
+          padding      : 10px;
+          white-space  : pre-wrap;
+          border       : 2px solid #ddd;
+          border-radius: 5px;
+          overflow-y   : scroll;
+  
+          &::-webkit-scrollbar {
+            border-radius: 0;
+            width        : 6px;
+          }
+  
+          &::-webkit-scrollbar-thumb {
+            border-radius   : 4px;
+            background-color: rgba(0, 0, 0, 0.15);
+          }
+  
+          &::-webkit-scrollbar-track {
+            border-radius   : 0;
+            background-color: rgba(0, 0, 0, 0);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  .book {
+    width    : 300px;
+    display      : flex;
+    flex-wrap    : wrap;
+    border-radius: 5px;
+    border       : 1px solid #ddd;
+  
+    &:hover {
+      cursor: pointer;
+    }
+  
+    .book-cover {
+      width          : 40%;
+      height         : 170px;
+  
+      .book-cover-image {
+        width          : 110px;
+  
+        img {
+          width        : 100%;
+          height       : 160px;
+          border-radius: 5px;
+        }
+      }
+    }
+  
+    .book-info {
+      width      : 60%;
+      padding    : 0 5px;
+      border-left: 1px solid #ddd;
+  
+      .book-info-content {
+        overflow          : hidden;
+        text-overflow     : ellipsis;
+        white-space       : normal;
+        display           : -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+  
+        &.long {
+          -webkit-line-clamp: 2;
+        }
+  
+        .title {
+          font-size  : 14px;
+          font-weight: 600;
+        }
+  
+        .content {
+          font-size: 14px;
+        }
+      }
+    }
+  
+    .book-intro {
+      width     : 100%;
+      height    : 285px;
+      padding   : 10px;
+      border-top: 1px solid #ddd;
+  
+      .book-intro-content {
+  
+        .title {
+          font-size  : 16px;
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
+  
+        .content {
+          font-size    : 16px;
+          max-height   : 230px;
+          padding      : 10px;
+          white-space  : pre-wrap;
+          border       : 2px solid #ddd;
+          border-radius: 5px;
+          overflow-y   : scroll;
+  
+          &::-webkit-scrollbar {
+            border-radius: 0;
+            width        : 6px;
+          }
+  
+          &::-webkit-scrollbar-thumb {
+            border-radius   : 4px;
+            background-color: rgba(0, 0, 0, 0.15);
+          }
+  
+          &::-webkit-scrollbar-track {
+            border-radius   : 0;
+            background-color: rgba(0, 0, 0, 0);
+          }
+        }
+      }
+    }
   }
 }

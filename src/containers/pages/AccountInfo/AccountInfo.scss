@@ -9,7 +9,7 @@
   .account-info {
     width        : 750px;
     height       : 300px;
-    margin: auto;
+    margin       : auto;
     border-radius: 5px;
     display      : flex;
     color        : #fff;
@@ -137,10 +137,10 @@
             border-radius   : 3px;
             background-color: #ddd;
             font-size       : 16px;
-            
+
             &:hover {
               opacity: 0.9;
-              cursor          : pointer;
+              cursor : pointer;
             }
           }
         }
@@ -273,8 +273,8 @@
       margin-bottom: 80px;
 
       input {
-        width: 15px;
-        height: 15px;
+        width       : 15px;
+        height      : 15px;
         margin-right: 5px;
 
         &:hover {
@@ -293,17 +293,17 @@
 
     .btn-wrapper {
       .change-btn {
-        padding: 5px 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 18px;
-        color: #fff;
+        padding         : 5px 20px;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+        font-size       : 18px;
+        color           : #fff;
         background-color: $main-color;
 
         &:hover {
           opacity: 0.8;
-          cursor: pointer;
+          cursor : pointer;
         }
       }
     }
@@ -322,6 +322,7 @@
   &.dark-mode {
     color           : #fff;
     background-color: #333;
+
     .account-info {
       background-color: #444;
 
@@ -331,10 +332,10 @@
 
           .label-upload {
             color: #000;
-            
+
             &:hover {
               opacity: 0.9;
-              cursor          : pointer;
+              cursor : pointer;
             }
           }
         }
@@ -347,7 +348,7 @@
           .info-content {
 
             input {
-              color: #fff;
+              color           : #fff;
               background-color: inherit;
 
               &:focus {
@@ -365,16 +366,17 @@
   &.dark-mode {
     color           : #fff;
     background-color: #333;
+
     .modal-content {
-  
+
       .input-wrapper {
-  
+
         .input-data {
-  
+
           input {
-            color: #fff;
+            color           : #fff;
             background-color: inherit;
-  
+
             &:focus {
               border-bottom: 1px solid $main-color;
             }
@@ -382,5 +384,271 @@
         }
       }
     }
+  }
+}
+
+//
+@media only screen and (max-width: 740px) {
+  .account-info-container {
+    height         : calc($mobile-account-info-container-height - $mobile-header-heigth);
+    padding        : 20px;
+    display        : flex;
+    justify-content: center;
+
+    .account-info {
+      width         : 320px;
+      height        : 100%;
+      margin        : 0;
+      border-radius : 5px;
+      display       : flex;
+      flex-direction: column;
+      color         : #fff;
+      background    : -webkit-linear-gradient(top, #00dbde, #fc00ff);
+
+      .up-content {
+        width          : 100%;
+        height         : 70%;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+
+        .preview-avatar {
+          img {
+            width : 200px;
+            height: 200px;
+          }
+        }
+      }
+
+      .down-content {
+        width          : 100%;
+        height         : 100%;
+        padding        : 20px 20px 20px 10px;
+        display        : flex;
+        flex-direction : column;
+        justify-content: space-between;
+
+        .info-wrapper {
+          display       : flex;
+          flex-direction: column;
+          gap           : 10px;
+
+          .info-content {
+            display  : flex;
+            font-size: 20px;
+
+            .title {
+              width        : 40%;
+              padding-right: 5px;
+              font-weight  : 600;
+            }
+          }
+        }
+
+        .options {
+          display        : flex;
+          flex-direction : column;
+          justify-content: flex-end;
+          gap            : 15px;
+
+          .option-btn {
+            padding         : 5px 20px;
+            border-radius   : 5px;
+            text-align      : center;
+            color           : #fff;
+            background-color: $main-color;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Update account info modal
+  .update-account-info-modal {
+    width : calc(100vw - 20px);
+    height: calc(100vh - 80px);
+
+    .modal-header {
+      display         : flex;
+      justify-content : space-between;
+      border-bottom   : 1px solid #ddd;
+      color           : #fff;
+      background-color: $main-color;
+
+      .modal-title {
+        padding  : 5px 10px;
+        font-size: 20px;
+      }
+
+      .close-modal-icon {
+        padding         : 6px 12px;
+        color           : #fff;
+        background-color: transparent;
+        font-size       : 20px;
+
+        &:hover {
+          opacity: 0.8;
+          cursor : pointer;
+        }
+      }
+    }
+
+    .modal-content {
+      padding: 10px;
+
+      .account-info {
+        height          : calc(100vh - 80px - 70px);
+        display         : flex;
+        flex-direction  : column;
+        justify-content : space-between;
+        border-radius   : 5px;
+        background-color: #f7f7f7;
+
+        .up-content {
+          width  : 100%;
+          height : 50%;
+          padding: 20px 0;
+
+          .upload-avatar {
+            height         : 100%;
+            display        : flex;
+            flex-direction : column;
+            justify-content: space-between;
+            align-items    : center;
+
+            .preview-avatar {
+              img {
+                width : 200px;
+                height: 200px;
+              }
+            }
+
+            .label-upload {
+              padding         : 5px 20px;
+              border-radius   : 3px;
+              background-color: #ddd;
+              font-size       : 16px;
+
+              &:hover {
+                opacity: 0.9;
+                cursor : pointer;
+              }
+            }
+          }
+        }
+
+        .down-content {
+          width          : 100%;
+          height         : 50%;
+          padding        : 20px 20px 20px 10px;
+          display        : flex;
+          flex-direction : column;
+          justify-content: space-between;
+
+          .info-wrapper {
+            display       : flex;
+            flex-direction: column;
+            gap           : 10px;
+
+            .info-content {
+              display  : flex;
+              font-size: 20px;
+
+              label {
+                width       : 40%;
+                margin-right: 5px;
+                font-weight : 600;
+              }
+
+              input {
+                width           : 60%;
+                line-height     : 1.5;
+                font-size       : 20px;
+                border-bottom   : 1px solid #ddd;
+                background-color: inherit;
+
+                &:focus {
+                  border-bottom: 1px solid $main-color;
+                }
+              }
+            }
+          }
+
+          .options {
+            display        : flex;
+            justify-content: flex-end;
+            gap            : 40px;
+
+            .option-btn {
+              padding         : 5px 20px;
+              border-radius   : 5px;
+              color           : #fff;
+              background-color: $main-color;
+
+              &:hover {
+                cursor : pointer;
+                opacity: 0.9;
+              }
+
+              &.cancel {
+                background-color: #ff2626;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.dark-mode {
+      color           : #fff;
+      background-color: #333;
+
+      .account-info {
+        background-color: #444;
+
+        .up-content {
+
+          .upload-avatar {
+
+            .label-upload {
+              color: #000;
+
+              &:hover {
+                opacity: 0.9;
+                cursor : pointer;
+              }
+            }
+          }
+        }
+
+        .down-content {
+
+          .info-wrapper {
+
+            .info-content {
+
+              input {
+                color           : #fff;
+                background-color: inherit;
+
+                &:focus {
+                  border-bottom: 1px solid $main-color;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Change password modal
+  .change-password-modal {
+    width      : calc(100vw - 20px);
+    user-select: none;
   }
 }

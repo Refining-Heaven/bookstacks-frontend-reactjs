@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import MediaQuery from 'react-responsive';
 import { Buffer } from 'buffer';
 import { convertStringToAddressBar, withRouter } from '../../../../utils';
 import * as actions from '../../../../store/actions';
@@ -41,7 +42,7 @@ class SearchItem extends Component {
 	handleViewBookDetail = async (bookId, bookName) => {
 		await this.props.fetchBookInfo(bookId);
 		await this.props.clearBooksFound();
-		const convertedBookName = convertStringToAddressBar(bookName)
+		const convertedBookName = convertStringToAddressBar(bookName);
 		window.location.assign(`/book-detail/${convertedBookName}/id/${bookId}`);
 	};
 
@@ -50,13 +51,32 @@ class SearchItem extends Component {
 		const { data, theme } = this.props;
 		return (
 			<div className="item-found" onClick={() => this.handleViewBookDetail(data.id, data.bookName)}>
-				<div className="book-cover-image">
-					<img src={previewImgURL === '' ? images.noCoverImage : previewImgURL} alt="" />
-				</div>
-				<div className="book-info">
-					<div className="book-name">{data.bookName}</div>
-					<div className="book-another-name">{data.anotherName}</div>
-				</div>
+				<MediaQuery minWidth={1024}>
+					<div className="book-cover-image">
+						<img src={previewImgURL === '' ? images.noCoverImage : previewImgURL} alt="" />
+					</div>
+					<div className="book-info">
+						<div className="book-name">{data.bookName}</div>
+						<div className="book-another-name">{data.anotherName}</div>
+					</div>
+				</MediaQuery>
+				<MediaQuery minWidth={740} maxWidth={1024}>
+					<div className="book-cover-image">
+						<img src={previewImgURL === '' ? images.noCoverImage : previewImgURL} alt="" />
+					</div>
+					<div className="book-info">
+						<div className="book-name">{data.bookName}</div>
+						<div className="book-another-name">{data.anotherName}</div>
+					</div>
+				</MediaQuery>
+				<MediaQuery maxWidth={740}>
+					<div className="book-cover-image">
+						<img src={previewImgURL === '' ? images.noCoverImage : previewImgURL} alt="" />
+					</div>
+					<div className="book-info">
+						<div className="book-name">{data.bookName}</div>
+					</div>
+				</MediaQuery>
 			</div>
 		);
 	}
@@ -64,7 +84,7 @@ class SearchItem extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		theme: state.app.theme
+		theme: state.app.theme,
 	};
 };
 

@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
+import MediaQuery from "react-responsive";
 import { Buffer } from 'buffer';
 import { FormattedMessage } from 'react-intl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -127,6 +128,7 @@ class UpdateAccountInfoModal extends Component {
 		return (
 			<Modal isOpen={updateAccountInfoModalIsOpen} style={customStyles} contentLabel="Manage chapter modal">
 				<div className={theme === THEMES.LIGHT ? "update-account-info-modal" : "update-account-info-modal dark-mode"}>
+				<MediaQuery minWidth={1024}>
 					<div className="modal-header">
 						<div className="modal-title">
 							<FormattedMessage id="title.update-account-info" />
@@ -178,6 +180,113 @@ class UpdateAccountInfoModal extends Component {
 							</div>
 						</div>
 					</div>
+				</MediaQuery>
+				<MediaQuery minWidth={740} maxWidth={1024}>
+					<div className="modal-header">
+						<div className="modal-title">
+							<FormattedMessage id="title.update-account-info" />
+						</div>
+						<button className="close-modal-icon" onClick={() => this.handleCloseUpdateAccountInfoModal()}>
+							<FontAwesomeIcon icon={faXmark} />
+						</button>
+					</div>
+					<div className="modal-content">
+						<div className="account-info">
+							<div className="left-content">
+								<div className="upload-avatar">
+									<div className="preview-avatar">
+										<img src={previewImgURL !== '' ? previewImgURL : images.noUserAvatar} alt="" />
+									</div>
+									<input type="file" id="upload-image" hidden value="" onChange={(e) => this.handleOnChangeImage(e)} />
+									<label className="label-upload" htmlFor="upload-image">
+										<span>
+											<FormattedMessage id="button.upload-image" />
+										</span>
+										&nbsp;
+										<FontAwesomeIcon icon={faCloudArrowUp} />
+									</label>
+								</div>
+							</div>
+							<div className="right-content">
+								<div className="info-wrapper">
+									<div className="info-content">
+										<label>
+											<FormattedMessage id="label.email" />:
+										</label>
+										<input type="email" value={email} onChange={(e) => this.handleOnChangeInput(e, 'email')} />
+									</div>
+									<div className="info-content">
+										<label>
+											<FormattedMessage id="label.username" />:
+										</label>
+										<input type="text" value={username} onChange={(e) => this.handleOnChangeInput(e, 'username')} />
+									</div>
+								</div>
+								<div className="options">
+									<div className="option-btn" onClick={() => this.handleUpdateAccountInfo()}>
+										<span><FormattedMessage id="button.update" /></span>
+									</div>
+									<div className="option-btn cancel" onClick={() => this.handleCancelUpdate()}>
+										<span><FormattedMessage id="button.cancel" /></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</MediaQuery>
+				<MediaQuery maxWidth={740}>
+					<div className="modal-header">
+						<div className="modal-title">
+							<FormattedMessage id="title.update-account-info" />
+						</div>
+						<button className="close-modal-icon" onClick={() => this.handleCloseUpdateAccountInfoModal()}>
+							<FontAwesomeIcon icon={faXmark} />
+						</button>
+					</div>
+					<div className="modal-content">
+						<div className="account-info">
+							<div className="up-content">
+								<div className="upload-avatar">
+									<div className="preview-avatar">
+										<img src={previewImgURL !== '' ? previewImgURL : images.noUserAvatar} alt="" />
+									</div>
+									<input type="file" id="upload-image" hidden value="" onChange={(e) => this.handleOnChangeImage(e)} />
+									<label className="label-upload" htmlFor="upload-image">
+										<span>
+											<FormattedMessage id="button.upload-image" />
+										</span>
+										&nbsp;
+										<FontAwesomeIcon icon={faCloudArrowUp} />
+									</label>
+								</div>
+							</div>
+							<div className="down-content">
+								<div className="info-wrapper">
+									<div className="info-content">
+										<label>
+											<FormattedMessage id="label.email" />:
+										</label>
+										<input type="email" value={email} onChange={(e) => this.handleOnChangeInput(e, 'email')} />
+									</div>
+									<div className="info-content">
+										<label>
+											<FormattedMessage id="label.username" />:
+										</label>
+										<input type="text" value={username} onChange={(e) => this.handleOnChangeInput(e, 'username')} />
+									</div>
+								</div>
+								<div className="options">
+									<div className="option-btn" onClick={() => this.handleUpdateAccountInfo()}>
+										<span><FormattedMessage id="button.update" /></span>
+									</div>
+									<div className="option-btn cancel" onClick={() => this.handleCancelUpdate()}>
+										<span><FormattedMessage id="button.cancel" /></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</MediaQuery>
 				</div>
 			</Modal>
 		);

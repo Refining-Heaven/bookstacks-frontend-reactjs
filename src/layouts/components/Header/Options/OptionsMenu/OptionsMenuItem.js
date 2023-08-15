@@ -1,9 +1,10 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, PATH } from '../../../../../utils'
+import { withRouter, PATH } from '../../../../../utils';
 import * as actions from '../../../../../store/actions';
 import SubOptionsMenu from '../SubOptionsMenu/SubOptionsMenu';
 import './OptionsMenu.scss';
+import { Link } from 'react-router-dom';
 
 class OptionsMenuItem extends Component {
 	constructor(props) {
@@ -26,17 +27,17 @@ class OptionsMenuItem extends Component {
 	};
 
 	handleViewAccountInfo = () => {
-		this.props.handleCloseOptionsMenu()
-		this.props.navigate(PATH.ACCOUNT_INFO)
-	}
+		this.props.handleCloseOptionsMenu();
+		this.props.navigate(PATH.ACCOUNT_INFO);
+	};
 
 	handleUserLogout = async () => {
 		await Promise.all([
 			await this.props.handleUserLogout(),
 			await this.props.handleCloseOptionsMenu(),
-			window.location.replace('/')
-		])
-	}
+			window.location.replace('/'),
+		]);
+	};
 
 	render() {
 		const { subOptionsMenuIsOpen } = this.state;
@@ -56,7 +57,16 @@ class OptionsMenuItem extends Component {
 								{subOptionsMenuIsOpen === true && <SubOptionsMenu items={data.children.data} />}
 							</div>
 						);
-					} else
+					} else if (data.type === 'LOGIN') {
+						return (
+							<Link to={PATH.LOGIN}>
+								<div className="option-menu-item">
+									<div className="item-icon">{data.icon}</div>
+									<div className="item-title">{data.title}</div>
+								</div>
+							</Link>
+						);
+					}
 					if (data.type === 'ACCOUNT') {
 						return (
 							<div className="option-menu-item" onClick={() => this.handleViewAccountInfo()}>
@@ -64,8 +74,7 @@ class OptionsMenuItem extends Component {
 								<div className="item-title">{data.title}</div>
 							</div>
 						);
-					} else
-					if (data.type === 'LOGOUT') {
+					} else if (data.type === 'LOGOUT') {
 						return (
 							<div className="option-menu-item" onClick={() => this.handleUserLogout()}>
 								<div className="item-icon">{data.icon}</div>

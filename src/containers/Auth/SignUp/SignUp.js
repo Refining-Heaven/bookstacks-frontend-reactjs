@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import * as actions from '../../../store/actions/userActions';
 import './SignUp.scss';
+import { toast } from "react-toastify";
 
 class SignUp extends Component {
 	constructor(props) {
@@ -39,11 +40,15 @@ class SignUp extends Component {
 	};
 
 	handleUserSignUp = () => {
+		if (this.state.password.length < 6) {
+			toast.error("Password phải từ 6 ký tự")
+		} else {
 			this.props.handleUserSignUp({
 				email: this.state.email,
 				username: this.state.username,
 				password: this.state.password,
 			});
+		}
 	};
 
 	render() {

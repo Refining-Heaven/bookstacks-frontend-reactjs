@@ -32,8 +32,12 @@ class App extends Component {
 				});
 			}
 		}
-		if (this.props.isLoggedIn === true && this.props.accountInfo !== null) {
-			this.props.fetchAccountInfo(this.props.accountInfo.id);
+		if (this.props.isLoggedIn === true && this.props.accountInfo.length === 0) {
+			this.props.handleUserLogout()
+		} else {
+			if (this.props.isLoggedIn === true && this.props.accountInfo !== null) {
+				this.props.fetchAccountInfo(this.props.accountInfo.id);
+			}
 		}
 	}
 

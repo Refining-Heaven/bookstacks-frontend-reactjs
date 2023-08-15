@@ -5,6 +5,7 @@
 		"account": "Account",
 		"language": "Language",
 		"theme": "Theme",
+		"login": "Login",
 		"log-out": "Log out",
 		"sub-menu-item": {
 			"language": {
@@ -41,7 +42,8 @@
 	},
 	"book": {
 		"status": {
-			"new": "New book"
+			"new": "New book",
+			"lastest-update": "Lastest Updates"
 		},
 		"kind": {
 			"allegory": "Allegory",

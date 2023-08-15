@@ -49,20 +49,21 @@ class Book extends Component {
 		const { previewImgURL } = this.state;
 		const { language, isShowIntro, data, theme } = this.props;
 		return (
-			<div className={theme === THEMES.LIGHT ? "book" : "book dark-mode"} onDoubleClick={() => this.handleViewBookDetail(data.id, data.bookName)}>
+			<div className={theme === THEMES.LIGHT ? "book" : "book dark-mode"} onClick={() => this.handleViewBookDetail(data.id, data.bookName)}>
 				<div className="book-cover">
 					<div className="book-cover-image">
 						<img src={previewImgURL === '' ? images.noCoverImage : previewImgURL} alt="" />
 					</div>
 				</div>
-				<div className="book-info">
+				{data &&
+					<div className="book-info">
 					<div className="book-info-content long">
 						<span className="title">
 							<FormattedMessage id="book-info.book-name" />:{' '}
 						</span>
 						<span className="content">{data.bookName}</span>
 					</div>
-					<div className="book-info-content long">
+					<div className="book-info-content">
 						<span className="title">
 							<FormattedMessage id="book-info.another-name" />:{' '}
 						</span>
@@ -84,12 +85,6 @@ class Book extends Component {
 					</div>
 					<div className="book-info-content">
 						<span className="title">
-							<FormattedMessage id="book-info.kind" />:{' '}
-						</span>
-						<span className="content">{language === LANGUAGES.VI ? data.kindData.valueVi : data.kindData.valueEn}</span>
-					</div>
-					<div className="book-info-content">
-						<span className="title">
 							<FormattedMessage id="book-info.version" />:{' '}
 						</span>
 						<span className="content">
@@ -105,6 +100,7 @@ class Book extends Component {
 						</span>
 					</div>
 				</div>
+				}
 				{isShowIntro === true && (
 					<div className="book-intro">
 						<div className="book-intro-content">

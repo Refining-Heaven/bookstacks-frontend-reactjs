@@ -15,7 +15,6 @@ class ManageBookModal extends Component {
 		super(props);
 		this.state = {
 			statusData: [],
-			kindData: [],
 			versionData: [],
 			languageData: [],
 			genreData: [],
@@ -23,7 +22,6 @@ class ManageBookModal extends Component {
 			anotherName: '',
 			author: '',
 			status: '',
-			kind: '',
 			version: '',
 			language: '',
 			intro: '',
@@ -40,7 +38,6 @@ class ManageBookModal extends Component {
 		if (prevProps.allRequiredBookData !== this.props.allRequiredBookData) {
 			this.setState({
 				statusData: this.props.allRequiredBookData.resStatus.data,
-				kindData: this.props.allRequiredBookData.resKind.data,
 				versionData: this.props.allRequiredBookData.resVersion.data,
 				languageData: this.props.allRequiredBookData.resLanguage.data,
 				genreData: this.props.allRequiredBookData.resGenre.data,
@@ -82,7 +79,6 @@ class ManageBookModal extends Component {
 					anotherName: bookInfo.anotherName,
 					author: bookInfo.author,
 					status: bookInfo.status,
-					kind: bookInfo.kind,
 					version: bookInfo.version,
 					language: bookInfo.language,
 					intro: bookInfo.intro,
@@ -160,7 +156,6 @@ class ManageBookModal extends Component {
 			anotherName: this.state.anotherName,
 			author: this.state.author,
 			status: this.state.status,
-			kind: this.state.kind,
 			version: this.state.version,
 			language: this.state.language,
 			intro: this.state.intro,
@@ -174,7 +169,6 @@ class ManageBookModal extends Component {
 	render() {
 		const {
 			statusData,
-			kindData,
 			versionData,
 			languageData,
 			genreData,
@@ -182,7 +176,6 @@ class ManageBookModal extends Component {
 			anotherName,
 			author,
 			status,
-			kind,
 			version,
 			intro,
 			previewImgURL,
@@ -245,23 +238,6 @@ class ManageBookModal extends Component {
 										statusData.map((item, index) => {
 											return (
 												<option key={index} value={item.keyMap}>
-													{language === LANGUAGES.VI ? item.valueVi : item.valueEn}
-												</option>
-											);
-										})}
-								</select>
-							</div>
-							<div className="input-book-info">
-								<label>
-									<FormattedMessage id="label.kind" />:
-								</label>
-								<select value={kind === null ? '' : kind} onChange={(e) => this.handleOnChangeInput(e, 'kind')}>
-									<option value={null}></option>
-									{kindData &&
-										kindData.length > 0 &&
-										kindData.map((item, index) => {
-											return (
-												<option key={index} value={item.id}>
 													{language === LANGUAGES.VI ? item.valueVi : item.valueEn}
 												</option>
 											);

@@ -30,3 +30,35 @@
     }
   }
 }
+
+//
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 740px) {
+  .more-option {
+    width          : 40px;
+    height         : 40px;
+    margin-left    : 20px;
+    border-radius  : 50%;
+    font-size      : 25px;
+  
+    &:hover {
+      cursor: pointer;
+  
+      .more-option-icon {
+        opacity: 0.8;
+      }
+    }
+  
+    .more-option-icon {
+  
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;  
+      }
+    }
+  }
+}

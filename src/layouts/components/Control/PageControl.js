@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import { withRouter } from '../../../utils';
+import { THEMES, withRouter } from '../../../utils';
 import './Control.scss';
 
 class PageControl extends Component {
@@ -36,8 +36,9 @@ class PageControl extends Component {
 
 	render() {
     const { showControl } = this.state
+    const { theme } = this.props
 		return (
-			<div className="page-control">
+			<div className={theme === THEMES.LIGHT ? "page-control" : "page-control dark-mode"}>
 				{showControl === true && (
 					<div className="control-btn" onClick={() => this.handleScrollToTop()}>
 						<FontAwesomeIcon icon={faChevronUp} />
@@ -49,7 +50,9 @@ class PageControl extends Component {
 }
 
 const mapStateToProps = (state) => {
-	return {};
+	return {
+		theme: state.app.theme
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {

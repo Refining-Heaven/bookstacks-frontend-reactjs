@@ -83,15 +83,12 @@ export const fetchRequiredBookData = () => {
 				type: actionTypes.FETCH_REQUIRED_BOOK_DATA_START,
 			});
 			const resGenre = await services.getAllGenreService();
-			const resKind = await services.getAllKindService();
 			const resStatus = await services.getAllCodeService('STATUS');
 			const resVersion = await services.getAllCodeService('VERSION');
 			const resLanguage = await services.getAllCodeService('LANGUAGE');
 			if (
 				resGenre &&
 				resGenre.data.errCode === 0 &&
-				resKind &&
-				resKind.data.errCode === 0 &&
 				resStatus &&
 				resStatus.data.errCode === 0 &&
 				resVersion &&
@@ -101,7 +98,6 @@ export const fetchRequiredBookData = () => {
 			) {
 				const data = {
 					resGenre: resGenre.data,
-					resKind: resKind.data,
 					resStatus: resStatus.data,
 					resVersion: resVersion.data,
 					resLanguage: resLanguage.data,
@@ -149,10 +145,10 @@ const fetchAllBookFailed = () => ({
 });
 
 // Fetch all new book
-export const fetchAllNewBook = () => {
+export const fetchAllNewBook = (limit) => {
 	return async (dispatch, getState) => {
 		try {
-			const response = await services.getAllNewBookService();
+			const response = await services.getAllNewBookService(limit);
 			if (response && response.data.errCode === 0) {
 				dispatch(fetchAllNewBookSucceed(response.data.data));
 			} else {
@@ -197,10 +193,10 @@ const fetchAllBookByNameFailed = () => ({
 });
 
 // Fetch all book by genre
-export const fetchAllBookByGenre = (genreId) => {
+export const fetchAllBookByGenre = (genreId, limit) => {
 	return async (dispatch, getState) => {
 		try {
-			const response = await services.getAllBookByGenreService(genreId);
+			const response = await services.getAllBookByGenreService(genreId, limit);
 			if (response && response.data.errCode === 0) {
 				dispatch(fetchAllBookByGenreSucceed(response.data.data));
 			} else {

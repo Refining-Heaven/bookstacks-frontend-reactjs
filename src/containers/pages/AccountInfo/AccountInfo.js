@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
+import MediaQuery from "react-responsive";
 import { Buffer } from 'buffer';
 
 import { TITLE, LANGUAGES, THEMES } from '../../../utils';
@@ -66,6 +67,7 @@ class AccountInfo extends Component {
 						if (accountInfo !== null && accountInfo.roleData) {
 							return (
 								<div className="account-info-container">
+									<MediaQuery minWidth={1024}>
 									<div className="account-info">
 										<div className="left-content">
 											<div className="preview-avatar">
@@ -105,6 +107,89 @@ class AccountInfo extends Component {
 											</div>
 										</div>
 									</div>
+									</MediaQuery>
+									<MediaQuery minWidth={740} maxWidth={1024}>
+									<div className="account-info">
+										<div className="left-content">
+											<div className="preview-avatar">
+												<img src={previewImgURL !== '' ? previewImgURL : images.noUserAvatar} alt="" />
+											</div>
+										</div>
+										<div className="right-content">
+											<div className="info-wrapper">
+												<div className="info-content">
+													<span className="title">
+														<FormattedMessage id="label.email" />:
+													</span>
+													<div className="info">{accountInfo.email}</div>
+												</div>
+												<div className="info-content">
+													<span className="title">
+														<FormattedMessage id="label.username" />:
+													</span>
+													<div className="info">{accountInfo.username}</div>
+												</div>
+												<div className="info-content">
+													<span className="title">
+														<FormattedMessage id="label.role" />:
+													</span>
+													<div className="info">
+														{language === LANGUAGES.VI ? accountInfo.roleData.valueVi : accountInfo.roleData.valueEn}
+													</div>
+												</div>
+											</div>
+											<div className="options">
+												<div className="option-btn" onClick={() => this.handleOpenUpdateAccountInfoModal()}>
+													<span><FormattedMessage id="button.update-info" /></span>
+												</div>
+												<div className="option-btn" onClick={() => this.handleOpenChangePasswordModal()}>
+													<span><FormattedMessage id="button.change-password" /></span>
+												</div>
+											</div>
+										</div>
+									</div>
+									</MediaQuery>
+									<MediaQuery maxWidth={740}>
+									<div className="account-info">
+										<div className="up-content">
+											<div className="preview-avatar">
+												<img src={previewImgURL !== '' ? previewImgURL : images.noUserAvatar} alt="" />
+											</div>
+										</div>
+										<div className="down-content">
+											<div className="info-wrapper">
+												<div className="info-content">
+													<span className="title">
+														<FormattedMessage id="label.email" />:
+													</span>
+													<div className="info">{accountInfo.email}</div>
+												</div>
+												<div className="info-content">
+													<span className="title">
+														<FormattedMessage id="label.username" />:
+													</span>
+													<div className="info">{accountInfo.username}</div>
+												</div>
+												<div className="info-content">
+													<span className="title">
+														<FormattedMessage id="label.role" />:
+													</span>
+													<div className="info">
+														{language === LANGUAGES.VI ? accountInfo.roleData.valueVi : accountInfo.roleData.valueEn}
+													</div>
+												</div>
+											</div>
+											<div className="options">
+												<div className="option-btn" onClick={() => this.handleOpenUpdateAccountInfoModal()}>
+													<span><FormattedMessage id="button.update-info" /></span>
+												</div>
+												<div className="option-btn" onClick={() => this.handleOpenChangePasswordModal()}>
+													<span><FormattedMessage id="button.change-password" /></span>
+												</div>
+											</div>
+										</div>
+									</div>
+									</MediaQuery>
 								</div>
 							);
 						}

@@ -12,3 +12,33 @@
     }
   }
 }
+
+@media only screen and (min-width: 740px) and (max-width: 1024px) {
+  .wrapper {
+    background-color: $bg-main-color;
+  
+    .body-container {
+      padding-top: $tablet-header-heigth;
+  
+      .default-content-container {
+        width: 100%;
+        margin : 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  .wrapper {
+    background-color: $bg-main-color;
+  
+    .body-container {
+      padding-top: $mobile-header-heigth;
+  
+      .default-content-container {
+        width: 100%;
+        margin : 0;
+      }
+    }
+  }
+}

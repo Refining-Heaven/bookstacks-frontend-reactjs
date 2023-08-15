@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { toast } from "react-toastify";
+import MediaQuery from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight, faInfo, faList } from '@fortawesome/free-solid-svg-icons';
 import * as actions from '../../../store/actions';

@@ -1,12 +1,13 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage } from 'react-intl';
+import MediaQuery from 'react-responsive';
 import * as actions from '../../../store/actions';
 import { THEMES, TYPE, dateCalculation, withRouter } from '../../../utils';
 import ChapterControl from '../../../layouts/components/Control/ChapterControl';
 import CommentControl from '../../../layouts/components/Control/CommentControl';
 import CommentSection from '../../components/CommentSection/CommentSection';
-import ChapterListModal from "./ChapterListModal";
+import ChapterListModal from './ChapterListModal';
 import './ChapterContent.scss';
 
 class ChapterContent extends Component {
@@ -30,33 +31,97 @@ class ChapterContent extends Component {
 
 	render() {
 		const { chapterInfo, theme } = this.props;
-		let updateDate = ''
+		let updateDate = '';
 		if (chapterInfo) {
 			const lastUpdateTime = new Date(chapterInfo.updatedAt);
 			updateDate = dateCalculation(lastUpdateTime);
 		}
 		return (
 			<>
-				<div id="chapter-content-container">
-					{(() => {
-						if (chapterInfo) {
-							return (
-								<div className={theme === THEMES.LIGHT ? "chapter-content-body" : "chapter-content-body dark-mode"}>
-									<div className="last-update">
-										<span><FormattedMessage id="label.last-update" />:&nbsp;</span>
-										<span className="time">{updateDate === '' ? '' : updateDate}</span>
+				<MediaQuery minWidth={1024}>
+					<div id="chapter-content-container">
+						{(() => {
+							if (chapterInfo) {
+								return (
+									<div className={theme === THEMES.LIGHT ? 'chapter-content-body' : 'chapter-content-body dark-mode'}>
+										<div className="last-update">
+											<span>
+												<FormattedMessage id="label.last-update" />
+												:&nbsp;
+											</span>
+											<span className="time">{updateDate === '' ? '' : updateDate}</span>
+										</div>
+										<div className="chapter-info">
+											<span>
+												<FormattedMessage id="label.chapter" />
+												&nbsp;
+											</span>
+											<span>{chapterInfo.chapterNumber}:&nbsp;</span>
+											<span>{chapterInfo.chapterTitle}</span>
+										</div>
+										<div className="chapter-content">{chapterInfo.chapterContent}</div>
 									</div>
-									<div className="chapter-info">
-										<span><FormattedMessage id="label.chapter" />&nbsp;</span>
-										<span>{chapterInfo.chapterNumber}:&nbsp;</span>
-										<span>{chapterInfo.chapterTitle}</span>
+								);
+							}
+						})()}
+					</div>
+				</MediaQuery>
+				<MediaQuery minWidth={740} maxWidth={1024}>
+					<div id="chapter-content-container">
+						{(() => {
+							if (chapterInfo) {
+								return (
+									<div className={theme === THEMES.LIGHT ? 'chapter-content-body' : 'chapter-content-body dark-mode'}>
+										<div className="last-update">
+											<span>
+												<FormattedMessage id="label.last-update" />
+												:&nbsp;
+											</span>
+											<span className="time">{updateDate === '' ? '' : updateDate}</span>
+										</div>
+										<div className="chapter-info">
+											<span>
+												<FormattedMessage id="label.chapter" />
+												&nbsp;
+											</span>
+											<span>{chapterInfo.chapterNumber}:&nbsp;</span>
+											<span>{chapterInfo.chapterTitle}</span>
+										</div>
+										<div className="chapter-content">{chapterInfo.chapterContent}</div>
 									</div>
-									<div className="chapter-content">{chapterInfo.chapterContent}</div>
-								</div>
-							);
-						}
-					})()}
-				</div>
+								);
+							}
+						})()}
+					</div>
+				</MediaQuery>
+				<MediaQuery maxWidth={740}>
+					<div id="chapter-content-container">
+						{(() => {
+							if (chapterInfo) {
+								return (
+									<div className={theme === THEMES.LIGHT ? 'chapter-content-body' : 'chapter-content-body dark-mode'}>
+										<div className="last-update">
+											<span>
+												<FormattedMessage id="label.last-update" />
+												:&nbsp;
+											</span>
+											<span className="time">{updateDate === '' ? '' : updateDate}</span>
+										</div>
+										<div className="chapter-info">
+											<span>
+												<FormattedMessage id="label.chapter" />
+												&nbsp;
+											</span>
+											<span>{chapterInfo.chapterNumber}:&nbsp;</span>
+											<span>{chapterInfo.chapterTitle}</span>
+										</div>
+										<div className="chapter-content">{chapterInfo.chapterContent}</div>
+									</div>
+								);
+							}
+						})()}
+					</div>
+				</MediaQuery>
 				<ChapterControl />
 				<ChapterListModal />
 				<CommentControl />
@@ -72,7 +137,7 @@ const mapStateToProps = (state) => {
 		bookInfo: state.app.bookInfo,
 		chapterInfo: state.app.chapterInfo,
 		allChapters: state.app.allChapters,
-		theme: state.app.theme
+		theme: state.app.theme,
 	};
 };
 

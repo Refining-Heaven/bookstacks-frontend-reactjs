@@ -52,5 +52,50 @@
   
   &.dark-mode {
     background-color: #444;
+
+    a {
+      color: #fff;
+    }
+  }
+}
+
+//
+@media only screen and (max-width: 740px) {
+  .option-menu {
+    width           : 170px;
+    position        : absolute;
+    top             : $mobile-header-heigth;
+    right           : 5px;
+    border-radius   : 5px;
+    background-color: #fefefe;
+    box-shadow      : rgb(0 0 0 / 12%) 0px 2px 12px;
+  
+    .option-menu-list {
+      padding       : 5px 0;
+      border-radius : 5px;
+      display       : flex;
+      flex-direction: column;
+    }
+  }
+
+  .option-menu-item {
+    padding    : 5px;
+    font-size  : 16px;
+  
+    &:hover {
+      background-color: $main-color;
+      cursor          : pointer;
+  
+      .item-icon,
+      .item-title {
+        color: #fff;
+      }
+    }
+  
+    .item-icon {
+      width          : 25px;
+      height         : 25px;
+      margin-right   : 5px;
+    }
   }
 }
