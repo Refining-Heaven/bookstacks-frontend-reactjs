@@ -65,7 +65,6 @@ class ManageChapterContent extends Component {
 				chapterContent: this.state.chapterContent,
 				bookId: this.props.bookId,
 			});
-			await this.props.fetchAllChapter(this.props.bookId)
 		}
 		if (this.state.action === ACTION.UPDATE) {
 			await this.props.handleUpdateChapterInfo({
@@ -74,9 +73,9 @@ class ManageChapterContent extends Component {
 				chapterContent: this.state.chapterContent,
 				chapterId: this.props.chapterInfo.id,
 			});
-			await this.props.fetchAllChapter(this.props.bookId)
 		}
 		this.handleCloseManageChapterModal();
+		await this.props.fetchAllChapter(this.props.bookId)
 	};
 
 	render() {
