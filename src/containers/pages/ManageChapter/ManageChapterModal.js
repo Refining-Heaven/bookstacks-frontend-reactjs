@@ -33,6 +33,14 @@ class ManageChapterContent extends Component {
 					action: ACTION.UPDATE,
 				});
 			}
+			if (chapterInfo === null) {
+				this.setState({
+					chapterNumber: '',
+					chapterTitle: '',
+					chapterContent: '',
+					action: ACTION.CREATE,
+				});
+			}
 		}
 	}
 
