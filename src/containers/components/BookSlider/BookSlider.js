@@ -11,7 +11,6 @@ import './BookSlider.scss';
 class BookSlider extends Component {
 	render() {
 		const { data, theme } = this.props;
-		console.log("data", data);
 		return (
 			<div className={theme === THEMES.LIGHT ? 'book-slider-section' : 'book-slider-section dark-mode'}>
 				<div className="slider-section-title">{this.props.name}</div>

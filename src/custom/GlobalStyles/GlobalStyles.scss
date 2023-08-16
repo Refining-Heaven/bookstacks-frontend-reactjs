@@ -120,15 +120,15 @@ textarea {
 }
 
 .dark-mode {
-  .css-1n6sfyn-MenuList {
+  .css-1nmdiq5-menu {
     color: #fff;
     background-color: #444;
-    .css-d7l1ni-option {
+    .css-10wo9uf-option {
       background-color: #444;
     }
     .css-d7l1ni-option {
+      background: rgba(255, 255, 255, 0.1);
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
         cursor: pointer;
       }
     }

@@ -2,13 +2,12 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { settings } from '../../../config/reactSlider';
-import { TITLE, STATUS_TITLE, GENRE_TITLE, GENRE_ID, THEMES } from '../../../utils';
+import { TITLE, STATUS_TITLE, GENRE_ID, THEMES } from '../../../utils';
 import * as actions from '../../../store/actions';
 import * as services from '../../../services'
 import BookSlider from '../../components/BookSlider/BookSlider';
 import SubHeader from '../../../layouts/components/SubHeader/SubHeader';
 import './Home.scss';
-import Book from "../../components/Book/Book";
 import BookList from "../../components/BookList/BookList";
 
 class Home extends Component {
