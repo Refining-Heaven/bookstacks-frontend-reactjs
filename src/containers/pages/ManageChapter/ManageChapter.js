@@ -74,6 +74,7 @@ class ManageChapter extends Component {
 
 	handleOpenManageChapterModal = () => {
 		if (this.state.bookId !== '') {
+			this.props.clearChapterInfo()
 			this.props.handleOpenManageChapterModal();
 		} else {
 			toast.warning('Please select book');
